@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三位一体(トリニティ)ヒーリング - 心・身体・現実を整える</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        // ユーザー指定の極上カラーパレット
+                        navy: {
+                            900: '#0B0F1A', // ほぼ黒ネイビー（ベース）
+                            800: '#121826', // やや柔らかいネイビー（セクション背景）
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37', // ゴールド（ボタン・メインアクセント）
+                            light: '#E6C76E',   // 柔らかゴールド（テキスト強調）
+                        },
+                        light: {
+                            DEFAULT: '#EAEAF2', // 淡い白（メインテキスト）
+                            blue: '#C9D6FF',    // 薄い青紫（光の装飾）
+                            purple: '#F3E8FF',  // ごく薄い紫（光の装飾）
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body { 
+            background-color: #0B0F1A; 
+            color: #EAEAF2; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+        }
+        .text-unit { display: inline-block; white-space: nowrap; vertical-align: top; }
+        .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
+        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+        .fluid-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+        .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
+        
+        /* ヒーローのグラデーションをダークに */
+        .hero-overlay { background: linear-gradient(to bottom, rgba(11, 15, 26, 0.4) 0%, rgba(11, 15, 26, 1) 100%); }
+        
+        /* ボタンの波紋をゴールドに */
+        .btn-pulse { position: relative; }
+        .btn-pulse::before { 
+            content: ''; 
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            border-radius: 9999px; 
+            border: 2px solid #D4AF37; 
+            animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+            z-index: -1; 
+            will-change: transform, opacity; /* 常時アニメーションの重さを軽減 */
+        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
+        
+        /* GSAP初期状態の最適化 */
+        .fade-up, .hero-el { 
+            visibility: hidden; /* ちらつき防止。GSAPのautoAlphaで制御 */
+            will-change: transform, opacity; /* スクロール時のカクつきを防止（GPUアクセラレーション） */
+        }
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: 80px; }
+        
+        /* カレンダーアイコンを白系にするハック（ブラウザ依存対応） */
+        ::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.7; cursor: pointer; }
+    </style>
+</head>
+<body class="font-sans leading-loose">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-xl md:text-2xl text-light font-medium tracking-widest hover:opacity-70 transition-opacity">
+                <span class="text-unit">Trinity Healing</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-serif text-sm tracking-wider">
+                <a href="#profile" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="#about" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">世界線調律所とは</span></a>
+                <a href="#booking" class="bg-gold text-navy-900 px-6 py-2.5 rounded-full hover:bg-gold-light transition-colors font-medium"><span class="text-unit">ご予約</span></a>
+            </nav>
+            <button class="md:hidden text-light text-2xl focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full">
+            <nav class="flex flex-col px-6 py-4 font-serif text-base tracking-wider space-y-2">
+                <a href="#profile" class="text-light/80 block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="#about" class="text-light/80 block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
+                <a href="#booking" class="text-gold font-medium block py-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">ご予約</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-6 mt-20 md:mt-0">
+        <div class="absolute inset-0 z-0">
+            <!-- 確実に表示される画像に差し替え、CSSでダークに調整 -->
+            <img src="https://images.unsplash.com/photo-1508614999368-9260051292e5?q=80&w=2000&auto=format&fit=crop" alt="光と空間" class="w-full h-full object-cover opacity-20 mix-blend-screen grayscale">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        <div class="relative z-10 w-full max-w-4xl mx-auto text-center mt-12">
+            <p class="font-serif text-gold font-medium tracking-widest mb-6 fade-up hero-el text-sm md:text-base">
+                <span class="text-unit">整体でも、</span><span class="text-unit">カウンセリングでも</span><span class="text-unit">変わりきらなかったあなたへ</span>
+            </p>
+            <h1 class="font-serif fluid-h1 leading-relaxed text-light mb-12 fade-up hero-el">
+                <span class="text-unit">何度も通っているのに、</span><br class="md:hidden">
+                <span class="text-unit">また戻ってしまう。</span><br>
+                <span class="text-unit">気持ちは軽くなっても、</span><br class="md:hidden">
+                <span class="text-unit">現実は変わらない。</span><br>
+                <span class="text-unit">身体を整えても、</span><br class="md:hidden">
+                <span class="text-unit">その場だけで終わる。</span>
+            </h1>
+            <!-- 中心点となるゴールドのライン -->
+            <div class="h-px w-16 bg-gold mx-auto mb-10 fade-up hero-el"></div>
+            <p class="fluid-p text-light/80 leading-loose fade-up hero-el">
+                <span class="text-unit">もしそんな感覚があるなら、</span><br class="md:hidden">
+                <span class="text-unit">それはあなたの問題ではなく、</span><br>
+                <span class="text-unit">アプローチする場所が</span><br class="md:hidden">
+                <span class="text-unit">違っていたのかもしれません。</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 2. Problem & Mechanism -->
+    <section class="py-24 px-6 bg-navy-900">
+        <div class="max-w-3xl mx-auto text-center space-y-24">
+            <div class="fade-up">
+                <h2 class="font-serif fluid-h2 text-light mb-10">
+                    <span class="text-unit">なぜ変わりきらないのか</span>
+                </h2>
+                <p class="fluid-p text-light/80 mb-6">
+                    <span class="text-unit">これまでの方法は</span><span class="text-unit">すべて正しいです。</span><br>
+                    <span class="text-unit">・心を整える　</span><span class="text-unit">・身体を整える</span>
+                </p>
+                <p class="fluid-p text-light/80 font-medium">
+                    <span class="text-unit">ただ一つだけ、</span><span class="text-unit">抜けていた視点があります。</span><br>
+                    <span class="text-unit text-gold mt-4 text-xl md:text-2xl">それは「すべてはつながっている」ということです。</span>
+                </p>
+            </div>
+
+            <div class="fade-up bg-navy-800 p-10 md:p-16 rounded-2xl relative border border-white/5 shadow-2xl">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navy-900 px-6 py-2 rounded-full border border-white/10 text-gold-light font-serif tracking-widest text-sm shadow-sm">
+                    TRUTH
+                </div>
+                <h3 class="font-serif fluid-h3 text-light mb-8">
+                    <span class="text-unit">本当はこう動いている</span>
+                </h3>
+                <div class="space-y-4 fluid-p text-light/80 mb-8">
+                    <p><span class="text-unit">気持ちが変わると、</span><span class="text-unit">身体が変わる</span></p>
+                    <p class="text-gold">↓</p>
+                    <p><span class="text-unit">身体が変わると、</span><span class="text-unit">行動が変わる</span></p>
+                    <p class="text-gold">↓</p>
+                    <p><span class="text-unit">行動が変わると、</span><span class="text-unit">現実が変わる</span></p>
+                </div>
+                <p class="font-serif text-lg text-light">
+                    <span class="text-unit">本来は</span><span class="text-unit">すべてつながっています。</span>
+                </p>
+            </div>
+
+            <div class="fade-up">
+                <h3 class="font-serif fluid-h3 text-light mb-8">
+                    <span class="text-unit">だから起きていたこと</span>
+                </h3>
+                <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-10">
+                    <div class="text-left bg-navy-800 p-6 rounded-lg border border-white/5 flex-1">
+                        <p class="text-light/80 mb-2"><span class="text-unit">心だけ整えても</span></p>
+                        <p class="text-light font-medium">→ <span class="text-unit">身体がついてこない</span></p>
+                    </div>
+                    <div class="text-left bg-navy-800 p-6 rounded-lg border border-white/5 flex-1">
+                        <p class="text-light/80 mb-2"><span class="text-unit">身体だけ整えても</span></p>
+                        <p class="text-light font-medium">→ <span class="text-unit">また同じ状態に戻る</span></p>
+                    </div>
+                </div>
+                <p class="fluid-p text-light/80">
+                    <span class="text-unit">なぜなら</span><br>
+                    <span class="text-unit text-xl md:text-2xl font-serif text-gold-light mt-4 block">根本の「前提」が変わっていなかったから</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Hidden Issue -->
+    <section class="py-24 px-6 relative overflow-hidden bg-navy-900">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 fade-up">
+                <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative border border-white/10">
+                    <!-- 確実に表示される画像に差し替え、深みを持たせる -->
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop" alt="水面の波紋" class="w-full h-full object-cover opacity-60 mix-blend-luminosity">
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2 space-y-10 fade-up">
+                <div>
+                    <p class="text-gold font-medium mb-4 tracking-wider text-sm">HIDDEN ISSUE</p>
+                    <h2 class="font-serif fluid-h2 text-light mb-6 leading-tight">
+                        <span class="text-unit">そしてもう一つ、</span><br>
+                        <span class="text-unit">多くの人が</span><span class="text-unit">見落としています</span>
+                    </h2>
+                    <p class="fluid-p font-serif text-xl md:text-2xl text-gold-light mb-8">
+                        <span class="text-unit">それが</span><span class="text-unit">「お金の不安」や</span><br class="md:hidden">
+                        <span class="text-unit">「現実のストレス」です</span>
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-bold text-light mb-2"><span class="text-unit">実際に起きていること</span></p>
+                        <ul class="text-light/80 space-y-1 list-disc list-inside">
+                            <li><span class="text-unit">将来の不安がある</span></li>
+                            <li><span class="text-unit">余裕がない</span></li>
+                            <li><span class="text-unit">我慢している</span></li>
+                        </ul>
+                    </div>
+                    <div class="pl-4 border-l-2 border-gold">
+                        <p class="font-bold text-light mb-2"><span class="text-unit">この状態だと</span></p>
+                        <ul class="text-light/80 space-y-1 list-disc list-inside">
+                            <li><span class="text-unit">身体に力が入る</span></li>
+                            <li><span class="text-unit">呼吸が浅くなる</span></li>
+                            <li><span class="text-unit">リラックスできない</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-6 rounded-xl shadow-sm border border-white/5">
+                    <p class="text-light/80 font-medium">
+                        <span class="text-unit">こうした状態が続くと</span><br>
+                        <span class="text-unit">どれだけ整えても、</span><span class="text-unit">また元に戻ってしまいます。</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center mt-24 fade-up">
+            <h3 class="font-serif fluid-h3 text-light mb-8">
+                <span class="text-unit">だから変わりきらない</span>
+            </h3>
+            <p class="fluid-p text-light/80 leading-loose">
+                <span class="text-unit">心を整えても　</span><span class="text-unit">身体を整えても</span><br>
+                <span class="text-unit">日常のストレスが</span><span class="text-unit">そのままだと</span><br>
+                <span class="text-unit font-medium text-light mt-2 block">同じ状態が繰り返される</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. Solution & Benefits -->
+    <section class="py-24 px-6 bg-navy-900 relative">
+        <div class="absolute top-0 left-0 w-full h-64 bg-navy-800 -skew-y-2 transform origin-top-left z-0"></div>
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            
+            <div class="mb-24 fade-up">
+                <p class="text-gold font-medium tracking-widest mb-4">SOLUTION</p>
+                <h2 class="font-serif text-3xl md:text-5xl text-light mb-8 leading-tight">
+                    <span class="text-unit">三位一体</span><span class="text-unit">(トリニティ)</span><span class="text-unit">ヒーリング</span>
+                </h2>
+                <p class="fluid-p font-serif text-gold-light text-xl md:text-2xl">
+                    <span class="text-unit">心・身体・現実を</span><span class="text-unit">分けずに整える</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-24">
+                <div class="bg-navy-800 p-8 md:p-10 rounded-2xl fade-up border border-white/5">
+                    <h3 class="font-bold text-light mb-6 text-xl border-b border-gold/30 pb-4"><span class="text-unit">仕組み</span></h3>
+                    <p class="text-light/80 mb-4"><span class="text-unit">土台となる「前提」を</span><span class="text-unit">整えることで</span></p>
+                    <ul class="text-light/80 space-y-2 mb-6 list-none">
+                        <li class="flex items-center"><span class="text-gold mr-2">✓</span><span class="text-unit">身体がゆるむ</span></li>
+                        <li class="flex items-center"><span class="text-gold mr-2">✓</span><span class="text-unit">呼吸が深くなる</span></li>
+                        <li class="flex items-center"><span class="text-gold mr-2">✓</span><span class="text-unit">思考が静かになる</span></li>
+                    </ul>
+                    <p class="text-light/80 mb-4 font-medium"><span class="text-unit">その結果</span></p>
+                    <ul class="text-light space-y-2 list-none font-medium">
+                        <li class="flex items-center"><span class="text-gold-light mr-2">→</span><span class="text-unit">行動が変わる</span></li>
+                        <li class="flex items-center"><span class="text-gold-light mr-2">→</span><span class="text-unit">人との関係が変わる</span></li>
+                        <li class="flex items-center"><span class="text-gold-light mr-2">→</span><span class="text-unit">仕事やお金の流れも変わる</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-navy-800 p-8 md:p-10 rounded-2xl border-2 border-gold/20 shadow-lg fade-up" data-delay="0.2">
+                    <h3 class="font-bold text-light mb-6 text-xl border-b border-gold/30 pb-4"><span class="text-unit">起こる変化</span></h3>
+                    <ul class="text-light/80 space-y-4 mb-8 list-none">
+                        <li class="flex items-center text-lg"><span class="text-gold mr-3 text-2xl">✨</span><span class="text-unit">身体が軽くなる</span></li>
+                        <li class="flex items-center text-lg"><span class="text-gold mr-3 text-2xl">✨</span><span class="text-unit">緊張が抜ける</span></li>
+                        <li class="flex items-center text-lg"><span class="text-gold mr-3 text-2xl">✨</span><span class="text-unit">安心感が出る</span></li>
+                    </ul>
+                    <div class="text-center mt-8 pt-6 border-t border-white/5">
+                        <p class="text-light/80 mb-2"><span class="text-unit">そして</span></p>
+                        <p class="font-serif text-xl md:text-2xl text-light">
+                            <span class="text-unit">現実が少しずつ</span><span class="text-unit">動き始める</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto text-center fade-up bg-navy-800/50 p-10 rounded-2xl border border-white/5">
+                <h3 class="font-serif fluid-h3 text-light mb-6">
+                    <span class="text-unit">お金について</span>
+                </h3>
+                <p class="fluid-p text-light/80 mb-8">
+                    <span class="text-unit">ここで大切なのは</span><br>
+                    <span class="text-unit">お金を無理に増やすことでは</span><span class="text-unit">ありません</span>
+                </p>
+                <div class="bg-navy-900 p-6 rounded-xl inline-block text-left mb-8 shadow-sm border border-white/5">
+                    <p class="text-light font-medium mb-4"><span class="text-unit">心と身体が整うことで</span></p>
+                    <ul class="text-light/80 space-y-2 list-disc list-inside">
+                        <li><span class="text-unit">無理な我慢が減る</span></li>
+                        <li><span class="text-unit">自然に行動できる</span></li>
+                        <li><span class="text-unit">人との流れが良くなる</span></li>
+                    </ul>
+                </div>
+                <p class="font-serif text-xl text-gold-light">
+                    <span class="text-unit">その結果として</span><br>
+                    <span class="text-unit mt-2 block text-light">お金の流れも自然に変わっていきます</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Middle CTA (第一の予約導線) -->
+    <section class="py-24 px-6 bg-navy-900 text-light relative overflow-hidden">
+        <!-- 宇宙感のある淡い光のぼかし（GPUアクセラレーションで軽量化） -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-light-blue/5 rounded-full blur-3xl z-0 pointer-events-none transform-gpu"></div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10 border-y border-white/5 py-16">
+            <div class="fade-up">
+                <p class="font-serif fluid-h3 leading-loose mb-16">
+                    <span class="text-unit">あなたが変わらなかったのは</span><br>
+                    <span class="text-unit">努力不足ではなく</span><br>
+                    <span class="text-unit text-gold mt-4 block text-2xl md:text-4xl">整え方の問題です</span>
+                </p>
+            </div>
+
+            <div class="fade-up" data-delay="0.2">
+                <p class="fluid-p mb-10 text-light/90">
+                    <span class="text-unit">まずは一度</span><br>
+                    <span class="text-unit">心と身体、そして現実の変化を</span><br>
+                    <span class="text-unit">体感してください</span>
+                </p>
+
+                <!-- ゴールドのCTAボタン -->
+                <a href="#booking" class="btn-pulse inline-block bg-gold hover:bg-gold-light text-navy-900 font-serif font-medium text-lg md:text-xl py-5 px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="text-unit tracking-widest">【初回施術はこちら】</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Profile Section (代表者プロフィール) -->
+    <section id="profile" class="py-24 px-6 bg-navy-800 relative overflow-hidden border-t border-white/5">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-16 fade-up">
+                <p class="text-gold font-medium tracking-widest mb-4">PROFILE</p>
+                <h2 class="font-serif fluid-h2 text-light">
+                    <span class="text-unit">なぜ、この方法に</span><span class="text-unit">辿り着いたのか。</span>
+                </h2>
+            </div>
+            
+            <div class="space-y-8 md:space-y-12 font-serif text-light/80 leading-loose fluid-p">
+                <!-- ストーリー 1 -->
+                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold">
+                    <p class="mb-6">
+                        <span class="text-unit">私はもともと、</span><span class="text-unit">スピリチュアルとは</span><span class="text-unit">無縁の人間でした。</span><br>
+                        <span class="text-unit">むしろ現実主義で、</span><br>
+                        <span class="text-unit font-bold text-light">・お金　・仕事　・結果</span><br>
+                        <span class="text-unit">そういった「目に見えるもの」で</span><span class="text-unit">人生は変えられると</span><span class="text-unit">思っていました。</span>
+                    </p>
+                    <p class="mb-6">
+                        <span class="text-unit">就職氷河期に会社に就職して、</span><span class="text-unit">すぐ結婚して子供が生まれます。</span><br>
+                        <span class="text-unit">リストラ担当部署となっていた</span><span class="text-unit">総務課に居た私は、</span><br>
+                        <span class="text-unit font-medium text-light">「明日は我が身」</span><span class="text-unit">と思いました。</span>
+                    </p>
+                    <p>
+                        <span class="text-unit">そして、当時流行していた、</span><br>
+                        <span class="text-unit">「金持ち父さん、貧乏父さん」に</span><span class="text-unit">触発された私は、</span><br>
+                        <span class="text-unit">家族を守るため、</span><span class="text-unit">会社に依存しない、</span><br>
+                        <span class="text-unit font-medium text-light">不動産投資家になることを</span><span class="text-unit">決意しました。</span>
+                    </p>
+                </div>
+
+                <!-- ストーリー 2 -->
+                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold">
+                    <p class="mb-6">
+                        <span class="text-unit">そこから私は、</span><span class="text-unit">会社に頼らない生き方を選び、</span><br>
+                        <span class="text-unit">武者修行のように</span><span class="text-unit">不動産業界を渡り歩きます。</span><br>
+                        <span class="text-unit">頑張って行動した結果、</span><span class="text-unit">10年後には不動産投資家になり、</span><br>
+                        <span class="text-unit">望む現実を手に入れました。</span>
+                    </p>
+                    <p class="mb-6 text-xl md:text-2xl text-gold font-medium my-10 text-center">
+                        <span class="text-unit">その中で気づいたのが——</span><br>
+                        <span class="text-unit mt-2 block">「ご縁」がいかに大事であるか。</span>
+                    </p>
+                    <p>
+                        <span class="text-unit">不動産は</span><span class="text-unit">二つとして同じもののない、</span><br>
+                        <span class="text-unit">唯一無二の存在です。</span><br>
+                        <span class="text-unit">本当に望む不動産が得られることは、</span><br>
+                        <span class="text-unit">奇跡であると思えるように</span><span class="text-unit">なっていきました。</span>
+                    </p>
+                </div>
+
+                <!-- ストーリー 3 -->
+                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold-light relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold opacity-5 rounded-bl-full"></div>
+                    <p class="mb-6 relative z-10">
+                        <span class="text-unit">そして、その奇跡を</span><span class="text-unit">引き寄せる方法を</span><br>
+                        <span class="text-unit">探求するようになりました。</span><br>
+                    </p>
+                    <div class="text-sm md:text-base text-light/60 mb-6 pl-4 border-l border-white/10 relative z-10">
+                        <span class="text-unit">納税日本一の斎藤一人さん、</span><br>
+                        <span class="text-unit">成功哲学を法則として教えてくれた</span><span class="text-unit">小林正観さん、</span><br>
+                        <span class="text-unit">大谷翔平選手も愛読する</span><span class="text-unit">中村天風さん...</span>
+                    </div>
+                    <p class="mb-8 relative z-10">
+                        <span class="text-unit">成功哲学の探求が、</span><span class="text-unit">次第にスピリチュアル、</span><br>
+                        <span class="text-unit font-medium text-light">宇宙の真理の探求に</span><span class="text-unit">なっていました。</span><br>
+                        <span class="text-unit">いつしか神社参拝が</span><span class="text-unit">趣味になっていました。</span>
+                    </p>
+                    <div class="text-center pt-8 border-t border-white/5 relative z-10">
+                        <p class="text-xl md:text-2xl font-medium text-light leading-relaxed">
+                            <span class="text-unit">そんな中、</span><span class="text-unit">ご縁から出会ったのが——</span><br>
+                            <span class="text-unit text-gold mt-4 block text-2xl md:text-3xl tracking-widest font-bold">情報変換ヒーリングでした。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. About the Place (世界線調律所とは) -->
+    <section id="about" class="py-24 px-6 bg-navy-900 relative overflow-hidden">
+        <!-- 宇宙を感じさせる淡い光の装飾（GPUアクセラレーションで軽量化） -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.03] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.03] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <div class="mb-16 fade-up">
+                <p class="text-gold font-medium tracking-widest mb-4">ABOUT US</p>
+                <h2 class="font-serif fluid-h2 text-light">
+                    <span class="text-unit">世界線調律所とは</span>
+                </h2>
+            </div>
+            
+            <div class="space-y-12 font-serif text-light/80 leading-loose fluid-p">
+                <div class="fade-up">
+                    <p class="mb-4">
+                        <span class="text-unit">私たちは、</span><span class="text-unit">現実を無理に変えることはしません。</span>
+                    </p>
+                    <p>
+                        <span class="text-unit">なぜなら現実は、</span><span class="text-unit">行動や努力だけで</span><span class="text-unit">作られているのではなく、</span><br>
+                        <span class="text-unit">その前にある</span><span class="text-unit font-bold text-light">「前提(情報)」</span><span class="text-unit">によって</span><span class="text-unit">決まっているからです。</span>
+                    </p>
+                </div>
+
+                <div class="fade-up">
+                    <p>
+                        <span class="text-unit">どれだけ心を整えても</span><br class="md:hidden">
+                        <span class="text-unit">どれだけ身体を整えても</span><br>
+                        <span class="text-unit">また元に戻ってしまうのは</span><br>
+                        <span class="text-unit">この前提が変わっていないために</span><span class="text-unit">起きています。</span>
+                    </p>
+                </div>
+
+                <div class="fade-up bg-navy-800 p-8 md:p-12 rounded-2xl mx-auto max-w-2xl border border-white/5">
+                    <p class="mb-6">
+                        <span class="text-unit text-xl font-medium text-light">世界線調律所では、</span><br>
+                        <span class="text-unit">無意識の前提を整えることで</span>
+                    </p>
+                    <ul class="text-light font-medium space-y-2 mb-6 inline-block text-left">
+                        <li><span class="text-gold mr-2">・</span><span class="text-unit">身体がゆるみ</span></li>
+                        <li><span class="text-gold mr-2">・</span><span class="text-unit">思考が静まり</span></li>
+                        <li><span class="text-gold mr-2">・</span><span class="text-unit">行動が自然に変わる</span></li>
+                    </ul>
+                    <p class="text-gold-light text-lg mb-2"><span class="text-unit">その結果として</span></p>
+                    <p class="text-xl md:text-2xl text-light font-bold">
+                        <span class="text-unit">現実そのものが</span><span class="text-unit">変わっていきます。</span>
+                    </p>
+                </div>
+
+                <div class="fade-up">
+                    <p class="mb-8">
+                        <span class="text-unit">それは、何かを</span><span class="text-unit">無理に変えるのではなく</span><br>
+                        <span class="text-unit font-medium text-light">本来の状態に</span><span class="text-unit font-medium text-light">戻ることで起きる変化です。</span>
+                    </p>
+                    <p class="mb-8">
+                        <span class="text-unit">もしあなたが</span><br>
+                        <span class="text-unit font-medium text-light">「ちゃんと整えているのに変わらない」</span><br>
+                        <span class="text-unit">そう感じているなら</span><br>
+                        <span class="text-unit">それはまだ</span><br>
+                        <span class="text-unit text-lg text-gold-light">整える場所が違っているだけかもしれません。</span>
+                    </p>
+                </div>
+
+                <div class="fade-up mt-16 pt-12 border-t border-white/5 relative">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gold text-3xl bg-navy-900 px-4">❖</div>
+                    <p class="text-xl md:text-2xl text-light font-medium leading-relaxed">
+                        <span class="text-unit">世界線調律所は</span><br>
+                        <span class="text-unit">あなたの現実を</span><span class="text-unit">変えるのではなく</span><br>
+                        <span class="text-unit text-gold font-bold mt-4 block text-2xl md:text-3xl tracking-wide">あなたが選ぶ現実そのものを<br class="md:hidden">整える場所です。</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Booking Form (予約フォーム) -->
+    <section id="booking" class="py-24 px-6 bg-navy-800 relative overflow-hidden border-t border-white/5">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-16 fade-up">
+                <p class="text-gold font-medium tracking-widest mb-4">RESERVATION</p>
+                <h2 class="font-serif fluid-h2 text-light">
+                    <span class="text-unit">初回施術の</span><span class="text-unit">お申し込み</span>
+                </h2>
+                <!-- 最終的な後押しとなるリード文 -->
+                <p class="mt-6 text-light/80 fluid-p leading-relaxed">
+                    <span class="text-unit">あなたが本来選ぶべき現実に、</span><span class="text-unit">自然と整っていく。</span><br>
+                    <span class="text-unit">その変化を、</span><span class="text-unit">ぜひ一度ご体感ください。</span>
+                </p>
+                <p class="mt-8 text-sm md:text-base text-gold-light font-medium bg-navy-900/50 inline-block px-6 py-3 rounded-full border border-white/5">
+                    <span class="text-unit">※深い調整のための準備期間として、</span><br class="md:hidden">
+                    <span class="text-unit">施術日は【お申し込みの1週間後以降】で承っております。</span>
+                </p>
+            </div>
+
+            <!-- 高級感のあるダークフォーム -->
+            <form id="booking-form" class="bg-navy-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 fade-up space-y-8">
+                <!-- お名前 -->
+                <div>
+                    <label for="name" class="block font-serif text-light font-medium mb-2"><span class="text-unit">お名前</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="山田 太郎">
+                </div>
+
+                <!-- ふりがな (新規追加) -->
+                <div>
+                    <label for="kana" class="block font-serif text-light font-medium mb-2"><span class="text-unit">ふりがな</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="やまだ たろう">
+                </div>
+
+                <!-- メールアドレス -->
+                <div>
+                    <label for="email" class="block font-serif text-light font-medium mb-2"><span class="text-unit">メールアドレス</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="your@email.com">
+                </div>
+
+                <!-- 電話番号 (新規追加) -->
+                <div>
+                    <label for="tel" class="block font-serif text-light font-medium mb-2"><span class="text-unit">電話番号</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="090-1234-5678">
+                </div>
+
+                <!-- 希望メニュー (新規追加) -->
+                <div>
+                    <label for="menu" class="block font-serif text-light font-medium mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <div class="relative">
+                        <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                            <option value="" disabled selected>メニューを選択してください</option>
+                            <option value="まずは相談だけしたい">まずは相談だけしたい</option>
+                            <option value="体験セッション（15分：3,000円）">体験セッション（15分：3,000円）</option>
+                            <option value="しっかり体験セッション（30分：5,000円）">しっかり体験セッション（30分：5,000円）</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第一希望日時 -->
+                <div>
+                    <label class="block font-serif text-light font-medium mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <div class="relative w-full md:w-1/2">
+                            <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                                <option value="" disabled selected>希望時間を選択</option>
+                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二希望日時 -->
+                <div>
+                    <label class="block font-serif text-light font-medium mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <div class="relative w-full md:w-1/2">
+                            <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                                <option value="" disabled selected>希望時間を選択</option>
+                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三希望日時 -->
+                <div>
+                    <label class="block font-serif text-light font-medium mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <div class="relative w-full md:w-1/2">
+                            <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                                <option value="" disabled selected>希望時間を選択</option>
+                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-light/60 mt-2"><span class="text-unit">※カレンダーより1週間後以降の日付をご選択ください。</span></p>
+                </div>
+
+                <!-- 現状のお悩み -->
+                <div>
+                    <label for="message" class="block font-serif text-light font-medium mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
+                </div>
+
+                <!-- 送信ボタン -->
+                <div class="text-center pt-4">
+                    <button type="submit" class="inline-block bg-gold hover:bg-gold-light text-navy-900 font-serif font-medium text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full md:w-auto">
+                        <span class="text-unit tracking-widest">送信する</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-8 text-center border-t border-white/10">
+        <p class="text-light/50 text-sm">© 2026 Trinity Healing. All Rights Reserved.</p>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // ヒーローセクションのアニメーション最適化
+            gsap.set(".hero-el", { y: 30, autoAlpha: 0 });
+            gsap.to(".hero-el", {
+                y: 0,
+                autoAlpha: 1, // opacityではなく描画負荷の低いautoAlphaを使用
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out",
+                delay: 0.2
+            });
+
+            // スクロールアニメーションの最適化
+            gsap.set('.fade-up:not(.hero-el)', { y: 40, autoAlpha: 0 }); // 少し下からスタートさせる
+            gsap.utils.toArray('.fade-up:not(.hero-el)').forEach(element => {
+                let delayTime = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
+                gsap.to(element, {
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 0.8, // 1秒から0.8秒にしてモッサリ感を無くす
+                    delay: delayTime, // CSSの競合を避け、GSAPネイティブのdelayを使用
+                    ease: "power3.out", // power2より初速が早く、後半が滑らかな自然な動き
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 92%", // 要素が画面の下部に入った瞬間に早めに出現開始
+                        toggleActions: "play none none reverse" 
+                    }
+                });
+            });
+
+            // 施術希望日の「最短日」を本日の1週間後に自動設定する処理
+            const today = new Date();
+            today.setDate(today.getDate() + 7); // 7日後を加算
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+
+            ['date-1', 'date-2', 'date-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.min = minDate;
+            });
+
+            // Googleスプレッドシート(GAS)へのフォーム送信処理
+            const form = document.getElementById('booking-form');
+            if (form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    
+                    // ==========================================
+                    // 【重要】ここにGASで発行したWebアプリのURLを貼り付けます
+                    // ==========================================
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZ85PSqLkT9t6GWMPO0X1AFw-uxGxl802nlIrTI9c42w-ctt20RiBFiio6wuYF5aE/exec';
+                    
+                    // 送信ボタンの状態を変更（連打防止）
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="text-unit tracking-widest">送信中...</span>';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                    // GAS側のプロトタイプに合わせてデータを整形
+                    const formData = new FormData(form);
+                    const data = new URLSearchParams();
+                    
+                    data.append('name', formData.get('name') || '');
+                    data.append('kana', formData.get('kana') || '');
+                    data.append('email', formData.get('email') || '');
+                    data.append('phone', formData.get('tel') || '');
+                    data.append('menu', formData.get('menu') || '');
+                    // 第一〜第三希望を結合して追加
+                    data.append('date1', `${formData.get('date-1') || ''} ${formData.get('time-1') || ''}`.trim());
+                    data.append('date2', `${formData.get('date-2') || ''} ${formData.get('time-2') || ''}`.trim());
+                    data.append('date3', `${formData.get('date-3') || ''} ${formData.get('time-3') || ''}`.trim());
+                    data.append('message', formData.get('message') || '');
+
+                    // GASへ送信
+                    fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
+                        .then(() => {
+                            alert('ご予約のお申し込みを受け付けました。担当者より折り返しご連絡いたします。');
+                            form.reset();
+                        })
+                        .catch(error => {
+                            console.error('Error!', error.message);
+                            alert('送信に失敗しました。通信環境をご確認の上、もう一度お試しください。');
+                        })
+                        .finally(() => {
+                            // ボタンの状態を元に戻す
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
