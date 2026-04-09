@@ -42,55 +42,48 @@
 
     <!-- Custom CSS -->
     <style>
-        html { 
-            scroll-behavior: smooth; 
-        }
+        html { scroll-behavior: smooth; }
         
         body { 
             background-color: #0B0F1A; 
             color: #EAEAF2; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
-            
-            /* 禁則処理を厳密に適用（句読点が行頭に来るのを防ぐ） */
             line-break: strict;
             overflow-wrap: break-word;
             
-            /* 段落の最後の「文字の泣き（1〜2文字だけ改行される）」を防ぐモダンCSS */
+            /* 文節での改行を最適化し、1文字残りを防ぐ最新の設定 */
+            word-break: auto-phrase;
             text-wrap: pretty;
         }
 
-        h1, h2, h3 {
-            /* 見出しの改行バランス（長短の差）を美しく整える */
-            text-wrap: balance;
-        }
+        h1, h2, h3 { text-wrap: balance; }
 
-        /* PC環境：意味の塊で改行させない（文字の泣き防止） */
+        /* PC版：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
-        /* スマホ環境：自然な折り返しと禁則処理を優先 */
+        /* スマホ版：不自然な空白を作らないよう、通常の折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
-                /* inlineに戻すことで句読点の禁則処理を復活させる */
                 display: inline; 
                 white-space: normal; 
-            }
-            body {
-                /* 対応ブラウザで自然な文節改行を行う */
-                word-break: auto-phrase;
             }
         }
 
         .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
         .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-        .fluid-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
         .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
         
-        /* ボタンの波紋をゴールドに */
+        .fade-up { 
+            visibility: hidden; 
+            will-change: transform, opacity; 
+        }
+
+        /* ボタンの波紋アニメーション */
         .btn-pulse { position: relative; }
         .btn-pulse::before { 
             content: ''; 
@@ -99,20 +92,16 @@
             border: 2px solid #D4AF37; 
             animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
             z-index: -1; 
-            will-change: transform, opacity; /* 常時アニメーションの重さを軽減 */
+            will-change: transform, opacity;
         }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
-        
-        /* GSAP初期状態の最適化 */
-        .fade-up { 
-            visibility: hidden; 
-            will-change: transform, opacity; 
-        }
+
+        .overflow-hidden { overflow: hidden; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (共通) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- 2段表示のロゴ -->
@@ -121,13 +110,14 @@
                 <span class="font-serif text-lg md:text-xl text-light font-medium tracking-widest leading-none">Trinity Healing</span>
             </a>
             
-            <div class="flex items-center gap-4 md:gap-6">
-                <!-- 常に表示される予約ボタン -->
-                <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-sm md:text-base">
-                    <span class="text-unit">ご予約はこちらから</span>
+            <div class="flex items-center gap-2 md:gap-6">
+                <!-- スマホ版は「ご予約」に短縮しサイズをスッキリ化 -->
+                <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
+                    <span class="hidden md:inline">ご予約はこちらから</span>
+                    <span class="md:hidden">ご予約</span>
                 </a>
                 
-                <!-- PC・スマホ共通のハンバーガーメニューボタン -->
+                <!-- ハンバーガーメニューボタン -->
                 <button class="text-light hover:text-gold transition-colors focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -137,7 +127,7 @@
         <!-- PC・スマホ共通のプルダウンメニュー -->
         <div id="mobile-menu" class="hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full top-20 left-0">
             <nav class="flex flex-col px-6 py-4 font-serif text-base md:text-lg tracking-wider space-y-2 max-w-6xl mx-auto">
-                <a href="index.html#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">世界線調律所とは</span></a>
+                <a href="index.html#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
                 <a href="profile.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">この世界線に至るまで</span></a>
                 <a href="menu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">ご提供メニュー</span></a>
                 <a href="specialmenu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">不動産 位相調律セッション</span></a>
@@ -175,13 +165,13 @@
                     </h2>
                     <div class="text-light/80 mb-6 text-sm leading-relaxed flex-grow space-y-3">
                         <p>
-                            <span class="text-unit">身体・感情・思考など、</span><span class="text-unit">全体の状態を整える対面セッションです。</span>
+                            身体・感情・思考など、全体の状態を整える対面セッションです。
                         </p>
                         <p>
-                            <span class="text-unit">日常的な不調や違和感、</span><span class="text-unit">言語化しづらいストレスや停滞感に対して、</span><span class="text-unit">根本的な状態の調整を行います。</span>
+                            日常的な不調や違和感、言語化しづらいストレスや停滞感に対して、根本的な状態の調整を行います。
                         </p>
                         <p>
-                            <span class="text-unit">落ち着いた空間の中で、</span><span class="text-unit">現在の状態を丁寧に観測し、</span><span class="text-unit">本来のバランスへと整えていきます。</span>
+                            落ち着いた空間の中で、現在の状態を丁寧に観測し、本来のバランスへと整えていきます。
                         </p>
                     </div>
                     <div class="mt-auto pt-4">
@@ -197,13 +187,13 @@
                     </h2>
                     <div class="text-light/80 mb-6 text-sm leading-relaxed flex-grow space-y-3">
                         <p>
-                            <span class="text-unit">対面でのセッションが難しい方に向けた、</span><span class="text-unit">遠隔での状態調整です。</span>
+                            対面でのセッションが難しい方に向けた、遠隔での状態調整です。
                         </p>
                         <p>
-                            <span class="text-unit">時間や場所に関係なく、</span><span class="text-unit">必要なタイミングで全体のバランスを整えます。</span>
+                            時間や場所に関係なく、必要なタイミングで全体のバランスを整えます。
                         </p>
                         <p>
-                            <span class="text-unit">身体的な違和感だけでなく、</span><span class="text-unit">思考や感情の状態にもアプローチします。</span>
+                            身体的な違和感だけでなく、思考や感情の状態にもアプローチします。
                         </p>
                     </div>
                     <div class="mt-auto pt-4">
@@ -219,13 +209,15 @@
                     </h2>
                     <div class="text-light/80 mb-6 text-sm leading-relaxed flex-grow space-y-3">
                         <p>
-                            <span class="text-unit">不動産の購入や売却において、</span><span class="text-unit">物件や条件ではなく「判断の状態」を整える</span><span class="text-unit">セッションです。</span>
+                            不動産の購入や売却において、物件や条件ではなく「判断の状態」を整えるセッションです。
                         </p>
                         <p>
-                            <span class="text-unit">焦りや不安、思い込みなどによって生じる</span><span class="text-unit">判断のズレ(位相)を調律することで、</span><span class="text-unit">最適な選択が自然に定まる状態をつくります。</span>
+                            焦りや不安の中で見るのかで、<br class="md:hidden">
+                            <span class="font-bold text-gold-light text-unit">全く違う判断に、</span><br class="md:hidden">
+                            <span class="font-bold text-gold-light text-unit">なります。</span>
                         </p>
                         <p>
-                            <span class="text-unit">物件の提案や売買の誘導は行わず、</span><span class="text-unit">中立の立場から意思決定の精度を整えます。</span>
+                            最適な選択が自然に定まる状態をつくります。中立の立場から意思決定の精度を整えます。
                         </p>
                     </div>
                     <div class="mt-auto pt-4">
@@ -243,16 +235,13 @@
                     </h2>
                     <div class="text-light/80 mb-6 text-sm leading-relaxed flex-grow space-y-3">
                         <p>
-                            <span class="text-unit">情報変換ヒーリングの観点から、</span><span class="text-unit">土地や建物、空間・環境全体の状態を整えるサポートです。</span>
+                            情報変換ヒーリングの観点から、土地や建物、空間・環境全体の状態を整えるサポートです。
                         </p>
                         <ul class="text-light/70 text-sm my-3 space-y-1 pl-3 border-l-2 border-gold/30">
-                            <li><span class="text-unit">・土地や建物に対する違和感の調整</span></li>
-                            <li><span class="text-unit">・空間や環境のバランスの調律</span></li>
-                            <li><span class="text-unit">・土地や建物に残る影響のリセット</span><span class="text-unit text-xs">(浄化的アプローチ)</span></li>
+                            <li>・土地や建物に対する違和感の調整</li>
+                            <li>・空間や環境のバランスの調律</li>
+                            <li>・土地や建物に残る影響のリセット<span class="text-xs">(浄化的アプローチ)</span></li>
                         </ul>
-                        <p>
-                            <span class="text-unit">不動産の判断において、</span><span class="text-unit">目に見えない要素も含めて整えておきたい場合に</span><span class="text-unit">ご利用いただけます。</span>
-                        </p>
                     </div>
                     <div class="mt-auto pt-4">
                         <p class="font-serif text-2xl text-light"><span class="text-gold font-bold text-3xl mr-1">22,000</span><span class="text-base">円(税込)〜</span></p>
@@ -264,15 +253,15 @@
             <!-- 補足 -->
             <div class="mt-16 pt-10 border-t border-white/10 text-center fade-up">
                 <p class="text-gold-light font-bold mb-4 tracking-widest text-sm"><span class="text-unit">■ 補足</span></p>
-                <p class="text-light/80 text-sm md:text-base leading-relaxed">
-                    <span class="text-unit">すべてのセッションは、</span><span class="text-unit">何かを強制したり、結論を提示するものではありません。</span><br>
-                    <span class="text-unit">あくまで、</span><span class="text-unit">ご自身の状態と判断が自然に整うことを目的としています。</span>
+                <p class="text-light/80 text-sm md:text-base leading-relaxed px-4">
+                    すべてのセッションは、何かを強制したり、結論を提示するものではありません。
+                    あくまで、ご自身の状態と判断が自然に整うことを目的としています。
                 </p>
             </div>
             
             <!-- CTA (予約導線) -->
             <div class="mt-24 text-center fade-up">
-                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
                     <span class="text-unit tracking-widest">【セッションのお申し込み】</span>
                 </a>
             </div>
@@ -280,31 +269,28 @@
         </div>
     </main>
 
-    <!-- Footer (共通) -->
+    <!-- Footer -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none"><span class="text-unit">運営会社・利用規約について</span></button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none"><span class="text-unit">プライバシーポリシー</span></button>
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none">運営会社・利用規約について</button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none">プライバシーポリシー</button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- 利用規約・特定商取引法に基づく表記 モーダル -->
+    <!-- 運営会社・利用規約について モーダル -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[80vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
             <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-6 font-bold border-b border-white/10 pb-4 text-center">運営会社・利用規約について</h2>
-            <div class="text-light/80 text-sm space-y-4 leading-relaxed">
+            <div class="text-light/80 text-sm space-y-4 leading-relaxed text-left">
                 <p><strong class="text-light">販売業者（運営会社）</strong><br>ストリーム株式会社</p>
                 <p><strong class="text-light">運営統括責任者</strong><br>白川 愁士</p>
                 <p><strong class="text-light">所在地</strong><br>※ご請求に応じて遅滞なく開示いたします。</p>
-                <p><strong class="text-light">連絡先</strong><br>お問い合わせフォームまたはご予約時のメールアドレスよりご連絡ください。<br>※電話番号はご請求に応じて遅滞なく開示いたします。</p>
+                <p><strong class="text-light">連絡先</strong><br>お問い合わせフォームまたはご予約時のメールアドレスよりご連絡ください。</p>
                 <p><strong class="text-light">販売価格</strong><br>各サービスの案内ページ（ご予約ページ）に記載の通りとします。</p>
-                <p><strong class="text-light">商品代金以外の必要料金</strong><br>対面セッションの場合、現地までの交通費はお客様負担となります。インターネット接続にかかる通信料はお客様負担となります。</p>
-                <p><strong class="text-light">お支払い方法</strong><br>銀行振込（前払い）またはクレジットカード決済</p>
-                <p><strong class="text-light">お支払い時期</strong><br>ご予約確定後、指定の期日までにお支払いください。</p>
-                <p><strong class="text-light">キャンセル・返金について</strong><br>サービスの性質上、セッション実施後の返金はいたしかねます。予約のキャンセルや日程変更については、事前にご連絡ください。規定のキャンセル料が発生する場合がございます。</p>
+                <p><strong class="text-light">キャンセル・返金について</strong><br>サービスの性質上、セッション実施後の返金はいたしかねます。予約のキャンセルや日程変更については、事前にご連絡ください。</p>
             </div>
             <div class="text-center mt-8 pt-6 border-t border-white/10">
                 <button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
@@ -318,12 +304,10 @@
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[80vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-6 font-bold border-b border-white/10 pb-4 text-center">プライバシーポリシー</h2>
-            <div class="text-light/80 text-sm space-y-4 leading-relaxed">
+            <div class="text-light/80 text-sm space-y-4 leading-relaxed text-left">
                 <p>ストリーム株式会社（以下「当社」）は、本サービスにおけるお客様の個人情報の取扱いについて、以下の通りプライバシーポリシーを定めます。</p>
                 <p><strong class="text-light">1. 個人情報の取得と利用目的</strong><br>ご予約やお問い合わせの際に取得した氏名、連絡先、ご相談内容等の個人情報は、サービスの提供・連絡・予約管理の目的のみに利用します。</p>
                 <p><strong class="text-light">2. 個人情報の第三者提供</strong><br>法令に基づく場合を除き、あらかじめお客様の同意を得ることなく、第三者に個人情報を提供することはありません。</p>
-                <p><strong class="text-light">3. 個人情報の安全管理</strong><br>お客様の個人情報の漏洩等を防止するため、適切なセキュリティ対策を講じ、厳重に管理いたします。</p>
-                <p><strong class="text-light">4. お問い合わせ</strong><br>本ポリシーに関するお問い合わせは、ご予約時の連絡先までお願いいたします。</p>
             </div>
             <div class="text-center mt-8 pt-6 border-t border-white/10">
                 <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
@@ -335,7 +319,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // モーダルの開閉ロジック
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
@@ -345,7 +328,7 @@
                 content.classList.remove('scale-95');
                 content.classList.add('scale-100');
             }, 10);
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('overflow-hidden');
         }
 
         function closePrivacyModal() {
@@ -357,7 +340,7 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
-            document.body.style.overflow = '';
+            document.body.classList.remove('overflow-hidden');
         }
 
         function openTokushoModal() {
@@ -369,7 +352,7 @@
                 content.classList.remove('scale-95');
                 content.classList.add('scale-100');
             }, 10);
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('overflow-hidden');
         }
 
         function closeTokushoModal() {
@@ -381,7 +364,7 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
-            document.body.style.overflow = '';
+            document.body.classList.remove('overflow-hidden');
         }
 
         document.addEventListener("DOMContentLoaded", (event) => {
