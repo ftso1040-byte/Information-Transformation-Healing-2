@@ -52,21 +52,21 @@
             line-break: strict;
             overflow-wrap: break-word;
             
-            /* 文節での改行を最適化し、1文字残りを防ぐ最新の設定 */
+            /* スマホで不自然な位置での改行を防ぐ設定 */
             word-break: auto-phrase;
             text-wrap: pretty;
         }
 
         h1, h2, h3 { text-wrap: balance; }
 
-        /* PC版：意味の塊を維持 */
+        /* PC環境：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
-        /* スマホ版：不自然な空白を作らないよう、通常の折り返しを優先 */
+        /* スマホ環境：画面幅に合わせた自然な折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
                 display: inline; 
@@ -82,16 +82,16 @@
             will-change: transform, opacity; 
         }
         
-        /* カレンダーアイコンを白系にするハック */
+        /* カレンダーアイコンを白系にする */
         ::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.7; cursor: pointer; }
         
-        /* モーダル表示時のスクロール制御用 */
+        /* モーダル表示時の背景固定 */
         .overflow-hidden { overflow: hidden; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (全ページ統一・最新版) -->
+    <!-- Header (最新版に統一) -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- 2段表示のロゴ -->
@@ -101,13 +101,12 @@
             </a>
             
             <div class="flex items-center gap-2 md:gap-6">
-                <!-- スマホ版は「ご予約」に短縮しサイズを適正化 -->
+                <!-- スマホ版は「ご予約」に短縮しサイズを最適化 -->
                 <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
                     <span class="hidden md:inline">ご予約はこちらから</span>
                     <span class="md:hidden">ご予約</span>
                 </a>
                 
-                <!-- ハンバーガーメニューボタン -->
                 <button class="text-light hover:text-gold transition-colors focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -307,7 +306,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // モーダルの開閉ロジック
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
@@ -319,7 +317,6 @@
             }, 10);
             document.body.classList.add('overflow-hidden');
         }
-
         function closePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
@@ -329,7 +326,6 @@
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
             document.body.classList.remove('overflow-hidden');
         }
-
         function openTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
             const content = document.getElementById('tokusho-modal-content');
@@ -341,7 +337,6 @@
             }, 10);
             document.body.classList.add('overflow-hidden');
         }
-
         function closeTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
             const content = document.getElementById('tokusho-modal-content');
@@ -354,7 +349,6 @@
 
         document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
-
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
                 gsap.to(element, {
@@ -369,21 +363,16 @@
                     }
                 });
             });
-
-            // 施術希望日の「最短日」を本日の1週間後に自動設定
             const today = new Date();
             today.setDate(today.getDate() + 7);
             const yyyy = today.getFullYear();
             const mm = String(today.getMonth() + 1).padStart(2, '0');
             const dd = String(today.getDate()).padStart(2, '0');
             const minDate = `${yyyy}-${mm}-${dd}`;
-
             ['date-1', 'date-2', 'date-3'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.min = minDate;
             });
-
-            // GASへのフォーム送信処理
             const form = document.getElementById('booking-form');
             if (form) {
                 form.addEventListener('submit', e => {
@@ -394,7 +383,6 @@
                     submitBtn.innerHTML = '<span>送信中...</span>';
                     submitBtn.disabled = true;
                     submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
                     const formData = new FormData(form);
                     const data = new URLSearchParams();
                     data.append('name', formData.get('name') || '');
@@ -406,14 +394,12 @@
                     data.append('date2', `${formData.get('date-2') || ''} ${formData.get('time-2') || ''}`.trim());
                     data.append('date3', `${formData.get('date-3') || ''} ${formData.get('time-3') || ''}`.trim());
                     data.append('message', formData.get('message') || '');
-
                     fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
                         .then(() => {
                             alert('ご予約のお申し込みを受け付けました。担当者より折り返しご連絡いたします。');
                             form.reset();
                         })
                         .catch(error => {
-                            console.error('Error!', error.message);
                             alert('送信に失敗しました。通信環境をご確認の上、もう一度お試しください。');
                         })
                         .finally(() => {
