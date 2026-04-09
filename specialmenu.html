@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不動産 位相調律メニュー (所長特別メニュー) - Trinity Healing</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0B0F1A',
+                            800: '#121826',
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#E6C76E',
+                        },
+                        light: {
+                            DEFAULT: '#EAEAF2',
+                            blue: '#C9D6FF',
+                            purple: '#F3E8FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: #FFFFFF; /* 白ベース */
+            color: #0B0F1A; /* ネイビーの文字色で引き締める */
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            line-break: strict;
+            overflow-wrap: break-word;
+            text-wrap: pretty;
+        }
+
+        h1, h2, h3 { text-wrap: balance; }
+
+        .text-unit { 
+            display: inline-block; 
+            white-space: nowrap; 
+            vertical-align: top; 
+        }
+
+        @media (max-width: 767px) {
+            .text-unit { 
+                display: inline; 
+                white-space: normal; 
+            }
+            body { word-break: auto-phrase; }
+        }
+
+        .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
+        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+        .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
+        
+        .fade-up { 
+            visibility: hidden; 
+            will-change: transform, opacity; 
+        }
+
+        /* 白背景用のボタンホバー */
+        .btn-outline-gold {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
+            background-color: #D4AF37;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="font-sans leading-loose pt-20">
+
+    <!-- Header (トップページに合わせてダークネイビーベースに変更) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-serif text-xl md:text-2xl text-light font-medium tracking-widest hover:opacity-70 transition-opacity">
+                <span class="text-unit">Trinity Healing</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-serif text-sm tracking-wider">
+                <a href="index.html" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">トップページ</span></a>
+                <a href="profile.html" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="specialmenu.html" class="text-gold font-bold transition-colors"><span class="text-unit">所長特別メニュー</span></a>
+                <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-6 py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-medium"><span class="text-unit">ご予約</span></a>
+            </nav>
+            <button class="md:hidden text-light text-2xl focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full">
+            <nav class="flex flex-col px-6 py-4 font-serif text-base tracking-wider space-y-2">
+                <a href="index.html" class="text-light/80 block py-3 border-b border-white/5"><span class="text-unit">トップページ</span></a>
+                <a href="profile.html" class="text-light/80 block py-3 border-b border-white/5"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="specialmenu.html" class="text-gold font-bold block py-3 border-b border-white/5"><span class="text-unit">所長特別メニュー</span></a>
+                <a href="reserve.html" class="text-gold font-medium block py-3"><span class="text-unit">ご予約</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ファーストビュー (FV) -->
+    <section class="py-32 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]">
+        <div class="fade-up">
+            <p class="font-serif text-gold font-bold tracking-widest text-lg md:text-xl mb-2">
+                <span class="text-unit">不動産 位相調律メニュー</span>
+            </p>
+            <p class="font-serif text-navy-900/60 text-sm md:text-base tracking-widest mb-12">
+                <span class="text-unit">(所長特別メニュー)</span>
+            </p>
+            
+            <h1 class="font-serif fluid-h1 text-navy-900 leading-relaxed mb-12">
+                <span class="text-unit">決める前に、整える。</span><br>
+                <span class="text-unit">不動産の選択は、</span><br class="md:hidden">
+                <span class="text-unit">情報ではなく「状態」で変わる。</span>
+            </h1>
+            <div class="h-px w-12 bg-gold mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 本編 (LP原稿) -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-3xl mx-auto space-y-32 font-serif text-navy-900/80 leading-loose fluid-p">
+            
+            <!-- 導入・問題提起 -->
+            <div class="fade-up">
+                <p class="mb-6">
+                    <span class="text-unit">不動産の購入や売却は、</span><span class="text-unit">人生の中でも大きな意思決定のひとつです。</span><br>
+                    <span class="text-unit">多くの方が、</span><span class="text-unit">情報を集め、比較し、慎重に検討します。</span><br>
+                    <span class="text-unit">それでも最後に、</span><span class="text-unit font-bold text-navy-900">「これでいいのか」という迷いが</span><span class="text-unit font-bold text-navy-900">残ることがあります。</span>
+                </p>
+                
+                <ul class="space-y-2 mt-8 mb-6 pl-4 border-l border-gray-200 text-navy-900 font-medium">
+                    <li><span class="text-unit">・情報は揃っているのに決めきれない</span></li>
+                    <li><span class="text-unit">・なんとなく違和感がある</span></li>
+                    <li><span class="text-unit">・焦りや不安の中で判断している気がする</span></li>
+                    <li><span class="text-unit">・誰かの意見に引っ張られている</span></li>
+                </ul>
+                <p>
+                    <span class="text-unit">その状態のまま選んだ結果が、</span><span class="text-unit font-bold text-navy-900">後悔につながることも</span><span class="text-unit font-bold text-navy-900">少なくありません。</span>
+                </p>
+            </div>
+
+            <!-- 構造の再定義 -->
+            <div class="fade-up">
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">構造の再定義</span></h2>
+                <p class="mb-6">
+                    <span class="text-unit">不動産の判断は、</span><span class="text-unit">物件や条件だけで決まるものではありません。</span><br>
+                    <span class="text-unit font-bold text-navy-900">実際には、</span><span class="text-unit font-bold text-navy-900">「どの状態で判断しているか」によって、</span><span class="text-unit font-bold text-navy-900">選択も結果も変わります。</span>
+                </p>
+                <p>
+                    <span class="text-unit">同じ物件でも、</span><span class="text-unit">整った状態で見るのか、</span><br>
+                    <span class="text-unit">不安や焦りの中で見るのかで、</span><span class="text-unit font-bold text-navy-900">まったく違う判断になります。</span>
+                </p>
+            </div>
+
+            <!-- 一般的なサービスとの違い・立ち位置 -->
+            <div class="fade-up">
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">このメニューの立ち位置</span></h2>
+                <p class="mb-6">
+                    <span class="text-unit">一般的な不動産相談では、</span><span class="text-unit">立場の違いこそあれ、最終的には</span><br>
+                    <span class="text-unit">「どの物件を選ぶか」「どう進めるか」</span><br>
+                    <span class="text-unit">といった具体的な結論が提示されます。</span><br>
+                    <span class="text-unit">それは有益である一方で、</span><span class="text-unit font-bold text-navy-900">どこかに“提案する側の前提”が</span><span class="text-unit font-bold text-navy-900">含まれるのも事実です。</span>
+                </p>
+                <p class="text-lg">
+                    <span class="text-unit">このメニューでは、</span><span class="text-unit">そうした立場や前提から一度離れ、</span><br>
+                    <span class="text-unit font-bold text-gold">完全に中立の視点で、</span><span class="text-unit font-bold text-gold">あなたの判断の位相(状態)を整えます。</span><br>
+                    <span class="text-unit font-bold text-navy-900 mt-2 block">物件を勧めることも、</span><span class="text-unit font-bold text-navy-900">売買を誘導することもありません。</span>
+                </p>
+            </div>
+
+            <!-- メニュー説明 -->
+            <div class="fade-up">
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">不動産 位相調律メニューとは</span></h2>
+                <p class="text-lg font-bold text-navy-900">
+                    <span class="text-unit">物件や条件を評価するのではなく、</span><br>
+                    <span class="text-unit text-gold">“あなたの判断の状態”を整えることで、</span><br>
+                    <span class="text-unit">最適な選択が自然に定まる状態を</span><span class="text-unit">つくるメニューです。</span>
+                </p>
+            </div>
+
+            <!-- メニューの流れと変化 -->
+            <div class="fade-up">
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">メニューの流れ</span></h2>
+                <ol class="space-y-4 font-bold text-navy-900 mb-16 pl-4 border-l-2 border-gold text-lg">
+                    <li><span class="text-unit"><span class="text-gold mr-2">1.</span>現在の状況の共有</span></li>
+                    <li><span class="text-unit"><span class="text-gold mr-2">2.</span>判断状態の観測</span></li>
+                    <li><span class="text-unit"><span class="text-gold mr-2">3.</span>位相(状態)の調律</span></li>
+                    <li><span class="text-unit"><span class="text-gold mr-2">4.</span>再観測と確認</span></li>
+                </ol>
+
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">メニュー後の変化</span></h2>
+                <ul class="space-y-2 text-navy-900 font-medium">
+                    <li><span class="text-unit">・迷いが自然に消える</span></li>
+                    <li><span class="text-unit">・判断の違和感がなくなる</span></li>
+                    <li><span class="text-unit">・選択に対する確信が生まれる</span></li>
+                    <li><span class="text-unit">・決断のスピードが上がる</span></li>
+                </ul>
+            </div>
+
+            <!-- 合う方・違う方 -->
+            <div class="fade-up flex flex-col md:flex-row gap-12">
+                <div class="flex-1">
+                    <h3 class="font-bold text-navy-900 mb-4 border-b border-gray-200 pb-2"><span class="text-unit">このメニューが合う方</span></h3>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li><span class="text-unit">・迷いを解消したいのではなく、整えたい方</span></li>
+                        <li><span class="text-unit">・誰かの答えではなく、自分の納得を大切にしたい方</span></li>
+                        <li><span class="text-unit">・落ち着いた状態で判断したい方</span></li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-navy-900/50 mb-4 border-b border-gray-100 pb-2"><span class="text-unit">このメニューとは少し違う方</span></h3>
+                    <ul class="space-y-2 text-sm md:text-base text-navy-900/60">
+                        <li><span class="text-unit">・具体的な物件提案を求めている方</span></li>
+                        <li><span class="text-unit">・結論を代わりに決めてほしい方</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 提供者の強み・信頼 (追加部分) -->
+            <div class="fade-up">
+                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="text-unit">提供者の強み・信頼</span></h2>
+                <p class="mb-6"><span class="text-unit">私はこれまで、</span></p>
+                <ul class="space-y-2 mb-6 pl-4 border-l border-gray-200 text-navy-900">
+                    <li><span class="text-unit">・大手不動産仲介会社での実務</span></li>
+                    <li><span class="text-unit">・相続コンサルティング</span></li>
+                    <li><span class="text-unit">・土地家屋調査士・司法書士の合同事務所(登記事務所)での業務</span></li>
+                </ul>
+                <p class="mb-6">
+                    <span class="text-unit">など、不動産に関わる複数の現場を</span><span class="text-unit">横断的に経験してきました。</span><br>
+                    <span class="text-unit">さらに現在は、</span><span class="text-unit">路線価の半値以下で土地を取得する</span><span class="text-unit">投資家としても活動しています。</span>
+                </p>
+                <p class="mb-6">
+                    <span class="text-unit">こうした経験を通じて、</span><span class="text-unit font-bold text-navy-900">不動産業界の仕組みや判断の歪みを、</span><span class="text-unit font-bold text-navy-900">構造として理解しています。</span><br>
+                    <span class="text-unit">だからこそ、何かを勧めるのではなく、</span><span class="text-unit font-bold text-gold">判断の前提そのものを整えるという</span><span class="text-unit font-bold text-gold">立場を取っています。</span>
+                </p>
+            </div>
+
+            <!-- さらに深い背景 (追加部分) -->
+            <div class="fade-up">
+                <p class="mb-6">
+                    <span class="text-unit">また、成功哲学や意思決定の原理、</span><span class="text-unit">スピリチュアルや宇宙の真理の探究、</span><span class="text-unit">情報変換ヒーリングの実践を通じて、</span>
+                </p>
+                <p class="text-lg md:text-xl font-bold text-navy-900 mb-6 text-center">
+                    <span class="text-unit">「外側の選択は、内側の状態に依存する」</span>
+                </p>
+                <p>
+                    <span class="text-unit">という構造も体感してきました。</span>
+                </p>
+            </div>
+
+            <!-- オプションと価格 -->
+            <div class="fade-up">
+                <div class="mb-16">
+                    <h3 class="font-bold text-navy-900 mb-4"><span class="text-unit">オプション</span></h3>
+                    <p class="mb-2"><span class="text-unit">ご希望に応じて、</span><span class="text-unit">情報変換ヒーリングの観点から</span></p>
+                    <ul class="space-y-1 pl-4 text-navy-900">
+                        <li><span class="text-unit">・土地や建物の状態調整</span></li>
+                        <li><span class="text-unit">・環境全体の調律</span></li>
+                        <li><span class="text-unit">・空間や土地に対する浄化的アプローチ</span></li>
+                    </ul>
+                    <p class="mt-2"><span class="text-unit">も行っています。</span></p>
+                </div>
+
+                <div class="text-center py-12 border-t border-b border-gray-100">
+                    <p class="font-bold text-navy-900 text-lg mb-2"><span class="text-unit">初回メニュー(60~90分)</span></p>
+                    <p class="font-serif text-3xl md:text-4xl text-gold font-bold mb-8">33,000<span class="text-xl">円(税込)</span></p>
+                    
+                    <p class="text-left max-w-lg mx-auto">
+                        <span class="text-unit">不動産は大きな意思決定です。</span><br>
+                        <span class="text-unit font-bold text-navy-900">その結果を左右するのは、</span><span class="text-unit font-bold text-navy-900">情報以上に「判断の状態」です。</span><br>
+                        <span class="text-unit mt-4 block">このメニューは、</span><span class="text-unit font-bold text-navy-900">意思決定の質そのものを整えるための時間です。</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="fade-up text-center pt-8">
+                <p class="font-bold text-navy-900 text-xl mb-10">
+                    <span class="text-unit">整った状態で判断したいと感じたタイミングで、</span><br>
+                    <span class="text-unit">ご利用ください。</span>
+                </p>
+                <a href="reserve.html" class="btn-outline-gold inline-block border border-gold text-gold font-serif font-bold text-lg md:text-xl py-5 px-16 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-sm">
+                    <span class="text-unit tracking-widest">お申し込みはこちら</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 text-center border-t border-gray-100">
+        <p class="text-navy-900/40 text-sm">© 2026 Trinity Healing. All Rights Reserved.</p>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
+            gsap.utils.toArray('.fade-up').forEach(element => {
+                gsap.to(element, {
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 1.0,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse" 
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
