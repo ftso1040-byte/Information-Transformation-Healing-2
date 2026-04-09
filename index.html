@@ -126,9 +126,9 @@
                 <span class="text-unit">Trinity Healing</span>
             </a>
             <nav class="hidden md:flex items-center gap-8 font-serif text-sm tracking-wider">
-                <a href="#profile" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="profile.html" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">代表者プロフィール</span></a>
                 <a href="#about" class="text-light/80 hover:text-gold transition-colors"><span class="text-unit">世界線調律所とは</span></a>
-                <a href="#booking" class="bg-gold text-navy-900 px-6 py-2.5 rounded-full hover:bg-gold-light transition-colors font-medium"><span class="text-unit">ご予約</span></a>
+                <a href="#booking" class="bg-gold border border-gold text-navy-900 px-6 py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-medium"><span class="text-unit">ご予約</span></a>
             </nav>
             <button class="md:hidden text-light text-2xl focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -136,7 +136,7 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full">
             <nav class="flex flex-col px-6 py-4 font-serif text-base tracking-wider space-y-2">
-                <a href="#profile" class="text-light/80 block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">代表者プロフィール</span></a>
+                <a href="profile.html" class="text-light/80 block py-3 border-b border-white/5"><span class="text-unit">代表者プロフィール</span></a>
                 <a href="#about" class="text-light/80 block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
                 <a href="#booking" class="text-gold font-medium block py-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">ご予約</span></a>
             </nav>
@@ -381,198 +381,39 @@
                     <span class="text-unit">体感してください</span>
                 </p>
 
-                <a href="#booking" class="btn-pulse inline-block bg-gold hover:bg-gold-light text-navy-900 font-serif font-medium text-lg md:text-xl py-5 px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                <a href="#booking" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
                     <span class="text-unit tracking-widest">【初回施術はこちら】</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 6. Profile Section (代表者プロフィール) -->
+    <!-- 6. Profile Section (代表者プロフィール - 別ページへの導線) -->
     <section id="profile" class="py-24 px-6 bg-navy-800 relative overflow-hidden border-t border-white/5">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="text-center mb-16 fade-up">
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <div class="mb-12 fade-up">
                 <p class="text-gold font-medium tracking-widest mb-4">PROFILE</p>
                 <h2 class="font-serif fluid-h2 text-light">
                     <span class="text-unit">この世界線に</span><span class="text-unit">至るまで</span>
                 </h2>
             </div>
             
-            <div class="space-y-8 md:space-y-12 font-serif text-light/80 leading-loose fluid-p">
+            <div class="fade-up">
+                <p class="fluid-p text-light/80 leading-loose mb-12 max-w-2xl mx-auto">
+                    <span class="text-unit">私はもともと、</span><span class="text-unit">スピリチュアルとは</span><span class="text-unit">縁もゆかりもない</span><span class="text-unit">人間でした。</span><br>
+                    <span class="text-unit">徹底した現実主義から、</span><span class="text-unit">なぜ「意識からの現実創造」へと</span><span class="text-unit">至ったのか。</span><br>
+                    <span class="text-unit">その道のりと、</span><span class="text-unit">私が大切にしている想いについて</span><span class="text-unit">お話しします。</span>
+                </p>
                 
-                <!-- ストーリー 1: 現実主義と不動産への道 -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold">
-                    <p class="mb-6">
-                        <span class="text-unit">私はもともと、</span><span class="text-unit">スピリチュアルとは</span><span class="text-unit">縁もゆかりもない</span><span class="text-unit">人間でした。</span><br>
-                        <span class="text-unit">むしろ徹底した</span><span class="text-unit">現実主義者です。</span><br>
-                        <span class="text-unit font-bold text-light mt-2 block">お金・仕事・結果。</span><br>
-                        <span class="text-unit">「目に見えるもの」だけが</span><span class="text-unit">人生を変える――</span><span class="text-unit">そう固く信じていました。</span>
-                    </p>
-                    <p class="mb-6">
-                        <span class="text-unit">就職氷河期に滑り込んだ会社で、</span><span class="text-unit">すぐ結婚し、子どもが生まれました。</span><br>
-                        <span class="text-unit">配属先はリストラ担当の総務課。</span><span class="text-unit">毎日、誰かの退職を処理しながら、</span><br>
-                        <span class="text-unit font-medium text-light">「明日は自分かもしれない」</span><span class="text-unit">と思い続けていました。</span>
-                    </p>
-                    <p class="mb-6">
-                        <span class="text-unit">そのとき手に取ったのが</span><span class="text-unit">当時流行していた</span><span class="text-unit">『金持ち父さん 貧乏父さん』でした。</span><br>
-                        <span class="text-unit">家族を守るために、</span><span class="text-unit">会社に依存しない生き方をしよう。</span><br>
-                        <span class="text-unit">そう決意した私は、</span><span class="text-unit">不動産業界を</span><span class="text-unit">武者修行のように渡り歩きました。</span>
-                    </p>
-                    <p class="font-medium text-light text-lg">
-                        <span class="text-unit">そして十年かけて、</span><span class="text-unit text-gold">ようやく不動産投資家という</span><span class="text-unit text-gold">現実を手にしました。</span>
-                    </p>
-                </div>
-
-                <!-- ストーリー 2: 成功哲学からスピリチュアルへ -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold">
-                    <p class="mb-6 text-lg">
-                        <span class="text-unit">でも、そこで</span><span class="text-unit">気づいたことがあります。</span><br>
-                        <span class="text-unit text-gold font-medium">不動産は、二つとして同じものがない。</span>
-                    </p>
-                    <p class="mb-6">
-                        <span class="text-unit">どれだけ条件を絞り込んでも、</span><span class="text-unit">「これだ」と思える物件との出会いは、</span><span class="text-unit">狙って起きるものではない。</span><br>
-                        <span class="text-unit">タイミングや縁が重なって、</span><span class="text-unit">初めて訪れる――</span><br>
-                        <span class="text-unit">それはもはや、</span><span class="text-unit font-medium text-light">奇跡に近いと</span><span class="text-unit font-medium text-light">思えるようになっていきました。</span>
-                    </p>
-                    <p class="mb-6">
-                        <span class="text-unit">その感覚が、</span><span class="text-unit">私を成功哲学の探求へと</span><span class="text-unit">向かわせました。</span>
-                    </p>
-                    <div class="pl-4 border-l border-white/10 mb-6 text-light/60 text-sm md:text-base space-y-1">
-                        <p><span class="text-unit">納税日本一の斎藤一人さん。</span></p>
-                        <p><span class="text-unit">幸せを法則として教えてくれた小林正観さん。</span></p>
-                        <p><span class="text-unit">大谷翔平選手も愛読する中村天風さん。</span></p>
-                    </div>
-                    <p class="mb-6">
-                        <span class="text-unit">三人の言葉は、驚くほど同じことを指していた。</span><br>
-                        <span class="text-unit font-bold text-light">それは「科学だ」と思いました。</span>
-                    </p>
-                    <p>
-                        <span class="text-unit">そしてその探求は、</span><span class="text-unit">スピリチュアルへ、</span><span class="text-unit">宇宙の真理へと向かっていき、</span><br>
-                        <span class="text-unit">気づけば、</span><span class="text-unit">全国の神社参拝が</span><span class="text-unit">日常になっていました。</span><br>
-                        <span class="text-unit">神社参拝で波動が整った頃、</span><span class="text-unit">ご縁から会社役員のお声がかかり、</span><span class="text-unit font-medium text-gold-light">収入も倍になりました。</span>
-                    </p>
-                </div>
-
-                <!-- ストーリー 3: 情報変換ヒーリングとの出会い -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold-light relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold opacity-5 rounded-bl-full"></div>
-                    
-                    <p class="mb-6 relative z-10 text-xl md:text-2xl font-medium text-light text-center py-6 border-b border-white/5">
-                        <span class="text-unit">そんな流れの中で</span><span class="text-unit">出会ったのが――</span><br>
-                        <span class="text-unit text-gold tracking-widest mt-2 block font-bold">情報変換ヒーリングです。</span>
-                    </p>
-                    
-                    <p class="mb-6 relative z-10">
-                        <span class="text-unit">正直、最初は半信半疑でした。</span><br>
-                        <span class="text-unit">エネルギーを送るわけでも、</span><span class="text-unit">何かを操作するわけでもない。</span><br>
-                        <span class="text-unit font-medium text-light">「情報と意識を整える」というだけ。</span>
-                    </p>
-                    <p class="mb-6 relative z-10">
-                        <span class="text-unit">「現実は、外で作られているのではない」</span><br>
-                        <span class="text-unit">「意識が現実を選んでいる」</span><br>
-                        <span class="text-unit">そう言われても、最初はまったくピンときませんでした。</span>
-                    </p>
-                    <p class="mb-6 relative z-10 font-medium text-light">
-                        <span class="text-unit">ところが――</span><br>
-                        <span class="text-unit">瞑想を通じて自分の意識を整え始めたとき、</span><span class="text-unit">明確な変化が起き始めました。</span><br>
-                        <span class="text-unit text-light/80 font-normal">無理に頑張らなくても、現実をコントロールしようとしなくても。</span>
-                    </p>
-                    
-                    <ul class="text-light space-y-3 mb-8 pl-2 relative z-10">
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">人間関係が、自然と整っていく</span></li>
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">流れが、勝手に良くなっていく</span></li>
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">問題だと思っていたことが、気づいたら消えている</span></li>
-                    </ul>
-
-                    <p class="mb-8 relative z-10 text-lg md:text-xl text-gold-light font-medium">
-                        <span class="text-unit">まるで、世界のほうが</span><span class="text-unit">勝手に整っていくような感覚。</span><br>
-                        <span class="text-unit">それを、体感として理解したとき――</span><span class="text-unit font-bold">初めて、確信しました。</span>
-                    </p>
-                    
-                    <div class="bg-navy-800 p-6 rounded-xl border border-white/5 relative z-10 mb-8 shadow-inner">
-                        <p class="font-bold text-light text-center text-lg md:text-xl">
-                            <span class="text-unit">現実は、変えにいくものではない。</span><br>
-                            <span class="text-unit">整うことで、自然に変わるものだ。</span>
-                        </p>
-                    </div>
-
-                    <p class="mb-6 relative z-10">
-                        <span class="text-unit">かつての私は、</span><span class="text-unit">外側を強引に変えることで</span><span class="text-unit">人生を切り拓いてきました。</span><br>
-                        <span class="text-unit">でも、それでは望む以上の結果はなく、</span><span class="text-unit">振り子の反動もある。</span>
-                    </p>
-                    <p class="relative z-10 font-medium text-light text-lg">
-                        <span class="text-unit text-gold">内側が整うと、</span><span class="text-unit">望んだ以上の現実が、</span><span class="text-unit text-gold">自然と引き寄せられてくる。</span>
-                    </p>
-                </div>
-
-                <!-- ストーリー 4: 活動の軸とメッセージ -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border border-white/5">
-                    <p class="mb-10 text-center text-lg text-light font-medium pb-6 border-b border-white/5">
-                        <span class="text-unit">情報変換ヒーリングを通して、</span><br class="hidden md:block">
-                        <span class="text-unit">それまでの物理的な現実創造ではない、</span><br class="hidden md:block">
-                        <span class="text-unit text-gold">意識からの現実創造を</span><span class="text-unit">実体験として学びました。</span>
-                    </p>
-                    
-                    <p class="mb-6"><span class="text-unit font-bold text-light">今、私は3つの軸で活動しています。</span></p>
-                    <ul class="text-light/80 space-y-3 mb-12 pl-2 bg-navy-800/50 p-6 rounded-xl">
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">不動産投資家として、現実を扱う</span></li>
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">不動産カウンセラーとして、人生の選択に寄り添う</span></li>
-                        <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">神社巡拝ヒーラーとして、意識を整えるサポートをする</span></li>
-                    </ul>
-
-                    <p class="mb-10 text-center text-lg md:text-xl text-gold-light font-medium">
-                        <span class="text-unit">あなたの現実は、</span><span class="text-unit">もっと自然に、もっと穏やかに変わる。</span><br>
-                        <span class="text-unit text-base text-light/80 font-normal mt-3 block">そのことを多くの方にお伝えしたいと思っています。</span>
-                    </p>
-
-                    <div class="bg-navy-800 p-8 rounded-xl border border-white/5 mb-8">
-                        <p class="mb-4 text-light font-medium"><span class="text-unit">もしあなたが今――</span></p>
-                        <ul class="text-light/80 space-y-3 mb-6 pl-2">
-                            <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">努力しているのに、現実が変わらない</span></li>
-                            <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">成功しているはずが、どこか満たされない</span></li>
-                            <li class="flex"><span class="text-gold mr-3">・</span><span class="text-unit">原因のわからない心身の不調や違和感がある</span></li>
-                        </ul>
-                        <p class="text-light font-medium text-lg leading-relaxed mt-6 pt-6 border-t border-white/5">
-                            <span class="text-unit">――そう感じているなら、</span><br class="md:hidden">
-                            <span class="text-unit">それは「間違っている」のではありません。</span><br>
-                            <span class="text-unit text-gold">ただ、整っていないだけです。</span>
-                        </p>
-                    </div>
-
-                    <p class="mb-6">
-                        <span class="text-unit">整えることで、</span><span class="text-unit">現実は自然に動き始めます。</span><br>
-                        <span class="text-unit">あなたが本来いるべき状態に、</span><span class="text-unit">ただ戻るだけでいい。</span>
-                    </p>
-                    <p class="mb-8">
-                        <span class="text-unit font-medium text-light">その「違和感」は、</span><span class="text-unit font-medium text-light">別のより良い世界線への入口です。</span><br>
-                        <span class="text-unit mt-2 block">必要なときに、必要なものは自然と現れます。</span>
-                    </p>
-                    <p class="text-center text-lg text-gold-light font-serif pt-6">
-                        <span class="text-unit">この出会いも、</span><span class="text-unit">そのひとつであれば嬉しく思います。</span>
-                    </p>
-                </div>
-
-                <!-- 経歴詳細 (白川愁士様) -->
-                <div class="fade-up mt-16 pt-12 border-t border-white/10">
-                    <p class="text-gold tracking-widest text-sm mb-2 text-center md:text-left">世界線調律所 所長</p>
-                    <p class="text-2xl md:text-3xl text-light font-serif mb-8 tracking-wider text-center md:text-left">白川 愁士</p>
-                    
-                    <div class="bg-navy-900/50 p-6 md:p-8 rounded-xl border border-white/5 text-sm md:text-base text-light/70 space-y-4 leading-relaxed">
-                        <p class="font-medium text-light">【経歴】</p>
-                        <p><span class="text-unit">1978年生まれ。</span><span class="text-unit">2男2女の父。</span></p>
-                        <p>不動産を軸に独立すること志し、某大手不動産仲介会社、相続コンサル、司法書士と土地家屋調査士の合同事務所勤務を経て、2014年に独立し、2016年に会社設立。地方の不動産を「路線価の半値以下で買う不動産投資家」として活動。</p>
-                        <p>その中で、幸せなお金持ちになるための成功哲学として、斎藤一人さん、小林正観さん、中村天風さんなどの思想を学んだ末、あまりに共通していることに驚き、これは科学だと気づく。</p>
-                        <p>そこから、スピリチュアルと宇宙の真理探求に目覚め、全国の神社参拝が日常になる。神社参拝で波動が上がったことで、ご縁から会社役員としてのお呼びがかかり、収入が倍増。</p>
-                        <p>その後、情報変換ヒーリングを学び、神社巡拝ヒーラーになる。</p>
-                    </div>
-                </div>
-
+                <a href="profile.html" class="inline-block bg-transparent border-2 border-gold hover:bg-gold text-gold hover:text-navy-900 font-serif font-medium text-lg md:text-xl py-4 px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg">
+                    <span class="text-unit tracking-widest">代表者プロフィールを読む</span>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- 7. About the Place (世界線調律所とは) -->
-    <section id="about" class="py-24 px-6 bg-navy-900 relative overflow-hidden">
+    <section id="about" class="py-24 px-6 bg-navy-900 relative overflow-hidden border-t border-white/5">
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.03] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
         <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.03] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
 
@@ -766,7 +607,7 @@
 
                 <!-- 送信ボタン -->
                 <div class="text-center pt-4">
-                    <button type="submit" class="inline-block bg-gold hover:bg-gold-light text-navy-900 font-serif font-medium text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full md:w-auto">
+                    <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full md:w-auto">
                         <span class="text-unit tracking-widest">送信する</span>
                     </button>
                 </div>
