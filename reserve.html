@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ご予約 - Trinity Healing</title>
+    <title>施術のお申込み - Trinity Healing</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,7 +131,7 @@
             <div class="text-center mb-16 fade-up">
                 <p class="text-gold font-medium tracking-widest mb-4">RESERVATION</p>
                 <h1 class="font-serif fluid-h2 text-light">
-                    <span class="text-unit">初回施術の</span><span class="text-unit">お申し込み</span>
+                    <span class="text-unit">施術の</span><span class="text-unit">お申込み</span>
                 </h1>
                 <p class="mt-6 text-light/80 fluid-p leading-relaxed px-4">
                     あなたが本来選ぶべき現実に、自然と整っていく。<br class="md:hidden">
@@ -171,11 +171,12 @@
 
                 <!-- 希望メニュー -->
                 <div>
-                    <label for="menu" class="block font-serif text-light font-medium mb-2">希望メニュー <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="menu" class="block font-serif text-light font-medium mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
                     <div class="relative">
                         <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
                             <option value="" disabled selected>メニューを選択してください</option>
                             <option value="まずは相談だけしたい">まずは相談だけしたい</option>
+                            <option value="【初回限定】セッション(対面|都内限定)（60分：11,000円）">【初回限定】セッション(対面|都内限定)（60分：11,000円）</option>
                             <option value="情報変換ヒーリングセッション(対面|都内限定)（60分：22,000円）">情報変換ヒーリングセッション(対面|都内限定)（60分：22,000円）</option>
                             <option value="遠隔ヒーリング（1回：11,000円）">遠隔ヒーリング（1回：11,000円）</option>
                             <option value="不動産 位相調律セッション（初回60~90分：33,000円）">不動産 位相調律セッション（初回60~90分：33,000円）</option>
@@ -294,7 +295,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売URL</dt>
-                        <dd>【あなたのホームページURL】</dd>
+                        <dd class="break-all"><a href="http://stream.noor.jp/TrinityHealing/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/TrinityHealing/</a></dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売価格</dt>
@@ -333,7 +334,7 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">サービスの性質について</p>
-                        <ul class="space-y-1">
+                        <ul class="space-y-1 list-none">
                             <li>・本サービスは医療行為ではありません</li>
                             <li>・診断・治療を目的としたものではありません</li>
                             <li>・通院中・服薬中の方は医師にご相談のうえご利用ください</li>
@@ -341,7 +342,7 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">不動産コンサルティングに関する注意事項</p>
-                        <ul class="space-y-1">
+                        <ul class="space-y-1 list-none">
                             <li>・本サービスに含まれる不動産に関する助言は、 一般的な情報提供およびセカンドオピニオンとして提供するものです</li>
                             <li>・売買・契約等の最終判断は、お客様ご自身の責任にてお願いいたします</li>
                         </ul>
@@ -505,7 +506,6 @@
 
                     fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
                         .then(() => {
-                            // メッセージボックスを表示
                             successMsg.classList.remove('hidden');
                             form.reset();
                             setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
