@@ -51,18 +51,22 @@
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
             overflow-wrap: break-word;
+            
+            /* 文節での改行を最適化し、スマホでの読みやすさを向上 */
             word-break: auto-phrase;
             text-wrap: pretty;
         }
 
         h1, h2, h3 { text-wrap: balance; }
 
+        /* PC版：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
+        /* スマホ版：不自然な空白を作らないよう、通常の折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
                 display: inline; 
@@ -70,8 +74,8 @@
             }
         }
 
-        .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
-        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+        .fluid-h1 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
         .fluid-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
         .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
         
@@ -108,10 +112,12 @@
             </a>
             
             <div class="flex items-center gap-2 md:gap-6">
+                <!-- スマホ版は「ご予約」に短縮 -->
                 <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
                     <span class="hidden md:inline">ご予約はこちらから</span>
                     <span class="md:hidden">ご予約</span>
                 </a>
+                
                 <button class="text-light hover:text-gold transition-colors focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -120,7 +126,7 @@
         
         <div id="mobile-menu" class="hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full top-20 left-0">
             <nav class="flex flex-col px-6 py-4 font-serif text-base md:text-lg tracking-wider space-y-2 max-w-6xl mx-auto">
-                <a href="index.html#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
+                <a href="#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
                 <a href="profile.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">この世界線に至るまで</span></a>
                 <a href="menu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">ご提供メニュー</span></a>
                 <a href="specialmenu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">不動産 位相調律セッション</span></a>
@@ -137,135 +143,381 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-10 w-full max-w-4xl mx-auto mt-12">
-            <p class="font-serif text-gold font-medium tracking-widest mb-6 fade-up hero-el text-sm md:text-base">
-                <span class="text-unit">整体でも、カウンセリングでも</span><br class="md:hidden"><span class="text-unit">変わりきらなかったあなたへ</span>
+            <p class="font-serif text-gold font-medium tracking-widest mb-6 fade-up hero-el text-sm md:text-base leading-relaxed">
+                <span class="text-unit">整体やカウンセリングでも</span><span class="text-unit">変わらなかった不調に。</span><br>
+                <span class="text-unit">何をしても変わらなかったその原因は、</span><br class="md:hidden">
+                <span class="text-unit">「意識の状態」にあるかもしれません。</span>
             </p>
             <h1 class="font-serif fluid-h1 leading-relaxed text-light mb-12 fade-up hero-el">
-                <span class="text-unit">何度も通っているのに、</span><br class="md:hidden">
-                <span class="text-unit">また戻ってしまう。</span><br>
-                <span class="text-unit">気持ちは軽くなっても、</span><br class="md:hidden">
-                <span class="text-unit">現実は変わらない。</span><br>
-                <span class="text-unit">身体を整えても、</span><br class="md:hidden">
-                <span class="text-unit">その場だけで終わる。</span>
+                <span class="text-unit">不調や停滞は、どれか一つの</span><br class="md:hidden"><span class="text-unit">問題ではなく、</span><br>
+                <span class="text-unit">すべてがつながった</span><br class="md:hidden">
+                <span class="text-unit text-gold">“状態”</span><span class="text-unit">として現れています。</span>
             </h1>
             <div class="h-px w-16 bg-gold mx-auto mb-10 fade-up hero-el"></div>
-            <p class="fluid-p text-light/80 leading-loose fade-up hero-el">
-                <span class="text-unit">もしそんな感覚があるなら、</span><br class="md:hidden">
-                <span class="text-unit">それはあなたの問題ではなく、</span><br>
-                <span class="text-unit">アプローチする場所が</span><br class="md:hidden">
-                <span class="text-unit">違っていたのかもしれません。</span>
-            </p>
+            <div class="fade-up hero-el mt-12">
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-4 px-10 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="text-unit tracking-widest">【初回セッションを予約する】</span>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- 2. Problem & Mechanism -->
+    <!-- 2. Introduction -->
     <section class="py-24 px-6 bg-navy-900">
         <div class="max-w-3xl mx-auto text-center space-y-24">
+            
             <div class="fade-up">
-                <h2 class="font-serif fluid-h2 text-light mb-10">
-                    <span class="text-unit">なぜ変わりきらないのか</span>
-                </h2>
-                <p class="fluid-p text-light/80 mb-6 leading-relaxed">
-                    これまでの方法はすべて正しいです。<br class="md:hidden">
-                    ・心を整える ・身体を整える
+                <p class="fluid-p text-light/80 mb-8 leading-relaxed text-left md:text-center text-balance">
+                    私たちはこれまで、<br>
+                    <span class="inline-block mt-4 mb-4 font-medium text-light bg-navy-800 p-4 rounded-lg border border-white/5 shadow-inner text-left w-full max-w-md mx-auto">
+                        ・身体の不調は整体へ<br>
+                        ・心の問題はカウンセリングへ<br>
+                        ・お金の悩みは努力やノウハウで
+                    </span><br>
+                    と、それぞれを分けて対処してきました。
                 </p>
-                <p class="fluid-p text-light/80 font-medium">
-                    <span class="text-unit">ただ一つだけ、</span><span class="text-unit">抜けていた視点があります。</span><br>
-                    <span class="text-unit text-gold mt-4 text-xl md:text-2xl block leading-relaxed font-bold">それは「すべてはつながっている」<br class="md:hidden">ということです。</span>
+                <p class="fluid-h3 font-serif text-gold-light mb-8">
+                    <span class="text-unit">しかし実際には、</span><br class="md:hidden">
+                    <span class="text-unit">心・身体・お金は</span><span class="text-unit">すべて連動しています。</span>
                 </p>
-            </div>
-
-            <div class="fade-up bg-navy-800 p-10 md:p-16 rounded-2xl relative border border-white/5 shadow-2xl text-center">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navy-900 px-6 py-2 rounded-full border border-white/10 text-gold-light font-serif tracking-widest text-sm shadow-sm">
-                    TRUTH
+                <div class="text-left md:text-center space-y-3 fluid-p text-light/80 mb-10 pl-4 md:pl-0 border-l-2 border-gold/50 md:border-l-0">
+                    <p>・ストレスが続くと体調を崩す</p>
+                    <p>・体調が悪いと判断力が鈍る</p>
+                    <p>・判断がズレると現実の流れも滞り、<br class="md:hidden">さらにストレスになる</p>
                 </div>
-                <h3 class="font-serif fluid-h3 text-light mb-8">本当はこう動いている</h3>
-                <div class="space-y-6 fluid-p text-light/80 mb-8 leading-relaxed">
-                    <p>
-                        同じ状況でも、整った状態で見るのか、<br class="md:hidden">不安や焦りの中で見るのかで、<br class="md:hidden">
-                        <span class="font-bold text-gold-light text-unit">全く違う判断に、</span><br class="md:hidden">
-                        <span class="font-bold text-gold-light text-unit">なります。</span>
+                <p class="fluid-p text-light font-medium mb-12">
+                    <span class="text-unit">これはバラバラの問題ではなく、</span><br class="md:hidden">
+                    <span class="text-unit">ひとつの“状態”として</span><span class="text-unit">循環している現象です。</span>
+                </p>
+                <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 shadow-lg">
+                    <p class="text-lg md:text-xl font-serif text-gold">だからこそ、</p>
+                    <p class="text-light/90 mt-4 leading-relaxed">
+                        <span class="text-unit">どれか一つだけを整えても、</span><br class="md:hidden">
+                        <span class="text-unit">根本的な変化には</span><span class="text-unit">つながりにくいのです。</span>
                     </p>
                 </div>
-                <p class="font-serif text-lg text-light">本来はすべてつながっています。</p>
             </div>
+
+            <!-- 3. こんな感覚はありませんか？ -->
+            <div class="fade-up pt-12 border-t border-white/5">
+                <h2 class="font-serif fluid-h2 text-light mb-8">こんな感覚はありませんか？</h2>
+                <ul class="text-left text-light/80 space-y-4 mb-10 pl-2 md:pl-8 inline-block max-w-lg mx-auto">
+                    <li class="flex items-start"><span class="text-gold mr-3">・</span><span class="text-unit">何度も通っているのに、また戻ってしまう</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">・</span><span class="text-unit">気持ちは軽くなっても、現実は変わらない</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">・</span><span class="text-unit">身体を整えても、その場だけで終わる</span></li>
+                </ul>
+                <p class="fluid-p text-light font-medium">
+                    <span class="text-unit">もしそう感じているなら、</span><br>
+                    <span class="text-unit">それはあなたの問題ではなく、</span><br>
+                    <span class="text-unit text-gold-light mt-2 block">“整える場所”が違っていたのかもしれません。</span>
+                </p>
+            </div>
+
         </div>
     </section>
 
-    <!-- 3. Concept (世界線調律所とは) -->
-    <section id="about" class="py-24 px-6 bg-navy-800 relative overflow-hidden border-t border-white/5">
-        <div class="max-w-4xl mx-auto relative z-10 text-center">
+    <!-- 4. なぜ変わりきらないのか・本来はこう動いている -->
+    <section class="py-24 px-6 bg-navy-800 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-gold rounded-full blur-3xl opacity-[0.03] pointer-events-none transform-gpu"></div>
+        
+        <div class="max-w-3xl mx-auto space-y-24">
+            
+            <div class="text-center fade-up">
+                <h2 class="font-serif fluid-h2 text-light mb-8">なぜ変わりきらないのか</h2>
+                <p class="fluid-p text-light/80 mb-6">
+                    これまでの方法は間違っていません。<br>
+                    ・心を整える ・身体を整える
+                </p>
+                <p class="fluid-p font-medium text-light text-lg">
+                    <span class="text-unit">ただ一つだけ、</span><span class="text-unit">抜けていた視点があります。</span><br>
+                    <span class="text-gold-light mt-4 block text-xl md:text-2xl">「すべてはつながっている」ということです。</span>
+                </p>
+            </div>
+
+            <div class="fade-up bg-navy-900 p-8 md:p-16 rounded-2xl shadow-xl border border-white/5 relative">
+                <h3 class="font-serif fluid-h3 text-gold-light mb-8 text-center border-b border-white/5 pb-6">本来はこう動いている</h3>
+                
+                <div class="space-y-6 text-center font-medium text-light/90 mb-12">
+                    <p>気持ちが変わると、身体が変わる</p>
+                    <p class="text-gold/50 text-xl">↓</p>
+                    <p>身体が変わると、行動が変わる</p>
+                    <p class="text-gold/50 text-xl">↓</p>
+                    <p>行動が変わると、現実が変わる</p>
+                    <p class="text-gold/50 text-xl">↓</p>
+                    <p class="text-gold">そして、現実が変わると、気持ちが変わる</p>
+                </div>
+                
+                <p class="text-center text-light mb-12 border-b border-white/5 pb-8">
+                    本来は、すべて連動し、循環しています。
+                </p>
+
+                <div class="text-center space-y-6">
+                    <p class="text-light/60">しかし、</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="bg-navy-800 p-4 rounded-lg border border-white/5 flex-1">
+                            <p class="text-light/80 text-sm mb-1">心だけ整えても</p>
+                            <p class="text-light">→ 身体がついてこない</p>
+                        </div>
+                        <div class="bg-navy-800 p-4 rounded-lg border border-white/5 flex-1">
+                            <p class="text-light/80 text-sm mb-1">身体だけ整えても</p>
+                            <p class="text-light">→ また元に戻る</p>
+                        </div>
+                    </div>
+                    <p class="text-light mt-8">なぜなら、</p>
+                    <p class="text-xl md:text-2xl font-serif text-gold-light font-bold">
+                        根本の「意識の状態」が<br class="md:hidden">変わっていないからです。
+                    </p>
+                </div>
+            </div>
+
+            <!-- そしてもう一つの重要な要素 -->
+            <div class="fade-up text-center">
+                <h3 class="font-serif fluid-h3 text-light mb-8">そしてもう一つの重要な要素</h3>
+                <p class="fluid-p text-light/80 mb-6">
+                    多くの人が見落としているのが、<br>
+                    <span class="font-bold text-gold text-xl mt-2 block">「お金の不安」や「現実のストレス」です。</span>
+                </p>
+                
+                <ul class="text-light/70 space-y-2 mb-8 inline-block text-left bg-navy-900/50 p-6 rounded-lg">
+                    <li>・将来への不安</li>
+                    <li>・余裕のなさ</li>
+                    <li>・我慢している状態</li>
+                </ul>
+                
+                <p class="text-light/80 mb-6">こうした状態が続くと、</p>
+                
+                <ul class="text-light/70 space-y-2 mb-10 inline-block text-left border-l-2 border-gold pl-4">
+                    <li>・身体に力が入る</li>
+                    <li>・呼吸が浅くなる</li>
+                    <li>・リラックスできない</li>
+                </ul>
+                
+                <div class="bg-navy-900 p-6 rounded-xl shadow-md border border-white/5 max-w-lg mx-auto">
+                    <p class="text-light/90 font-medium">
+                        結果として、<br>
+                        どれだけ整えても、また元に戻ってしまいます。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. 解決策：三位一体ヒーリング -->
+    <section class="py-24 px-6 bg-navy-900 relative border-t border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            
             <div class="mb-16 fade-up">
-                <p class="text-gold font-medium tracking-widest mb-4">CONCEPT</p>
-                <h2 class="font-serif fluid-h2 text-light">世界線調律所とは</h2>
+                <p class="text-gold font-medium tracking-widest mb-4">SOLUTION</p>
+                <p class="text-light/80 mb-6">私たちが行っているのは、</p>
+                <h2 class="font-serif text-3xl md:text-5xl text-gold-light mb-10 leading-tight">
+                    <span class="text-unit">三位一体</span><span class="text-unit">(トリニティ)</span><span class="text-unit">ヒーリング</span>
+                </h2>
+                <p class="fluid-p text-light font-medium leading-relaxed max-w-2xl mx-auto">
+                    心・身体・お金(現実)を分けずに、<br>
+                    共通して影響している<span class="text-gold">「意識の状態」から整える</span>アプローチです。
+                </p>
+                <p class="text-light/60 text-sm mt-6 max-w-xl mx-auto leading-relaxed">
+                    この調律は、特定の方法に依存するものではなく、<br class="hidden md:block">
+                    意識や情報の扱いに関する体系的な理解に基づいて行っています。
+                </p>
+            </div>
+
+            <div class="fade-up mb-24">
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-4 px-10 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="text-unit tracking-widest">【初回セッションを予約する】</span>
+                </a>
+            </div>
+
+            <!-- 情報変換ヒーリングとは -->
+            <div class="bg-navy-800 p-8 md:p-12 rounded-2xl shadow-lg border border-white/5 fade-up text-left md:text-center">
+                <h3 class="font-serif fluid-h3 text-light mb-8 border-b border-white/10 pb-4 inline-block">情報変換ヒーリングとは</h3>
+                
+                <p class="fluid-p text-light/80 mb-6 leading-relaxed">
+                    情報変換ヒーリングとは、<br>
+                    心身の不調の原因となる「情報」を変換することで、<br class="hidden md:block">状態を整えていく施術技術です。
+                </p>
+                <p class="fluid-p text-light/80 mb-12 leading-relaxed">
+                    私たちはこれを、<br>
+                    <span class="font-medium text-light">三位一体(トリニティ)ヒーリングにおける<br class="md:hidden">意識を調律するための具体的なアプローチ</span><br class="hidden md:block">
+                    として活用しています。
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
+                    <div class="bg-navy-900 p-6 rounded-xl border border-white/5">
+                        <p class="text-gold-light font-bold mb-4">その結果として、</p>
+                        <ul class="text-light/80 space-y-2">
+                            <li>・思考がクリアになる</li>
+                            <li>・身体の緊張が抜ける</li>
+                            <li>・呼吸が深くなる</li>
+                        </ul>
+                    </div>
+                    <div class="bg-navy-900 p-6 rounded-xl border border-white/5">
+                        <p class="text-gold-light font-bold mb-4">そして、</p>
+                        <ul class="text-light/80 space-y-2">
+                            <li>・行動が自然に変わる</li>
+                            <li>・人との関係が変わる</li>
+                            <li>・現実やお金の流れが変わる</li>
+                        </ul>
+                        <p class="text-light/60 text-sm mt-4">といった変化が起こっていきます。</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="space-y-12 font-serif text-light/80 leading-loose fluid-p text-center">
-                <div class="fade-up px-4">
-                    <p class="mb-4">私たちは、現実を無理に変えることはしません。</p>
-                    <p>なぜなら現実は、行動や努力だけで作られているのではなく、<br class="md:hidden">その前にある<span class="font-bold text-light">「前提(情報)」</span>によって決まっているからです。</p>
-                </div>
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl mx-auto max-w-2xl border border-white/5 shadow-inner">
-                    <p class="mb-6"><span class="text-unit text-xl font-medium text-light">無意識の前提を整えることで</span></p>
-                    <ul class="text-light font-medium space-y-4 mb-6 inline-block text-left">
-                        <li><span class="text-gold mr-2">・</span>身体がゆるみ</li>
-                        <li><span class="text-gold mr-2">・</span>思考が静まり</li>
-                        <li><span class="text-gold mr-2">・</span>行動が自然に変わる</li>
-                    </ul>
-                    <p class="text-gold-light text-lg mb-2">その結果として</p>
-                    <p class="text-xl md:text-2xl text-light font-bold">現実そのものが変わっていきます。</p>
-                </div>
+            <!-- セッション後によくある変化 -->
+            <div class="mt-20 fade-up">
+                <h3 class="font-serif fluid-h3 text-light mb-8">セッション後によくある変化</h3>
+                <ul class="text-left text-light/90 space-y-4 max-w-2xl mx-auto bg-navy-800/50 p-8 rounded-xl border border-white/5">
+                    <li class="flex items-start"><span class="text-gold mr-3">✨</span><span>呼吸が自然と深くなる</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">✨</span><span>身体の力が抜けてリラックスできる</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">✨</span><span>頭の中が静かになり、思考が整理される</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">✨</span><span>無理に頑張らなくても物事が進みやすくなる</span></li>
+                    <li class="flex items-start"><span class="text-gold mr-3">✨</span><span>人間関係やお金の流れがスムーズになる</span></li>
+                </ul>
             </div>
-        </div>
-    </section>
 
-    <!-- 4. Menu Section (メニュー詳細への導線復活) -->
-    <section id="menu" class="py-24 px-6 bg-navy-900 relative border-t border-white/5">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-12 fade-up">
-                <p class="text-gold font-medium tracking-widest mb-4">MENU</p>
-                <h2 class="font-serif fluid-h2 text-light">ご提供メニュー</h2>
-            </div>
-            <div class="fade-up px-4">
-                <p class="fluid-p text-light/80 leading-loose mb-12">
-                    各種ヒーリングセッションや、不動産の位相調律など、<br class="md:hidden">あなたの現実を整えるメニューをご用意しています。
+            <!-- シンプルに言えば -->
+            <div class="mt-20 fade-up">
+                <h3 class="text-gold font-bold tracking-widest mb-6">シンプルに言えば</h3>
+                <p class="fluid-h3 font-serif text-light leading-relaxed">
+                    <span class="text-unit">問題を一つずつ</span><span class="text-unit">解決するのではなく、</span><br>
+                    <span class="text-gold-light mt-4 block text-2xl md:text-3xl font-bold">“全体の状態”を整えることで、<br class="md:hidden">すべてが連動して変わる</span><br>
+                    <span class="text-base text-light/80 font-normal mt-4 block">というアプローチです。</span>
                 </p>
-                <a href="menu.html" class="inline-block bg-transparent border-2 border-gold hover:bg-gold text-gold hover:text-navy-900 font-serif font-medium text-lg md:text-xl py-4 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg">
-                    <span class="text-unit tracking-widest">ご提供メニューの詳細はこちら</span>
-                </a>
             </div>
+
         </div>
     </section>
 
-    <!-- 5. Profile Section (プロフィールへの導線復活) -->
-    <section id="profile" class="py-24 px-6 bg-navy-800 relative border-t border-white/5">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-12 fade-up">
-                <p class="text-gold font-medium tracking-widest mb-4">PROFILE</p>
-                <h2 class="font-serif fluid-h2 text-light">この世界線に至るまで</h2>
-            </div>
-            <div class="fade-up px-4">
-                <p class="fluid-p text-light/80 leading-loose mb-12 max-w-2xl mx-auto">
-                    私はもともと、スピリチュアルとは縁もゆかりもない人間でした。<br class="md:hidden">徹底した現実主義から、なぜ「意識からの現実創造」へと至ったのか。<br class="md:hidden">その道のりと想いをお話しします。
-                </p>
-                <a href="profile.html" class="inline-block bg-transparent border-2 border-gold hover:bg-gold text-gold hover:text-navy-900 font-serif font-medium text-lg md:text-xl py-4 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg">
-                    <span class="text-unit tracking-widest">代表者プロフィールを読む</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Final CTA (初回施術申し込みボタン復活) -->
-    <section class="py-24 px-6 bg-navy-900 text-light relative overflow-hidden border-t border-white/5">
-        <div class="max-w-3xl mx-auto text-center relative z-10 px-4">
+    <!-- 6. 世界線という考え方 -->
+    <section id="about" class="py-24 px-6 bg-navy-800 relative overflow-hidden border-t border-white/5">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-light-blue rounded-full blur-3xl opacity-[0.02] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10">
             <div class="fade-up">
-                <p class="font-serif fluid-h3 leading-loose mb-10">
-                    あなたが本来選ぶべき現実に、自然と整っていく。<br class="md:hidden">その変化を、ぜひ一度ご体感ください。
+                <h2 class="font-serif fluid-h2 text-light mb-10">世界線という考え方</h2>
+                <p class="fluid-p text-light/80 mb-8 leading-relaxed">
+                    私たちは日々、<br>
+                    無数に存在しうる可能性の中から、<br class="hidden md:block">認識と選択を通じて現実を生きています。
                 </p>
-                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
-                    <span class="text-unit tracking-widest">【初回施術のお申し込み】</span>
+                <p class="fluid-p font-medium text-light mb-12">
+                    この“現実の流れ”を、私たちは<span class="text-gold">世界線</span>と呼んでいます。
+                </p>
+
+                <div class="bg-navy-900 p-8 md:p-12 rounded-2xl shadow-inner border border-white/5 text-left md:text-center mb-12">
+                    <p class="text-light/80 mb-6">例えば、同じ出来事でも</p>
+                    <div class="flex justify-center gap-4 md:gap-8 mb-6">
+                        <span class="bg-navy-800 px-4 py-2 rounded border border-white/10 text-light text-sm md:text-base">うまくいく流れ</span>
+                        <span class="text-light/50 self-center">と</span>
+                        <span class="bg-navy-800 px-4 py-2 rounded border border-white/10 text-light text-sm md:text-base">うまくいかない流れ</span>
+                    </div>
+                    <p class="text-light/80 mb-4">があります。</p>
+                    <p class="text-light font-medium text-lg mt-6">
+                        その違いは、環境ではなく、<br class="md:hidden">
+                        <span class="text-gold-light">意識の状態によって生まれています。</span>
+                    </p>
+                </div>
+
+                <p class="font-serif text-xl md:text-2xl text-light leading-relaxed">
+                    つまり世界線とは、特別なものではなく、<br>
+                    <span class="text-gold font-bold mt-4 block">意識の状態によって<br class="md:hidden">変わっていく現実の流れ</span><br>
+                    のことです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 最後に -->
+    <section class="py-24 px-6 bg-navy-900 relative border-t border-white/5">
+        <div class="max-w-3xl mx-auto text-center space-y-16">
+            <div class="fade-up">
+                <h2 class="font-serif fluid-h2 text-light mb-10">最後に</h2>
+                <p class="fluid-p text-light/80 mb-6 text-left md:text-center text-balance">
+                    もし今、<br>
+                    ・どこに行っても改善しない不調がある<br>
+                    ・気持ちは前向きなのに現実が変わらない<br>
+                    ・頑張っているのに流れが良くならない
+                </p>
+                <p class="fluid-p font-medium text-light text-lg mb-12">
+                    そう感じているなら、<br>
+                    それは努力不足ではなく、<span class="text-gold">整え方の問題かもしれません。</span>
+                </p>
+            </div>
+
+            <div class="fade-up bg-navy-800 p-8 md:p-12 rounded-2xl border border-white/5">
+                <p class="fluid-p text-light/90 leading-relaxed mb-8">
+                    私たちは、心・身体・お金を分けて考えるのではなく、<br>
+                    <span class="font-bold">すべてを一つの流れとして捉え、<br class="md:hidden">意識の状態から整えていきます。</span>
+                </p>
+                <p class="font-serif text-xl md:text-2xl text-gold-light font-bold leading-relaxed mb-8">
+                    無数の可能性の中から、<br>
+                    その人にとって最善最良の現実の流れ(世界線)を、<br>
+                    自然に選べる意識状態へと整えていくこと
+                </p>
+                <p class="text-light/80 text-lg">それこそが本質だと考えています。</p>
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <p class="font-serif text-lg text-light font-bold tracking-widest">私たちは、その調律を行っています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. はじめての方へ / 初回セッションのご案内 -->
+    <section id="booking" class="py-24 px-6 bg-navy-800 relative border-t border-white/5 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl z-0 pointer-events-none transform-gpu"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            
+            <div class="fade-up mb-16">
+                <h2 class="font-serif fluid-h2 text-light mb-8">はじめての方へ</h2>
+                <ul class="text-light/80 space-y-3 inline-block text-left text-sm md:text-base bg-navy-900/50 p-6 rounded-lg border border-white/5">
+                    <li><span class="text-gold mr-2">・</span>特別な準備は必要ありません</li>
+                    <li><span class="text-gold mr-2">・</span>オンライン/遠隔で受けていただけます</li>
+                    <li><span class="text-gold mr-2">・</span>リラックスした状態でご利用いただけます</li>
+                    <li><span class="text-gold mr-2">・</span>効果や体感には個人差があります</li>
+                </ul>
+            </div>
+
+            <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-2xl border-2 border-gold/30 mb-16">
+                <p class="text-gold font-bold tracking-widest mb-4">RESERVATION</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-light mb-6">初回セッションのご案内</h3>
+                <p class="text-light/80 mb-8">はじめての方限定で、初回セッションをご用意しています。</p>
+                
+                <div class="flex flex-col items-center justify-center gap-2 mb-10">
+                    <p class="text-light/50 line-through text-lg">通常: 22,000円(税込)</p>
+                    <p class="text-gold/50 text-xl">↓</p>
+                    <p class="text-gold font-bold text-3xl md:text-4xl">初回限定: 11,000<span class="text-lg md:text-xl font-normal">円(税込)</span></p>
+                </div>
+
+                <p class="font-medium text-light mb-8">まずは一度、その変化を体感してください</p>
+                
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-16 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl mb-6 w-full md:w-auto">
+                    <span class="text-unit tracking-widest">【初回セッションを予約する】</span>
+                </a>
+                
+                <p class="text-light/50 text-xs md:text-sm space-y-1">
+                    ・無理な勧誘は一切ありません<br>
+                    ・ご自身のペースでご利用いただけます
+                </p>
+            </div>
+
+            <!-- 学びについての案内 -->
+            <div class="fade-up bg-navy-800/50 p-8 md:p-10 rounded-2xl border border-white/5">
+                <p class="text-light/90 mb-6 leading-relaxed">
+                    また、<br>
+                    <span class="font-medium">「この技術を自分でも扱えるようになりたい」</span><br>
+                    <span class="font-medium">「家族や身近な人にも使いたい」</span><br><br>
+                    そう感じる方には、<br>
+                    情報変換ヒーリングの学びについてもご案内が可能です。
+                </p>
+                <p class="text-light/50 text-xs mb-8">※無理なご案内は一切行っていません</p>
+                
+                <p class="text-light font-medium mb-6">ご興味のある方は、お気軽にご相談ください(無料)</p>
+                <a href="reserve.html" class="inline-block bg-transparent border border-gold/50 hover:bg-gold/10 text-gold font-serif font-medium py-3 px-8 rounded-full transition-all duration-300">
+                    <span class="text-unit tracking-widest">【お問い合わせはこちら】</span>
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -283,7 +535,7 @@
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
             <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center">特定商取引法に基づく表記</h2>
+            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">特定商取引法に基づく表記</h2>
             <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
                 <dl class="space-y-4">
                     <div class="border-b border-white/5 pb-2">
@@ -308,7 +560,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売URL</dt>
-                        <dd>【あなたのホームページURL】</dd>
+                        <dd class="break-all"><a href="http://stream.noor.jp/Information-Transformation-Healing-2-main/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/Information-Transformation-Healing-2-main/</a></dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売価格</dt>
@@ -328,7 +580,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">商品(サービス)の提供時期</dt>
-                        <dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd>
+                        <dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします<br>・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">返品・返金について</dt>
@@ -336,7 +588,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">キャンセルポリシー</dt>
-                        <dd>・ご予約日の2日前までのキャンセル:無料 ・前日キャンセル:料金の50% ・当日キャンセルまたは無断キャンセル:料金の100%</dd>
+                        <dd>・ご予約日の2日前までのキャンセル:無料<br>・前日キャンセル:料金の50%<br>・当日キャンセルまたは無断キャンセル:料金の100%</dd>
                     </div>
                 </dl>
                 
@@ -362,10 +614,10 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">提供形式について</p>
-                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等) ・遠隔セッション(非対面)</p>
+                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等)<br>・遠隔セッション(非対面)</p>
                     </div>
                     <div>
-                        <p class="text-gold-light font-bold mb-2">宗教・勧勧誘について</p>
+                        <p class="text-gold-light font-bold mb-2">宗教・勧誘について</p>
                         <p>本サービスは、特定の宗教への勧誘や加入を目的としたものではありません。</p>
                     </div>
                     <div>
@@ -527,21 +779,29 @@
             document.body.classList.remove('overflow-hidden');
         }
 
-        document.addEventListener("DOMContentLoaded", (event) => {
+        document.addEventListener("DOMContentLoaded", () => {
             gsap.registerPlugin(ScrollTrigger);
             
-            // ヒーローアニメーション
+            // ヒーローセクションのアニメーション
             gsap.set(".hero-el", { y: 30, autoAlpha: 0 });
             gsap.to(".hero-el", {
-                y: 0, autoAlpha: 1, 
-                duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2
+                y: 0,
+                autoAlpha: 1, 
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out",
+                delay: 0.2
             });
 
             // スクロールアニメーション
             gsap.set('.fade-up:not(.hero-el)', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up:not(.hero-el)').forEach(element => {
+                let delayTime = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
                 gsap.to(element, {
-                    y: 0, autoAlpha: 1, duration: 0.8,
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 0.8,
+                    delay: delayTime,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: element,
@@ -551,12 +811,16 @@
                 });
             });
 
-            // アンカーリンク補正
+            // ハッシュスクロール補正
             if (window.location.hash) {
-                const target = document.getElementById(window.location.hash.substring(1));
-                if (target) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
                     setTimeout(() => {
-                        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: "smooth" });
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     }, 300);
                 }
             }
