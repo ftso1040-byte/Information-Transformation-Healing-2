@@ -51,18 +51,22 @@
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
             overflow-wrap: break-word;
+            
+            /* 文節での改行を最適化し、1文字残りを防ぐ最新の設定 */
             word-break: auto-phrase;
             text-wrap: pretty;
         }
 
         h1, h2, h3 { text-wrap: balance; }
 
+        /* PC版：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
+        /* スマホ版：不自然な空白を作らないよう、通常の折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
                 display: inline; 
@@ -70,6 +74,7 @@
             }
         }
 
+        .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
         .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
         .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
         
@@ -78,6 +83,7 @@
             will-change: transform, opacity; 
         }
 
+        /* ボタンの波紋アニメーション */
         .btn-pulse { position: relative; }
         .btn-pulse::before { 
             content: ''; 
@@ -98,22 +104,27 @@
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- 2段表示のロゴ -->
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
                 <span class="font-serif text-[10px] md:text-xs text-gold-light tracking-widest mb-0.5 leading-none">三位一体（トリニティ）ヒーリング</span>
                 <span class="font-serif text-lg md:text-xl text-light font-medium tracking-widest leading-none mt-1">Trinity Healing</span>
             </a>
             
             <div class="flex items-center gap-2 md:gap-6">
+                <!-- スマホ版は「ご予約」に短縮しサイズをスッキリ化 -->
                 <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
                     <span class="hidden md:inline">ご予約はこちらから</span>
                     <span class="md:hidden">ご予約</span>
                 </a>
+                
+                <!-- ハンバーガーメニューボタン -->
                 <button class="text-light hover:text-gold transition-colors focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
         
+        <!-- PC・スマホ共通のプルダウンメニュー -->
         <div id="mobile-menu" class="hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full top-20 left-0">
             <nav class="flex flex-col px-6 py-4 font-serif text-base md:text-lg tracking-wider space-y-2 max-w-6xl mx-auto">
                 <a href="index.html#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
@@ -126,6 +137,7 @@
         </div>
     </header>
 
+    <!-- Menu Section (メインコンテンツ) -->
     <main class="py-24 px-6 bg-navy-800 relative overflow-hidden min-h-screen">
         <!-- 背景装飾 -->
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.02] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
@@ -134,7 +146,9 @@
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="text-center mb-16 fade-up">
                 <p class="text-gold font-medium tracking-widest mb-4">MENU</p>
-                <h1 class="font-serif fluid-h2 text-light">ご提供メニュー</h1>
+                <h1 class="font-serif fluid-h2 text-light">
+                    <span class="text-unit">ご提供メニュー</span>
+                </h1>
                 <p class="fluid-p text-light/80 leading-loose mt-6 px-4">
                     各種ヒーリングセッションや、不動産の位相調律など、<br class="md:hidden">あなたの現実を整えるメニューをご用意しています。
                 </p>
@@ -155,7 +169,10 @@
                     </div>
                     <div class="mt-auto pt-4">
                         <p class="text-light/60 text-xs mb-3">※東京都内での対面セッションとなります。</p>
-                        <p class="font-serif text-2xl text-light">60分 <span class="text-gold font-bold text-3xl mx-1">22,000</span><span class="text-base">円(税込)</span></p>
+                        <div class="flex flex-col gap-1">
+                            <p class="text-light/50 line-through text-sm">通常60分: 22,000円(税込)</p>
+                            <p class="font-serif text-gold font-bold text-2xl tracking-widest mt-1">初回限定<span class="text-4xl mx-2">11,000</span><span class="text-base font-normal tracking-normal">円(税込)</span></p>
+                        </div>
                     </div>
                 </div>
 
@@ -217,9 +234,19 @@
 
             </div>
             
+            <!-- 補足 -->
+            <div class="mt-16 pt-10 border-t border-white/10 text-center fade-up">
+                <p class="text-gold-light font-bold mb-4 tracking-widest text-sm"><span class="text-unit">■ 補足</span></p>
+                <p class="text-light/80 text-sm md:text-base leading-relaxed px-4 text-balance">
+                    すべてのセッションは、何かを強制したり、結論を提示するものではありません。
+                    あくまで、ご自身の状態と判断が自然に整うことを目的としています。
+                </p>
+            </div>
+            
+            <!-- CTA (予約導線) -->
             <div class="mt-24 text-center fade-up">
                 <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
-                    <span class="tracking-widest">【セッションのお申し込み】</span>
+                    <span class="text-unit tracking-widest">【セッションのお申し込み】</span>
                 </a>
             </div>
             
@@ -229,8 +256,8 @@
     <!-- Footer -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none">利用規約・プライバシーポリシー</button>
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">利用規約・プライバシーポリシー</button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
@@ -265,7 +292,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売URL</dt>
-                        <dd>【あなたのホームページURL】</dd>
+                        <dd class="break-all"><a href="http://stream.noor.jp/TrinityHealing/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/TrinityHealing/</a></dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売価格</dt>
@@ -289,7 +316,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">返品・返金について</dt>
-                        <dd>本サービスは役務提供の特性上、サービス提供後の返金はいたしかねます。</dd>
+                        <dd>本サービスは役務提供の特性上、 サービス提供後の返金はいたしかねます。</dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">キャンセルポリシー</dt>
@@ -300,11 +327,11 @@
                 <div class="mt-8 pt-6 border-t border-white/10 space-y-6">
                     <div>
                         <p class="text-gold-light font-bold mb-2">表現および再現性について</p>
-                        <p>本サービスは、心身や環境に対するサポートを目的としたものであり、効果や体感には個人差があり、特定の結果を保証するものではありません。</p>
+                        <p>本サービスは、心身や環境に対するサポートを目的としたものであり、 効果や体感には個人差があり、特定の結果を保証するものではありません。</p>
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">サービスの性質について</p>
-                        <ul class="space-y-1">
+                        <ul class="space-y-1 list-none">
                             <li>・本サービスは医療行為ではありません</li>
                             <li>・診断・治療を目的としたものではありません</li>
                             <li>・通院中・服薬中の方は医師にご相談のうえご利用ください</li>
@@ -312,8 +339,8 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">不動産コンサルティングに関する注意事項</p>
-                        <ul class="space-y-1">
-                            <li>・本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンとして提供するものです</li>
+                        <ul class="space-y-1 list-none">
+                            <li>・本サービスに含まれる不動産に関する助言は、 一般的な情報提供およびセカンドオピニオンとして提供するものです</li>
                             <li>・売買・契約等の最終判断は、お客様ご自身の責任にてお願いいたします</li>
                         </ul>
                     </div>
@@ -327,7 +354,7 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">個人情報の取り扱い</p>
-                        <p>取得した個人情報は、サービス提供およびご連絡の目的にのみ使用し、適切に管理いたします。</p>
+                        <p>取得した個人情報は、サービス提供およびご連絡の目的にのみ使用し、 適切に管理いたします。</p>
                     </div>
                 </div>
             </div>
@@ -461,36 +488,60 @@
     <script>
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
             document.body.classList.add('overflow-hidden');
         }
+
         function closePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-            document.body.classList.remove('overflow-hidden');
-        }
-        function openTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            document.body.classList.add('overflow-hidden');
-        }
-        function closeTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
             document.body.classList.remove('overflow-hidden');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        function openTokushoModal() {
+            const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeTokushoModal() {
+            const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
 
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
+                let delayTime = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
                 gsap.to(element, {
-                    y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out",
+                    y: 0, autoAlpha: 1, duration: 0.8, delay: delayTime, ease: "power3.out",
                     scrollTrigger: {
                         trigger: element, start: "top 90%", toggleActions: "play none none reverse" 
                     }
