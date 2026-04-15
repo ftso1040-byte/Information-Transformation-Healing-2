@@ -45,8 +45,9 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            background-color: #0B0F1A; 
-            color: #EAEAF2; 
+            /* ページ全体を白背景に変更 */
+            background-color: #FFFFFF; 
+            color: #0B0F1A; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
@@ -83,6 +84,7 @@
             will-change: transform, opacity; 
         }
 
+        /* ボタンの波紋アニメーション */
         .btn-pulse { position: relative; }
         .btn-pulse::before { 
             content: ''; 
@@ -96,11 +98,15 @@
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
 
         .overflow-hidden { overflow: hidden; }
+        
+        /* ルビの調整 */
+        ruby { ruby-align: center; }
+        rt { font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.05em; transform: translateY(2px); }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header -->
+    <!-- Header (ヘッダーはダークで統一) -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
@@ -109,7 +115,6 @@
             </a>
             
             <div class="flex items-center gap-2 md:gap-6">
-                <!-- スマホ版は「ご予約」に短縮 -->
                 <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
                     <span class="hidden md:inline">ご予約はこちらから</span>
                     <span class="md:hidden">ご予約</span>
@@ -133,99 +138,104 @@
         </div>
     </header>
 
-    <main class="py-24 px-6 bg-navy-800 relative overflow-hidden min-h-screen">
+    <main class="py-24 px-6 bg-white relative overflow-hidden min-h-screen">
         <!-- 背景装飾 -->
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.02] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.02] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.05] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.05] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
 
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-16 fade-up">
-                <p class="text-gold font-medium tracking-widest mb-4">PROFILE</p>
-                <h1 class="font-serif fluid-h2 text-light text-center">
+                <p class="text-gold font-bold tracking-widest mb-4">PROFILE</p>
+                <h1 class="font-serif fluid-h2 text-navy-900 text-center">
                     この世界線に至るまで
                 </h1>
             </div>
             
-            <div class="space-y-8 md:space-y-12 font-serif text-light/80 leading-loose fluid-p">
+            <!-- 追加された画像 -->
+            <div class="mb-16 fade-up">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2000&auto=format&fit=crop" alt="" class="w-full h-64 md:h-[450px] object-cover rounded-2xl shadow-md">
+            </div>
+            
+            <div class="space-y-8 md:space-y-12 font-serif text-navy-900/80 leading-loose fluid-p">
                 
                 <!-- ストーリー 1 -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left">
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left border-y border-r border-gray-200">
                     <p class="mb-6">
                         私はもともと、スピリチュアルとは縁もゆかりもない人間でした。<br class="md:hidden">むしろ徹底した現実主義者です。<br>
-                        <span class="font-bold text-light mt-2 block">お金・仕事・結果。</span>
+                        <span class="font-bold text-navy-900 mt-2 block">お金・仕事・結果。</span>
                         「目に見えるもの」だけが人生を変える――そう固く信じていました。
                     </p>
                     <p class="mb-6">
                         就職氷河期に滑り込んだ会社で、すぐ結婚し、子どもが生まれました。配属先はリストラ担当の総務課。毎日、誰かの退職を処理しながら、<br class="md:hidden">
-                        <span class="font-medium text-light">「明日は自分かもしれない」</span>と思い続けていました。
+                        <span class="font-medium text-navy-900">「明日は自分かもしれない」</span>と思い続けていました。
                     </p>
                     <p class="mb-6 text-balance">
                         そのとき手に取ったのが当時流行していた『金持ち父さん 貧乏父さん』でした。家族を守るために、会社に依存しない生き方をしよう。そう決意した私は、不動産業界を武者修行のように渡り歩きました。
                     </p>
-                    <p class="font-medium text-light text-lg">
+                    <p class="font-medium text-navy-900 text-lg">
                         そして十年かけて、<span class="text-gold">ようやく不動産投資家という現実を手にしました。</span>
                     </p>
                 </div>
 
                 <!-- ストーリー 2 -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left">
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left border-y border-r border-gray-200">
                     <p class="mb-6 text-lg">
                         でも、そこで気づいたことがあります。<br class="md:hidden">
-                        <span class="text-gold font-medium">不動産は、二つとして同じものがない。</span>
+                        <span class="text-gold font-bold">不動産は、二つとして同じものがない。</span>
                     </p>
                     <p class="mb-6 text-balance">
-                        どれだけ条件を絞り込んでも、「これだ」と思える物件との出会いは、狙って起きるものではない。タイミングや縁が重なって、初めて訪れる――それはもはや、<span class="font-medium text-light text-unit">奇跡に近いと思えるようになっていきました。</span>
+                        どれだけ条件を絞り込んでも、「これだ」と思える物件との出会いは、狙って起きるものではない。タイミングや縁が重なって、初めて訪れる――それはもはや、<span class="font-medium text-navy-900 text-unit">奇跡に近いと思えるようになっていきました。</span>
                     </p>
                     <p class="mb-6">
                         その感覚が、私を成功哲学の探求へと向かわせました。
                     </p>
-                    <div class="pl-4 border-l border-white/10 mb-6 text-light/60 text-sm md:text-base space-y-2">
+                    <div class="pl-4 border-l-2 border-gold/50 mb-6 text-navy-900/70 text-sm md:text-base space-y-2">
                         <p>納税日本一の斎藤一人さん。</p>
                         <p>幸せを法則として教えてくれた小林正観さん。</p>
                         <p>大谷翔平選手も愛読する中村天風さん。</p>
                     </div>
                     <p class="mb-6">
                         三人の言葉は、驚くほど同じことを指していた。<br class="md:hidden">
-                        <span class="font-bold text-light text-unit">それは「科学だ」と思いました。</span>
+                        <span class="font-bold text-navy-900 text-unit">それは「科学だ」と思いました。</span>
                     </p>
                     <p>
                         そしてその探求は、スピリチュアルへ、宇宙の真理へと向かっていき、気づけば、全国の神社参拝が日常になっていました。<br>
-                        神社参拝で波動が整った頃、ご縁から会社役員のお声がかかり、<span class="font-medium text-gold-light">収入も倍になりました。</span>
+                        神社参拝で波動が整った頃、ご縁から会社役員のお声がかかり、<span class="font-bold text-gold">収入も倍になりました。</span>
                     </p>
                 </div>
 
                 <!-- ストーリー 3 -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold-light relative overflow-hidden text-left">
+                <div class="fade-up bg-white p-8 md:p-12 rounded-2xl shadow-md border-l-4 border-gold relative overflow-hidden text-left border-y border-r border-gray-200">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-gold opacity-5 rounded-bl-full"></div>
                     
-                    <p class="mb-6 relative z-10 text-xl md:text-2xl font-medium text-light text-center py-6 border-b border-white/5">
+                    <p class="mb-6 relative z-10 text-xl md:text-2xl font-bold text-navy-900 text-center py-6 border-b border-gray-200">
                         そんな流れの中で出会ったのが――<br>
                         <span class="text-gold tracking-widest mt-2 block font-bold text-unit">情報変換ヒーリングです。</span>
                     </p>
                     
                     <p class="mb-6 relative z-10">
-                        正直、最初は半信半疑でした。エネルギーを送るわけでも、何かを操作するわけでもない。<span class="font-medium text-light">「情報と意識を整える」というだけ。</span>
+                        正直、最初は半信半疑でした。エネルギーを送るわけでも、何かを操作するわけでもない。<span class="font-bold text-navy-900">「情報と意識を整える」というだけ。</span>
                     </p>
                     <p class="mb-6 relative z-10 text-balance">
                         「現実は、外で作られているのではない」「意識が現実を選んでいる」そう言われても、最初はまったくピンときませんでした。
                     </p>
-                    <p class="mb-6 relative z-10 font-medium text-light">
+                    <p class="mb-6 relative z-10 font-medium text-navy-900">
                         ところが――<br class="md:hidden">
                         瞑想を通じて自分の意識を整え始めたとき、明確な変化が起き始めました。無理に頑張らなくても、現実をコントロールしようとしなくても。
                     </p>
                     
-                    <ul class="text-light space-y-4 mb-8 pl-2 relative z-10">
+                    <ul class="text-navy-900 space-y-4 mb-8 pl-2 relative z-10 font-medium">
                         <li><span class="text-gold mr-3">・</span>人間関係が、自然と整っていく</li>
                         <li><span class="text-gold mr-3">・</span>流れが、勝手に良くなっていく</li>
                         <li><span class="text-gold mr-3">・</span>問題だと思っていたことが、気づいたら消えている</li>
                     </ul>
 
-                    <p class="mb-8 relative z-10 text-lg md:text-xl text-gold-light font-medium text-center">
-                        まるで、世界のほうが勝手に整っていくような感覚。それを、体感として理解したとき――<span class="font-bold text-light text-unit">初めて、確信しました。</span>
+                    <p class="mb-8 relative z-10 text-lg md:text-xl text-gold font-bold text-center">
+                        まるで、世界のほうが勝手に整っていくような感覚。それを、体感として理解したとき――<span class="font-bold text-navy-900 text-unit">初めて、確信しました。</span>
                     </p>
                     
-                    <div class="bg-navy-800 p-6 rounded-xl border border-white/5 relative z-10 mb-8 shadow-inner text-center">
-                        <p class="font-bold text-light text-lg md:text-xl">
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative z-10 mb-8 shadow-inner text-center">
+                        <p class="font-bold text-navy-900 text-lg md:text-xl">
                             現実は、変えにいくものではない。<br>
                             整うことで、自然に変わるものだ。
                         </p>
@@ -234,38 +244,38 @@
                     <p class="mb-6 relative z-10 text-balance">
                         かつての私は、外側を強引に変えることで人生を切り拓いてきました。でも、それでは望む以上の結果はなく、振り子の反動もある。
                     </p>
-                    <p class="relative z-10 font-medium text-light text-lg text-center">
+                    <p class="relative z-10 font-bold text-navy-900 text-lg text-center">
                         <span class="text-gold">内側が整うと、望んだ以上の現実が、自然と引き寄せられてくる。</span>
                     </p>
                 </div>
 
                 <!-- ストーリー 4 -->
-                <div class="fade-up bg-navy-900 p-8 md:p-12 rounded-2xl shadow-sm border border-white/5 text-left">
-                    <p class="mb-10 text-lg text-light font-medium pb-6 border-b border-white/5 text-center">
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 text-left">
+                    <p class="mb-10 text-lg text-navy-900 font-bold pb-6 border-b border-gray-200 text-center">
                         情報変換ヒーリングを通して、それまでの物理的な現実創造ではない、<br class="hidden md:block">
                         <span class="text-gold">意識からの現実創造を実体験として学びました。</span>
                     </p>
                     
-                    <p class="mb-6"><span class="font-bold text-light">今、私は3つの軸で活動しています。</span></p>
-                    <ul class="text-light/80 space-y-3 mb-12 pl-2 bg-navy-800/50 p-6 rounded-xl">
+                    <p class="mb-6"><span class="font-bold text-navy-900">今、私は3つの軸で活動しています。</span></p>
+                    <ul class="text-navy-900/80 space-y-3 mb-12 pl-2 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                         <li><span class="text-gold mr-3">・</span>不動産投資家として、現実を扱う</li>
                         <li><span class="text-gold mr-3">・</span>不動産カウンセラーとして、人生の選択に寄り添う</li>
                         <li><span class="text-gold mr-3">・</span>神社巡拝ヒーラーとして、意識を整えるサポートをする</li>
                     </ul>
 
-                    <p class="mb-10 text-lg md:text-xl text-gold-light font-medium px-4 text-center">
+                    <p class="mb-10 text-lg md:text-xl text-gold font-bold px-4 text-center">
                         あなたの現実は、もっと自然に、もっと穏やかに変わる。<br class="md:hidden">
-                        <span class="text-base text-light/80 font-normal mt-3 block">そのことを多くの方にお伝えしたいと思っています。</span>
+                        <span class="text-base text-navy-900/80 font-normal mt-3 block">そのことを多くの方にお伝えしたいと思っています。</span>
                     </p>
 
-                    <div class="bg-navy-800 p-8 rounded-xl border border-white/5 mb-8">
-                        <p class="mb-4 text-light font-medium">もしあなたが今――</p>
-                        <ul class="text-light/80 space-y-4 mb-6 pl-2">
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 mb-8 shadow-sm">
+                        <p class="mb-4 text-navy-900 font-bold">もしあなたが今――</p>
+                        <ul class="text-navy-900/80 space-y-4 mb-6 pl-2">
                             <li><span class="text-gold mr-3">・</span>努力しているのに、現実が変わらない</li>
                             <li><span class="text-gold mr-3">・</span>成功しているはずが、どこか満たされない</li>
                             <li><span class="text-gold mr-3">・</span>原因のわからない心身の不調や違和感がある</li>
                         </ul>
-                        <p class="text-light font-medium text-lg leading-relaxed mt-6 pt-6 border-t border-white/5">
+                        <p class="text-navy-900 font-bold text-lg leading-relaxed mt-6 pt-6 border-t border-gray-100">
                             ――そう感じているなら、それは「間違っている」のではありません。<br class="md:hidden">
                             <span class="text-gold">ただ、整っていないだけです。</span>
                         </p>
@@ -275,21 +285,21 @@
                         整えることで、現実は自然に動き始めます。あなたが本来いるべき状態に、ただ戻るだけでいい。
                     </p>
                     <p class="mb-8 text-balance">
-                        <span class="font-medium text-light">その「違和感」は、別のより良い世界線への入口です。</span><br>
+                        <span class="font-bold text-navy-900">その「違和感」は、別のより良い世界線への入口です。</span><br>
                         必要なときに、必要なものは自然と現れます。
                     </p>
-                    <p class="text-center text-lg text-gold-light font-serif pt-6">
+                    <p class="text-center text-lg text-gold font-serif pt-6 font-bold">
                         この出会いも、そのひとつであれば嬉しく思います。
                     </p>
                 </div>
 
                 <!-- 経歴詳細 -->
-                <div class="fade-up mt-16 pt-12 border-t border-white/10 text-center md:text-left">
-                    <p class="text-gold tracking-widest text-sm mb-2">世界線調律所 所長</p>
-                    <p class="text-2xl md:text-3xl text-light font-serif mb-8 tracking-wider">白川 愁士</p>
+                <div class="fade-up mt-16 pt-12 border-t border-gray-200 text-center md:text-left">
+                    <p class="text-gold tracking-widest text-sm mb-2 font-bold">世界線調律所 所長</p>
+                    <p class="text-2xl md:text-3xl text-navy-900 font-serif mb-8 tracking-wider font-bold">白川 愁士</p>
                     
-                    <div class="bg-navy-900/50 p-6 md:p-8 rounded-xl border border-white/5 text-sm md:text-base text-light/70 space-y-4 leading-relaxed text-left">
-                        <p class="font-medium text-light text-lg mb-6 border-b border-white/10 pb-2">【経歴】</p>
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 text-sm md:text-base text-navy-900/80 space-y-4 leading-relaxed text-left shadow-sm">
+                        <p class="font-bold text-navy-900 text-lg mb-6 border-b border-gray-200 pb-2">【経歴】</p>
                         <p>1978年生まれ。2男2女の父。</p>
                         <p>不動産を軸に独立すること志し、某大手不動産仲介会社、相続コンサル、司法書士と土地家屋調査士の合同事務所勤務を経て、2014年に独立し、2016年に会社設立。</p>
                         <p>地方の不動産を「路線価の半値以下で買う不動産投資家」として活動。</p>
@@ -297,7 +307,7 @@
                         <p>そこから、スピリチュアルと宇宙の真理探求に目覚め、全国の神社参拝が日常になり、今までに300社を超える神社へ参拝に上がる。</p>
                         <p>神社参拝で波動が上がった結果、自分の意図しないご縁から会社役員としてのお呼びがかかり、収入が倍増。</p>
                         <p>その後、情報変換ヒーリングを学び、神社巡拝ヒーラーになる。</p>
-                        <p class="pt-4 mt-4 border-t border-white/5 text-light/80">宅地建物取引士、マンション管理士、賃貸経営不動産管理士、ファイナンシャルプランナーなどの資格を保有。</p>
+                        <p class="pt-4 mt-4 border-t border-gray-200 text-navy-900/60 text-xs md:text-sm">宅地建物取引士、マンション管理士、賃貸経営不動産管理士、ファイナンシャルプランナーなどの資格を保有。</p>
                     </div>
                 </div>
 
@@ -305,14 +315,14 @@
 
             <!-- CTA -->
             <div class="mt-24 text-center fade-up">
-                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
                     <span class="text-unit tracking-widest">【セッションのお申し込み】</span>
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (フッターはダークで統一) -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
             <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
@@ -321,7 +331,7 @@
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- 特定商取引法に基づく表記 モーダル -->
+    <!-- 特定商取引法に基づく表記 モーダル (ダークテーマ) -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
@@ -347,11 +357,11 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">メールアドレス</dt>
-                        <dd>streamllc16@gmail.com</dd>
+                        <dd>tuning0369@gmail.com</dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売URL</dt>
-                        <dd class="break-all"><a href="http://stream.noor.jp/Information-Transformation-Healing-2-main/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/Information-Transformation-Healing-2-main/</a></dd>
+                        <dd class="break-all"><a href="http://stream.noor.jp/TrinityHealing/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/TrinityHealing/</a></dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売価格</dt>
@@ -405,7 +415,7 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">提供形式について</p>
-                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等) ・遠隔セッション(非対面)</p>
+                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等)<br>・遠隔セッション(非対面)</p>
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">宗教・勧誘について</p>
@@ -423,7 +433,7 @@
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー モーダル -->
+    <!-- 利用規約・プライバシーポリシー モーダル (ダークテーマ) -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
@@ -530,7 +540,9 @@
                         </div>
                         <div>
                             <p class="font-bold text-light mb-1">第10条(お問い合わせ窓口)</p>
-                            <p>個人情報に関するお問い合わせは、以下までお願いいたします。<br>streamllc16@gmail.com</p>
+                            <p>個人情報に関するお問い合わせは、以下までお願いいたします。<br>
+                            有料サービスに関するお問い合わせ：tuning0369@gmail.com<br>
+                            その他のお問い合わせ：streamllc16@gmail.com</p>
                         </div>
                     </div>
                 </section>
@@ -547,38 +559,66 @@
     <script>
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
             document.body.classList.add('overflow-hidden');
         }
+
         function closePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
             document.body.classList.remove('overflow-hidden');
         }
+
         function openTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
             document.body.classList.add('overflow-hidden');
         }
+
         function closeTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
             document.body.classList.remove('overflow-hidden');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
+            gsap.set('.fade-up', { y: 30, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
                 gsap.to(element, {
-                    y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out",
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 1.0,
+                    ease: "power2.out",
                     scrollTrigger: {
-                        trigger: element, start: "top 90%", toggleActions: "play none none reverse" 
+                        trigger: element,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse" 
                     }
                 });
             });
