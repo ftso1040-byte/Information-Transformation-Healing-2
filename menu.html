@@ -92,11 +92,15 @@
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
 
         .overflow-hidden { overflow: hidden; }
+
+        .modal-scroll::-webkit-scrollbar { width: 6px; }
+        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (ヘッダーはダークで統一) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
@@ -141,91 +145,94 @@
                 </p>
             </div>
             
-            <!-- 美しい自然風景の画像 -->
             <div class="mb-16 fade-up">
                 <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop" alt="" class="w-full h-48 md:h-[400px] object-cover rounded-2xl shadow-md" onerror="this.src='https://via.placeholder.com/1200x600?text=Nature+Landscape'">
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <!-- セッション1 -->
-                <div class="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 fade-up flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                <!-- セッション1: 初回限定 -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl border-2 border-gold/30 fade-up flex flex-col shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gold text-navy-900 text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wider">はじめての方</div>
                     <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4">
-                        <span class="text-unit">情報変換ヒーリングセッション</span><br>
-                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">遠隔(オンライン) もしくは 対面（都内限定）</span>
+                        <span class="text-unit">初回限定セッション</span><br>
+                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">オンラインのみ</span>
                     </h2>
                     <div class="text-navy-900/80 mb-6 text-sm leading-relaxed flex-grow space-y-4">
-                        <p>身体・感情・思考など、全体の状態を整えるセッションです。</p>
-                        <p>日常的な不調や違和感、言語化しづらいストレスや停滞感に対して、根本的な状態の調整を行います。</p>
-                        <p>落ち着いた空間の中で、現在の状態を丁寧に観測し、本来のバランスへと整えていきます。</p>
+                        <p>三位一体ヒーリングを初めて受ける方のための特別な体験セッションです。</p>
+                        <p>まずは心身の変化、そして意識の状態が整う感覚を体感していただくための枠となります。</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-100 text-center md:text-left">
+                        <p class="font-serif text-2xl text-navy-900">60分 <span class="text-gold font-bold text-3xl mx-1">11,000</span><span class="text-base">円(税込)</span></p>
+                    </div>
+                </div>
+
+                <!-- セッション2: 通常 -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 fade-up flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4">
+                        <span class="text-unit">通常セッション</span><br>
+                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">(情報変換ヒーリング)</span>
+                        <span class="text-xs text-navy-900/40 font-normal block mt-1">対面（都内限定）もしくは オンライン</span>
+                    </h2>
+                    <div class="text-navy-900/80 mb-6 text-sm leading-relaxed flex-grow space-y-4">
+                        <p>身体・感情・思考など、全体の状態を整える本格的なセッションです。</p>
+                        <p>日常的な不調や違和感、言語化しづらいストレスに対して、根本的な状態の調整を行います。</p>
                     </div>
                     <div class="mt-auto pt-4 border-t border-gray-100">
-                        <p class="text-navy-900/60 text-xs mb-3">※対面セッションは東京都内限定となります。</p>
                         <p class="font-serif text-2xl text-navy-900">60分 <span class="text-gold font-bold text-3xl mx-1">22,000</span><span class="text-base">円(税込)</span></p>
                     </div>
                 </div>
 
-                <!-- セッション2 -->
-                <div class="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 fade-up flex flex-col shadow-sm hover:shadow-md transition-shadow" data-delay="0.2">
+                <!-- セッション3: 不動産 -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl border border-navy-900/10 fade-up flex flex-col shadow-sm">
                     <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4">
-                        遠隔ヒーリング
-                    </h2>
-                    <div class="text-navy-900/80 mb-6 text-sm leading-relaxed flex-grow space-y-4">
-                        <p>対面でのセッションが難しい、<br class="md:hidden">ご家族の方や場所などに向けた、<br class="md:hidden">遠隔での情報空間を調整する<br class="md:hidden">情報変換ヒーリングです。</p>
-                        <p>時間や場所に関係なく、必要なタイミングで全体のバランスを整えます。</p>
-                    </div>
-                    <div class="mt-auto pt-4 border-t border-gray-100">
-                        <p class="text-navy-900/60 text-xs mb-4">※対象の情報を提供して頂く必要がありますので、<br>1度セッションを受けて頂いた方限定とさせて頂きます。</p>
-                        <p class="font-serif text-2xl text-navy-900"><span class="text-gold font-bold text-3xl mr-1">11,000</span><span class="text-base">円(税込)〜</span></p>
-                        <p class="text-navy-900/60 text-xs mt-1">金額は対象、回数によります</p>
-                    </div>
-                </div>
-
-                <!-- セッション3 -->
-                <div class="bg-white p-8 md:p-10 rounded-2xl border-2 border-gold/40 shadow-lg fade-up flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gold text-navy-900 text-xs font-bold px-4 py-1.5 rounded-bl-lg tracking-wider">所長特別メニュー</div>
-                    <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4 pr-20">
-                        不動産 位相調律セッション
+                        <span class="text-unit">不動産 位相調律セッション</span><br>
+                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">オンラインのみ</span>
                     </h2>
                     <div class="text-navy-900/80 mb-6 text-sm leading-relaxed flex-grow space-y-4">
                         <p>不動産の購入や売却において、物件や条件ではなく「判断の状態」を整えるセッションです。</p>
-                        <p>焦りや不安、思い込みなどによって生じる判断のズレ(位相)を調律することで、最適な選択が自然に定まる状態をつくります。</p>
-                        <p>物件の提案や売買の誘導は行わず、中立の立場から意思決定の精度を整えます。</p>
+                        <p>中立の立場から意思決定の精度を整えることで、最適な選択が自然に定まる状態をつくります。</p>
+                        <a href="specialmenu.html" class="inline-block text-gold font-medium text-xs hover:underline mt-2">▶︎ 詳細は専用ページへ</a>
                     </div>
                     <div class="mt-auto pt-4 border-t border-gray-100">
-                        <ul class="space-y-2 mb-4 text-navy-900">
-                            <li class="flex items-baseline"><span class="w-20 text-navy-900/70 text-sm">初回</span><span class="font-serif text-lg">60~90分 <span class="text-gold font-bold text-xl mx-1">33,000</span><span class="text-xs">円(税込)</span></span></li>
-                            <li class="flex items-baseline"><span class="w-20 text-navy-900/70 text-sm">2回目以降</span><span class="font-serif text-lg">60分 <span class="text-gold font-bold text-xl mx-1">22,000</span><span class="text-xs">円(税込)</span></span></li>
-                        </ul>
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4 shadow-sm">
-                            <p class="font-serif text-lg text-navy-900 mb-2">240分パック <span class="text-gold font-bold text-2xl mx-1">77,000</span><span class="text-sm">円(税込)</span></p>
-                            <p class="text-xs text-navy-900/70 leading-relaxed">240分パックは30分単位で回数を分割して受けることが可能です。<br>込み入った話や一定期間の継続的なサポートを必要とされる方におすすめです。</p>
-                        </div>
-                        <a href="specialmenu.html" class="inline-block text-gold font-medium text-sm hover:text-gold-light border-b border-gold/30 hover:border-gold pb-0.5 transition-colors">
-                            ▶︎ 特別メニューの詳細はこちら
-                        </a>
+                        <p class="font-serif text-2xl text-navy-900">60〜90分 <span class="text-gold font-bold text-3xl mx-1">33,000</span><span class="text-base">円(税込)</span></p>
                     </div>
                 </div>
 
-                <!-- セッション4 -->
-                <div class="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 fade-up flex flex-col shadow-sm hover:shadow-md transition-shadow" data-delay="0.2">
+                <!-- セッション4: 240分パック -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl border-2 border-navy-900/5 fade-up flex flex-col shadow-sm relative">
                     <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4">
-                        不動産・空間に対する調律ヒーリング
+                        <span class="text-unit">不動産 位相調律 240分パック</span><br>
+                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">オンラインのみ</span>
                     </h2>
                     <div class="text-navy-900/80 mb-6 text-sm leading-relaxed flex-grow space-y-4">
-                        <p>情報変換ヒーリングの観点から、土地や建物、空間・環境全体の状態を整えるサポートです。</p>
-                        <ul class="text-navy-900/80 text-sm my-3 space-y-2 pl-3 border-l-2 border-gold/40">
-                            <li>・土地や建物に対する違和感の調整</li>
-                            <li>・空間や環境のバランスの調律</li>
-                            <li>・土地や建物に残る影響のリセット<br class="md:hidden"><span class="text-xs">(浄化的アプローチ)</span></li>
-                        </ul>
-                        <p>不動産の判断において、目に見えない要素も含めて整えておきたい場合にご利用いただけます。</p>
+                        <p>30分単位で分割利用が可能な継続サポートパックです。</p>
+                        <p>一定期間の継続的な調整を必要とされる方や、物件探し・売却活動中の伴走が必要な方におすすめです。</p>
                     </div>
                     <div class="mt-auto pt-4 border-t border-gray-100">
-                        <p class="text-navy-900/60 text-xs mb-4">※対象の情報を提供して頂く必要がありますので、<br>1度セッションを受けて頂いた方限定とさせて頂きます。</p>
-                        <p class="font-serif text-2xl text-navy-900"><span class="text-gold font-bold text-3xl mr-1">22,000</span><span class="text-base">円(税込)〜</span></p>
-                        <p class="text-navy-900/60 text-xs mt-1">金額は対象、回数によります</p>
+                        <p class="font-serif text-2xl text-navy-900"><span class="text-gold font-bold text-3xl mr-1">77,000</span><span class="text-base">円(税込)</span></p>
                     </div>
+                </div>
+
+                <!-- セッション5: リピーター -->
+                <div class="bg-gray-50/50 p-8 md:p-10 rounded-2xl border border-dashed border-gray-300 fade-up flex flex-col col-span-1 md:col-span-2">
+                    <h2 class="font-serif text-xl md:text-2xl text-navy-900 mb-4 font-bold border-b border-gray-200 pb-4">
+                        <span class="text-unit">リピーターの方のご相談</span><br>
+                        <span class="text-sm text-navy-900/60 font-normal tracking-wider block mt-2">(遠隔ヒーリング・土地空間調律等)</span>
+                    </h2>
+                    <div class="text-navy-900/80 mb-6 text-sm leading-relaxed grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <p class="font-bold border-l-2 border-gold pl-3">遠隔ヒーリング</p>
+                            <p>対面・オンラインが難しいご家族や場所、特定の物事へ向けた調整です。</p>
+                            <p class="text-xs text-navy-900/50">※11,000円〜 (対象・回数による)</p>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="font-bold border-l-2 border-gold pl-3">不動産・空間の調律ヒーリング</p>
+                            <p>土地や建物の状態調整、環境全体の浄化的なアプローチを行います。</p>
+                            <p class="text-xs text-navy-900/50">※22,000円〜 (対象・回数による)</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-navy-900/40 text-center mt-4 italic">※これらのメニューは一度セッションを受けていただいた方限定とさせていただきます。</p>
                 </div>
 
             </div>
@@ -248,42 +255,95 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">利用規約・プライバシーポリシー</button>
+    <footer class="bg-navy-900 py-16 text-center border-t border-white/10">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 mb-8 text-sm text-light/70 font-serif tracking-wider">
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">特定商取引法に基づく表記</button>
+            <button onclick="openTermsModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">利用規約</button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">プライバシーポリシー</button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- モーダル（内容は以前のものを維持） -->
+    <!-- 特定商取引法に基づく表記 モーダル -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
-            <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">特定商取引法に基づく表記</h2>
-            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
+            <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
+            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center">特定商取引法に基づく表記</h2>
+            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
                 <dl class="space-y-4">
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold-light font-bold">販売事業者名</dt><dd>ストリーム株式会社</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold-light font-bold">運営責任者</dt><dd>小川恵美</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold-light font-bold">メールアドレス</dt><dd>tuning0369@gmail.com</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold-light font-bold">販売価格</dt><dd>各サービスページに記載の通り</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売事業者名</dt><dd>ストリーム株式会社</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">運営責任者</dt><dd>小川恵美</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">所在地</dt><dd>所在地については、ご請求いただければ遅滞なく開示いたします。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">電話番号</dt><dd>お電話でのお問い合わせは受け付けておりません。 お問い合わせはメールにてお願いいたします。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">メールアドレス</dt><dd>streamllc16@gmail.com</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売URL</dt><dd>【ホームページURL】</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売価格</dt><dd>各サービスページに記載の通り(すべて税込表示)</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">商品代金以外の必要料金</dt><dd>・銀行振込の場合の振込手数料 ・インターネット接続にかかる通信費等</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">お支払い方法</dt><dd>・銀行振込</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">お支払い時期</dt><dd>・銀行振込:お申し込み後3日以内にお支払いください</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">商品(サービス)の提供時期</dt><dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">返品・返金について</dt><dd>本サービスは役務提供の特性上、 サービス提供後の返金には応じかねます。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">キャンセルポリシー</dt><dd>・ご予約日の2日前までのキャンセル:無料 ・前日キャンセル:料金の50% ・当日キャンセルまたは無断キャンセル:料金の100%</dd></div>
                 </dl>
-                <p>※その他の詳細項目はご請求に応じて遅滞なく開示いたします。</p>
+                <div class="mt-8 pt-6 border-t border-white/10 space-y-4">
+                    <p><span class="text-gold-light font-bold">表現および再現性について</span><br>本サービスは、心身や環境に対するサポートを目的としたものであり、 効果や体感には個人差があり、特定の結果を保証するものではありません。</p>
+                    <p><span class="text-gold-light font-bold">サービスの性質について</span><br>・本サービスは医療行為ではありません ・診断・治療を目的としたものではありません ・通院中・服薬中の方は医師にご相談のうえご利用ください</p>
+                    <p><span class="text-gold-light font-bold">不動産コンサルティングに関する注意事項</span><br>・本サービスに含まれる不動産に関する助言は、 一般的な情報提供およびセカンドオピニオンとして提供するものです ・売買・契約等の最終判断は、お客様ご自身の責任にてお願いいたします</p>
+                    <p><span class="text-gold-light font-bold">提供形式について</span><br>本サービスは以下の形式で提供されます： ・オンラインセッション(Zoom等) ・遠隔セッション(非対面)</p>
+                    <p><span class="text-gold-light font-bold">宗教・勧誘について</span><br>本サービスは、特定の宗教への勧誘や加入を目的としたものではありません。</p>
+                    <p><span class="text-gold-light font-bold">個人情報の取り扱い</span><br>取得した個人情報は、サービス提供およびご連絡の目的にのみ使用し、 適切に管理いたします。</p>
+                </div>
             </div>
-            <div class="text-center mt-10"><button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button></div>
+            <div class="text-center mt-6"><button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
+    <!-- 利用規約 モーダル -->
+    <div id="terms-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTermsModal()"></div>
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-4xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="terms-modal-content">
+            <button onclick="closeTermsModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
+            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約</h2>
+            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
+                <p>本規約は、ストリーム株式会社(以下「当方」といいます)が提供する各種サービス(以下「本サービス」)の利用条件を定めるものです。ご利用にあたっては、本規約に同意したものとみなします。</p>
+                <div><h3 class="font-bold text-light underline mb-2">第1条(適用)</h3><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第2条(サービス内容)</h3><p>本サービスは以下を含みます： ・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第3条(本サービスの性質)</h3><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。 2 効果や体感には個人差があり、特定の結果を保証するものではありません。 3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第4条(不動産に関する免責)</h3><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。 2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。 3 当方は、これに起因する損害について責任を負いません。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第5条(禁止事項)</h3><p>利用者は以下の行為を行ってはなりません： ・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・ その他、当方が不適切と判断する行為</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第6条(料金および支払い)</h3><p>1 料金は各サービスページに記載の通りとします。 2 支払いは、当方が指定する方法により行うものとします。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第7条(キャンセルおよび返金)</h3><p>1 サービス提供後の返金は原則として行いません。 2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第8条(サービスの提供停止)</h3><p>以下の場合、当方はサービス提供を中断または停止できるものとします： ・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運 営上やむを得ない場合</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第9条(免責事項)</h3><p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。 2 通信環境等に起因するトラブルについても責任を負いません。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第10条(著作権)</h3><p>本サービスに関する資料・コンテンツの著作権は当方に帰属します。 無断転載・転用を禁止します。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第11条(規約の変更)</h3><p>当方は、必要に応じて本規約を変更できるものとします。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第12条(準拠法および管轄)</h3><p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p></div>
+            </div>
+            <div class="text-center mt-6"><button onclick="closeTermsModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
+        </div>
+    </div>
+
+    <!-- プライバシーポリシー モーダル -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
-            <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
-            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
-                <p>当社は、お客様の個人情報を適切に管理し、セッション提供の目的以外での利用は行いません。</p>
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-4xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
+            <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
+            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">プライバシーポリシー</h2>
+            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
+                <p>世界線調律所(以下「当方」)は、個人情報の重要性を認識し、適切な取り扱いを行います。</p>
+                <div><h3 class="font-bold text-light underline mb-2">第1条(個人情報の取得)</h3><p>当方は、以下の方法により個人情報を取得します： ・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第2条(取得する情報)</h3><p>取得する情報は以下を含みます： ・氏名 ・メールアドレス ・電話番号(任意) ・その他サービス提供に必要な情報</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第3条(利用目的)</h3><p>取得した個人情報は以下の目的で利用します： ・サービス提供および連絡 ・日程調整 ・お問い合わせ対応 ・サービス向上のための分析</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第4条(第三者提供)</h3><p>当方は、以下の場合を除き、個人情報を第三者に提供しません： ・本人の同意がある場合 ・法令に基づく場合</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第5条(管理)</h3><p>当方は、個人情報の漏洩・紛失・改ざんを防ぐため、適切な管理を行います。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第6条(外部サービスの利用)</h3><p>当方は、以下の外部サービスを利用する場合があります： ・決済サービス(Stripe、PayPal等) ・オンライン会議ツール(Zoom等) これらのサービスにおける個人情報の取り扱いについては、各サービスのポリシーに従ります。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第7条(開示・訂正・削除)</h3><p>利用者は、自己の個人情報について、開示・訂正・削除を請求することができます。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第8条(Cookie等の利用)</h3><p>当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第9条(ポリシーの変更)</h3><p>本ポリシーは、必要に応じて変更される場合があります。</p></div>
+                <div><h3 class="font-bold text-light underline mb-2">第10条(お問い合わせ窓口)</h3><p>個人情報に関するお問い合わせは、以下までお願いいたします。 streamllc16@gmail.com</p></div>
             </div>
-            <div class="text-center mt-10"><button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button></div>
+            <div class="text-center mt-6"><button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
@@ -296,40 +356,70 @@
             const content = document.getElementById('privacy-modal-content');
             modal.classList.remove('hidden');
             setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
-            document.body.classList.add('overflow-hidden');
+            document.body.style.overflow = 'hidden';
         }
         function closePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
             modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
-            document.body.classList.remove('overflow-hidden');
+            document.body.style.overflow = 'auto';
         }
         function openTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
             const content = document.getElementById('tokusho-modal-content');
             modal.classList.remove('hidden');
             setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
-            document.body.classList.add('overflow-hidden');
+            document.body.style.overflow = 'hidden';
         }
         function closeTokushoModal() {
             const modal = document.getElementById('tokusho-modal');
             const content = document.getElementById('tokusho-modal-content');
             modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
-            document.body.classList.remove('overflow-hidden');
+            document.body.style.overflow = 'auto';
+        }
+        function openTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            const content = document.getElementById('terms-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            const content = document.getElementById('terms-modal-content');
+            modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            document.body.style.overflow = 'auto';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
             gsap.registerPlugin(ScrollTrigger);
+
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
-                let delayTime = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
                 gsap.to(element, {
-                    y: 0, autoAlpha: 1, duration: 0.8, delay: delayTime, ease: "power3.out",
-                    scrollTrigger: { trigger: element, start: "top 90%", toggleActions: "play none none reverse" }
+                    y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element, start: "top 90%", toggleActions: "play none none reverse" 
+                    }
                 });
             });
+
+            // ハッシュスクロール補正
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    }, 300);
+                }
+            }
         });
     </script>
 </body>
