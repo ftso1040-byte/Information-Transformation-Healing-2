@@ -87,7 +87,7 @@
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (ダークテーマ) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
@@ -127,15 +127,18 @@
                     <span class="text-unit">無料相談お申し込み</span>
                 </h1>
                 <p class="fluid-p text-navy-900/80 leading-loose mt-6 px-4">
-                    ご自身の状態と向き合い、<br class="md:hidden">本当に必要なアプローチを見つけるための時間です。<br>
-                    まずはお気軽にご相談ください。
+                    <span class="text-unit">ご自身の状態と向き合い、</span><span class="text-unit">本当に必要なアプローチを見つけるための時間です。</span><br>
+                    <span class="text-unit">まずはお気軽にご相談ください。</span>
+                </p>
+                <p class="mt-8 text-sm md:text-base text-navy-900/80 font-medium bg-gray-50 inline-block px-6 py-3 rounded-full border border-gray-200">
+                    <span class="text-unit">※深い調整のための準備期間として、</span><br class="md:hidden">
+                    <span class="text-unit">相談日は【お申し込みの1週間後以降】で承っております。</span>
                 </p>
             </div>
 
             <!-- 無料相談専用フォーム -->
             <form id="consult-form" class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 fade-up space-y-8">
                 
-                <!-- メニューは「無料相談」で固定して裏側で送信する -->
                 <input type="hidden" name="menu" value="無料相談">
 
                 <!-- お名前 -->
@@ -162,7 +165,7 @@
                     <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
                 </div>
 
-                <!-- 第一希望日時 -->
+                <!-- 希望日時 -->
                 <div>
                     <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
@@ -170,7 +173,7 @@
                         <div class="relative w-full md:w-1/2">
                             <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                <option value="09:00">09:00 〜</option><option value="10:00">10:00 〜</option><option value="11:00">11:00 〜</option><option value="13:00">13:00 〜</option><option value="14:00">14:00 〜</option><option value="15:00">15:00 〜</option><option value="16:00">16:00 〜</option><option value="17:00">17:00 〜</option><option value="18:00">18:00 〜</option><option value="19:00">19:00 〜</option><option value="20:00">20:00 〜</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -179,7 +182,6 @@
                     </div>
                 </div>
 
-                <!-- 第二希望日時 -->
                 <div>
                     <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
@@ -187,7 +189,7 @@
                         <div class="relative w-full md:w-1/2">
                             <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                <option value="09:00">09:00 〜</option><option value="10:00">10:00 〜</option><option value="11:00">11:00 〜</option><option value="13:00">13:00 〜</option><option value="14:00">14:00 〜</option><option value="15:00">15:00 〜</option><option value="16:00">16:00 〜</option><option value="17:00">17:00 〜</option><option value="18:00">18:00 〜</option><option value="19:00">19:00 〜</option><option value="20:00">20:00 〜</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -196,7 +198,6 @@
                     </div>
                 </div>
 
-                <!-- 第三希望日時 -->
                 <div>
                     <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
@@ -204,13 +205,14 @@
                         <div class="relative w-full md:w-1/2">
                             <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                <option value="09:00">09:00 〜</option><option value="10:00">10:00 〜</option><option value="11:00">11:00 〜</option><option value="13:00">13:00 〜</option><option value="14:00">14:00 〜</option><option value="15:00">15:00 〜</option><option value="16:00">16:00 〜</option><option value="17:00">17:00 〜</option><option value="18:00">18:00 〜</option><option value="19:00">19:00 〜</option><option value="20:00">20:00 〜</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
+                    <p class="text-sm text-navy-900/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
                 </div>
 
                 <!-- ご相談内容 -->
@@ -230,6 +232,13 @@
         </div>
     </main>
 
+    <!-- メッセージボックス (Custom Alert) -->
+    <div id="ui-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
+        <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
+            <span id="ui-message-text"></span>
+        </div>
+    </div>
+
     <!-- 送信完了メッセージボックス -->
     <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
         <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
@@ -238,131 +247,67 @@
         </div>
     </div>
 
-    <!-- Footer (フッターはダークで統一) -->
+    <!-- Footer -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">利用規約・プライバシーポリシー</button>
-        </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
-
-    <!-- 特定商取引法に基づく表記 モーダル -->
-    <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
-            <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">特定商取引法に基づく表記</h2>
-            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
-                <!-- 特商法コンテンツ -->
-                <p>※必要に応じて内容を記載してください。</p>
-            </div>
-            <div class="text-center mt-10 pt-6 border-t border-white/10">
-                <button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 利用規約・プライバシーポリシー モーダル -->
-    <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
-            <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
-            <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left">
-                <!-- プライバシーポリシーコンテンツ -->
-                <p>※必要に応じて内容を記載してください。</p>
-            </div>
-            <div class="text-center mt-10 pt-6 border-t border-white/10">
-                <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
-        </div>
-    </div>
 
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        function openPrivacyModal() {
-            const modal = document.getElementById('privacy-modal');
-            const content = document.getElementById('privacy-modal-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                content.classList.remove('scale-95');
-                content.classList.add('scale-100');
-            }, 10);
-            document.body.classList.add('overflow-hidden');
-        }
-
-        function closePrivacyModal() {
-            const modal = document.getElementById('privacy-modal');
-            const content = document.getElementById('privacy-modal-content');
-            modal.classList.add('opacity-0');
-            content.classList.remove('scale-100');
-            content.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-            document.body.classList.remove('overflow-hidden');
-        }
-
-        function openTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            const content = document.getElementById('tokusho-modal-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                content.classList.remove('scale-95');
-                content.classList.add('scale-100');
-            }, 10);
-            document.body.classList.add('overflow-hidden');
-        }
-
-        function closeTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            const content = document.getElementById('tokusho-modal-content');
-            modal.classList.add('opacity-0');
-            content.classList.remove('scale-100');
-            content.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-            document.body.classList.remove('overflow-hidden');
+        function showMessage(text) {
+            const msgBox = document.getElementById('ui-message');
+            const msgText = document.getElementById('ui-message-text');
+            msgText.innerText = text;
+            msgBox.classList.remove('hidden');
+            setTimeout(() => { msgBox.classList.add('hidden'); }, 3000);
         }
 
         document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
-
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
                 gsap.to(element, {
                     y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: element, start: "top 90%", toggleActions: "play none none reverse" 
-                    }
+                    scrollTrigger: { trigger: element, start: "top 90%", toggleActions: "play none none reverse" }
                 });
             });
 
-            // 翌日以降を最短日に設定（無料相談の場合の例）
-            const today = new Date();
-            today.setDate(today.getDate() + 1); // 無料相談は翌日から可能とする（任意で変更可）
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const minDate = `${yyyy}-${mm}-${dd}`;
-            
-            ['date-1', 'date-2', 'date-3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.min = minDate;
-            });
+            // 施術希望日の「最短日」を設定・監視する処理 (1週間後)
+            const setupDateRestriction = () => {
+                const today = new Date();
+                const minDateObj = new Date(today.getTime() + (7 * 24 * 60 * 60 * 1000));
+                const yyyy = minDateObj.getFullYear();
+                const mm = String(minDateObj.getMonth() + 1).padStart(2, '0');
+                const dd = String(minDateObj.getDate()).padStart(2, '0');
+                const minDateString = `${yyyy}-${mm}-${dd}`;
+
+                ['date-1', 'date-2', 'date-3'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    
+                    // パソコン版の制限
+                    el.min = minDateString;
+
+                    // モバイル版・手入力の制限バリデーション
+                    el.addEventListener('change', (e) => {
+                        const selectedDate = e.target.value;
+                        if (selectedDate && selectedDate < minDateString) {
+                            e.target.value = "";
+                            showMessage("1週間後以降の日付をご選択ください");
+                        }
+                    });
+                });
+            };
+
+            setupDateRestriction();
 
             // フォーム送信
             const form = document.getElementById('consult-form');
             if (form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault();
-                    // 同じGASのURLを使用
                     const scriptURL = 'https://script.google.com/macros/s/AKfycbw-TtdCSB8pmeXd-HZkcw7CuWgM8Uzk08ch-Cq-PVP7YNnn0XwU9GsBre6yQx1LpOQ/exec';
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const successMsg = document.getElementById('success-message');
@@ -378,7 +323,7 @@
                     data.append('kana', formData.get('kana') || '');
                     data.append('email', formData.get('email') || '');
                     data.append('phone', formData.get('tel') || '');
-                    data.append('menu', formData.get('menu') || ''); // "無料相談"が入る
+                    data.append('menu', formData.get('menu') || ''); 
                     data.append('date1', `${formData.get('date-1') || ''} ${formData.get('time-1') || ''}`.trim());
                     data.append('date2', `${formData.get('date-2') || ''} ${formData.get('time-2') || ''}`.trim());
                     data.append('date3', `${formData.get('date-3') || ''} ${formData.get('time-3') || ''}`.trim());
@@ -392,7 +337,7 @@
                         })
                         .catch(error => {
                             console.error('Error!', error.message);
-                            alert('送信に失敗しました。通信環境をご確認の上、もう一度お試しください。');
+                            showMessage('送信に失敗しました。通信環境をご確認ください。');
                         })
                         .finally(() => {
                             submitBtn.innerHTML = originalBtnText;
