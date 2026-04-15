@@ -45,29 +45,24 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            /* ページ全体を白背景に変更 */
             background-color: #FFFFFF; 
             color: #0B0F1A; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
             overflow-wrap: break-word;
-            
-            /* 文節での改行を最適化し、スマホでの読みやすさを向上 */
             word-break: auto-phrase;
             text-wrap: pretty;
         }
 
         h1, h2, h3 { text-wrap: balance; }
 
-        /* PC環境：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
-        /* スマホ環境：不自然な空白を作らないよう、通常の折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
                 display: inline; 
@@ -75,6 +70,7 @@
             }
         }
 
+        .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
         .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
         .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
         
@@ -82,17 +78,16 @@
             visibility: hidden; 
             will-change: transform, opacity; 
         }
+
+        .overflow-hidden { overflow: hidden; }
         
         /* カレンダーアイコンの色（白背景用） */
         ::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; }
-        
-        /* モーダル表示時の背景固定 */
-        .overflow-hidden { overflow: hidden; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (ヘッダーはダークで統一) -->
+    <!-- Header (ダークテーマ) -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
@@ -102,7 +97,7 @@
             
             <div class="flex items-center gap-2 md:gap-6">
                 <!-- スマホ版は「ご予約」に短縮 -->
-                <a href="reserve.html" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
+                <a href="#form-section" class="bg-gold border border-gold text-navy-900 px-3 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-transparent hover:text-gold transition-colors font-serif font-medium text-xs md:text-base">
                     <span class="hidden md:inline">ご予約はこちらから</span>
                     <span class="md:hidden">ご予約</span>
                 </a>
@@ -119,150 +114,156 @@
                 <a href="profile.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">この世界線に至るまで</span></a>
                 <a href="menu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">ご提供メニュー</span></a>
                 <a href="specialmenu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">不動産 位相調律セッション</span></a>
-                <button onclick="openTokushoModal(); document.getElementById('mobile-menu').classList.add('hidden')" class="text-left text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5 w-full"><span class="text-unit">特定商取引法に基づく表記</span></button>
-                <button onclick="openPrivacyModal(); document.getElementById('mobile-menu').classList.add('hidden')" class="text-left text-light/80 hover:text-gold transition-colors block py-3 border-white/5 w-full"><span class="text-unit">利用規約・プライバシーポリシー</span></button>
+                <a href="free_consult.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-white/5"><span class="text-unit">無料相談について</span></a>
             </nav>
         </div>
     </header>
 
-    <!-- Booking Form Section -->
     <main class="py-24 px-6 bg-white relative overflow-hidden min-h-screen">
-        <!-- 背景装飾 -->
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.05] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.05] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
-
         <div class="max-w-3xl mx-auto relative z-10">
-            <div class="text-center mb-16 fade-up">
+            
+            <!-- タイトルエリア -->
+            <div class="text-center mb-12 fade-up">
                 <p class="text-gold font-bold tracking-widest mb-4">RESERVATION</p>
                 <h1 class="font-serif fluid-h2 text-navy-900">
-                    <span class="text-unit">施術の</span><span class="text-unit">お申込み</span>
+                    <span class="text-unit">ご予約</span>
                 </h1>
-                <p class="mt-6 text-navy-900/80 fluid-p leading-relaxed px-4">
-                    あなたが本来選ぶべき現実に、自然と整っていく。<br class="md:hidden">
-                    その変化を、ぜひ一度ご体感ください。
+                <p class="fluid-p text-navy-900/80 leading-loose mt-6 px-4">
+                    <span class="text-unit">あなたが本来選ぶべき現実に、</span><span class="text-unit">自然と整っていく。</span><br>
+                    <span class="text-unit">その変化を、</span><span class="text-unit">ぜひ一度ご体感ください。</span>
                 </p>
-                <p class="mt-8 text-sm md:text-base text-gold font-bold bg-gray-50 inline-block px-6 py-3 rounded-xl border border-gray-200 mx-4 shadow-sm">
-                    ※深い調整のための準備期間として、<br class="md:hidden">
-                    施術日は【お申し込みの1週間後以降】で承っております。
+                <p class="mt-8 text-sm md:text-base text-navy-900/80 font-medium bg-gray-50 inline-block px-6 py-3 rounded-full border border-gray-200">
+                    <span class="text-unit">※深い調整のための準備期間として、</span><br class="md:hidden">
+                    <span class="text-unit">施術日は【お申し込みの1週間後以降】で承っております。</span>
                 </p>
             </div>
-
-            <!-- 予約フォーム本体 (白背景用デザイン) -->
+            
+            <!-- ▼▼▼ 予約フォームエリア ▼▼▼ -->
             <form id="booking-form" class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 fade-up space-y-8">
                 <!-- お名前 -->
-                <div>
-                    <label for="name" class="block font-serif text-navy-900 font-bold mb-2">お名前 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="山田 太郎">
-                </div>
-
-                <!-- ふりがな -->
-                <div>
-                    <label for="kana" class="block font-serif text-navy-900 font-bold mb-2">ふりがな <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="やまだ たろう">
-                </div>
-
-                <!-- メールアドレス -->
-                <div>
-                    <label for="email" class="block font-serif text-navy-900 font-bold mb-2">メールアドレス <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="your@email.com">
-                </div>
-
-                <!-- 電話番号 -->
-                <div>
-                    <label for="tel" class="block font-serif text-navy-900 font-bold mb-2">電話番号 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
-                </div>
-
-                <!-- 希望メニュー -->
-                <div>
-                    <label for="menu" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <div class="relative">
-                        <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
-                            <option value="" disabled selected>メニューを選択してください</option>
-                            <option value="まずは相談だけしたい">まずは相談だけしたい</option>
-                            <option value="【初回限定】情報変換ヒーリングセッション（60分：11,000円）">【初回限定】情報変換ヒーリングセッション（60分：11,000円）</option>
-                            <option value="情報変換ヒーリングセッション 遠隔/対面(都内)（60分：22,000円）">情報変換ヒーリングセッション 遠隔/対面(都内)（60分：22,000円）</option>
-                            <option value="遠隔ヒーリング（1回：11,000円〜）">遠隔ヒーリング（1回：11,000円〜）</option>
-                            <option value="不動産 位相調律セッション 初回（60~90分：33,000円）">不動産 位相調律セッション 初回（60~90分：33,000円）</option>
-                            <option value="不動産 位相調律セッション 2回目以降（60分：22,000円）">不動産 位相調律セッション 2回目以降（60分：22,000円）</option>
-                            <option value="不動産 位相調律セッション 240分パック（77,000円）">不動産 位相調律セッション 240分パック（77,000円）</option>
-                            <option value="不動産・空間に対する調律ヒーリング（22,000円〜）">不動産・空間に対する調律ヒーリング（22,000円〜）</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
+                    <div>
+                        <label for="name" class="block font-serif text-navy-900 font-bold mb-2">お名前 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="山田 太郎">
                     </div>
-                </div>
 
-                <!-- 第一希望日時 -->
-                <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
-                        <div class="relative w-full md:w-1/2">
-                            <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
-                                <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                    <!-- ふりがな -->
+                    <div>
+                        <label for="kana" class="block font-serif text-navy-900 font-bold mb-2">ふりがな <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="やまだ たろう">
+                    </div>
+
+                    <!-- メールアドレス -->
+                    <div>
+                        <label for="email" class="block font-serif text-navy-900 font-bold mb-2">メールアドレス <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="your@email.com">
+                    </div>
+
+                    <!-- 電話番号 -->
+                    <div>
+                        <label for="tel" class="block font-serif text-navy-900 font-bold mb-2">電話番号 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
+                    </div>
+
+                    <!-- 希望メニュー -->
+                    <div>
+                        <label for="menu" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <div class="relative">
+                            <!-- プルダウンの選択肢をメニュー詳細に合わせて設定 -->
+                            <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
+                                <option value="" disabled selected>メニューを選択してください</option>
+                                <option value="【初回限定】情報変換ヒーリングセッション 対面（都内限定）：60分 11,000円">【初回限定】情報変換ヒーリングセッション 対面（都内限定）：60分 11,000円</option>
+                                <option value="情報変換ヒーリングセッション 対面（都内限定）/遠隔：60分 22,000円">情報変換ヒーリングセッション 対面（都内限定）/遠隔：60分 22,000円</option>
+                                <option value="遠隔ヒーリング 遠隔：11,000円〜 ※リピーター限定">遠隔ヒーリング 遠隔：11,000円〜 ※リピーター限定</option>
+                                <option value="不動産 位相調律セッション 初回 対面（都内限定）/遠隔：60〜90分 33,000円">不動産 位相調律セッション 初回 対面（都内限定）/遠隔：60〜90分 33,000円</option>
+                                <option value="不動産 位相調律セッション 2回目以降 対面（都内限定）/遠隔：60分 22,000円">不動産 位相調律セッション 2回目以降 対面（都内限定）/遠隔：60分 22,000円</option>
+                                <option value="不動産 位相調律セッション 240分パック 対面（都内限定）/遠隔：77,000円">不動産 位相調律セッション 240分パック 対面（都内限定）/遠隔：77,000円</option>
+                                <option value="不動産・空間に対する調律ヒーリング 遠隔：22,000円〜 ※リピーター限定">不動産・空間に対する調律ヒーリング 遠隔：22,000円〜 ※リピーター限定</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 第二希望日時 -->
-                <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
-                        <div class="relative w-full md:w-1/2">
-                            <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
-                                <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <!-- 第一希望日時 -->
+                    <div>
+                        <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
+                            <div class="relative w-full md:w-1/2">
+                                <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>希望時間を選択</option>
+                                    <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 第三希望日時 -->
-                <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
-                        <div class="relative w-full md:w-1/2">
-                            <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
-                                <option value="" disabled selected>希望時間を選択</option>
-                                <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <!-- 第二希望日時 -->
+                    <div>
+                        <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
+                            <div class="relative w-full md:w-1/2">
+                                <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>希望時間を選択</option>
+                                    <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <p class="text-sm text-navy-900/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
-                </div>
 
-                <!-- 現状のお悩み -->
-                <div>
-                    <label for="message" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
-                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
-                </div>
+                    <!-- 第三希望日時 -->
+                    <div>
+                        <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
+                            <div class="relative w-full md:w-1/2">
+                                <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>希望時間を選択</option>
+                                    <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-navy-900/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
+                    </div>
 
-                <!-- 送信ボタン -->
-                <div class="text-center pt-4">
-                    <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-bold text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg w-full md:w-auto">
-                        <span class="tracking-widest">送信する</span>
-                    </button>
-                </div>
-            </form>
+                    <!-- 現状のお悩み -->
+                    <div>
+                        <label for="message" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
+                    </div>
+
+                    <!-- 送信ボタン -->
+                    <div class="text-center pt-4">
+                        <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-bold text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg w-full md:w-auto">
+                            <span class="tracking-widest">送信する</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
         </div>
     </main>
 
-    <!-- Footer (フッターはダークで統一) -->
+    <!-- 送信完了メッセージボックス -->
+    <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
+        <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
+            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
+            <span>ご予約のお申し込みを受け付けました</span>
+        </div>
+    </div>
+
+    <!-- Footer (ダークテーマ) -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
             <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
@@ -271,7 +272,7 @@
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- 特定商取引法に基づく表記 モーダル (ダークテーマ) -->
+    <!-- 特定商取引法に基づく表記 モーダル -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
@@ -373,7 +374,7 @@
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー モーダル (ダークテーマ) -->
+    <!-- 利用規約・プライバシーポリシー モーダル -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
@@ -441,7 +442,7 @@
                 <section class="pt-10 border-t border-white/10">
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">プライバシーポリシー</h3>
                     <div class="space-y-6">
-                        <p>世界線調律所(以下「当方」)は、個人情報の重要性を認識し、適切な取り扱いを行います。</p>
+                        <p>世界線調律所(以下「当方」といいます)は、個人情報の重要性を認識し、適切な取り扱いを行います。</p>
                         <div>
                             <p class="font-bold text-light mb-1">第1条(個人情報の取得)</p>
                             <p>当方は、以下の方法により個人情報を取得します：<br>・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p>
@@ -490,14 +491,6 @@
             <div class="text-center mt-10 pt-6 border-t border-white/10">
                 <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
             </div>
-        </div>
-    </div>
-
-    <!-- 送信完了メッセージボックス -->
-    <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
-        <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
-            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-            <span>お申し込みを受け付けました</span>
         </div>
     </div>
 
@@ -558,15 +551,22 @@
 
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
             gsap.utils.toArray('.fade-up').forEach(element => {
+                let delayTime = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
                 gsap.to(element, {
-                    y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out",
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 0.8,
+                    delay: delayTime,
+                    ease: "power3.out",
                     scrollTrigger: {
-                        trigger: element, start: "top 90%", toggleActions: "play none none reverse" 
+                        trigger: element,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse" 
                     }
                 });
             });
 
-            // 施術希望日の「最短日」を本日の1週間後に設定
+            // 最短日を1週間後に設定
             const today = new Date();
             today.setDate(today.getDate() + 7);
             const yyyy = today.getFullYear();
@@ -584,7 +584,7 @@
             if (form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault();
-                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZ85PSqLkT9t6GWMPO0X1AFw-uxGxl802nlIrTI9c42w-ctt20RiBFiio6wuYF5aE/exec';
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbw-TtdCSB8pmeXd-HZkcw7CuWgM8Uzk08ch-Cq-PVP7YNnn0XwU9GsBre6yQx1LpOQ/exec';
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const successMsg = document.getElementById('success-message');
                     
