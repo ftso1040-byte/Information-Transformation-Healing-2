@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>施術のお申込み - Trinity Healing</title>
+    <title>ご予約 - Trinity Healing</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,8 +45,9 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            background-color: #0B0F1A; 
-            color: #EAEAF2; 
+            /* ページ全体を白背景に変更 */
+            background-color: #FFFFFF; 
+            color: #0B0F1A; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
@@ -82,8 +83,8 @@
             will-change: transform, opacity; 
         }
         
-        /* カレンダーアイコンを白系にする */
-        ::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.7; cursor: pointer; }
+        /* カレンダーアイコンの色（白背景用） */
+        ::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; }
         
         /* モーダル表示時の背景固定 */
         .overflow-hidden { overflow: hidden; }
@@ -91,10 +92,9 @@
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header -->
+    <!-- Header (ヘッダーはダークで統一) -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- 2段表示のロゴ -->
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
                 <span class="font-serif text-[10px] md:text-xs text-gold-light tracking-widest mb-0.5 leading-none">三位一体（トリニティ）ヒーリング</span>
                 <span class="font-serif text-lg md:text-xl text-light font-medium tracking-widest leading-none mt-1">Trinity Healing</span>
@@ -126,63 +126,69 @@
     </header>
 
     <!-- Booking Form Section -->
-    <main class="py-24 px-6 bg-navy-800 relative overflow-hidden min-h-screen">
+    <main class="py-24 px-6 bg-white relative overflow-hidden min-h-screen">
+        <!-- 背景装飾 -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.05] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.05] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
+
         <div class="max-w-3xl mx-auto relative z-10">
             <div class="text-center mb-16 fade-up">
-                <p class="text-gold font-medium tracking-widest mb-4">RESERVATION</p>
-                <h1 class="font-serif fluid-h2 text-light">
+                <p class="text-gold font-bold tracking-widest mb-4">RESERVATION</p>
+                <h1 class="font-serif fluid-h2 text-navy-900">
                     <span class="text-unit">施術の</span><span class="text-unit">お申込み</span>
                 </h1>
-                <p class="mt-6 text-light/80 fluid-p leading-relaxed px-4">
+                <p class="mt-6 text-navy-900/80 fluid-p leading-relaxed px-4">
                     あなたが本来選ぶべき現実に、自然と整っていく。<br class="md:hidden">
                     その変化を、ぜひ一度ご体感ください。
                 </p>
-                <p class="mt-8 text-sm md:text-base text-gold-light font-medium bg-navy-900/50 inline-block px-6 py-3 rounded-full border border-white/5 mx-4">
+                <p class="mt-8 text-sm md:text-base text-gold font-bold bg-gray-50 inline-block px-6 py-3 rounded-xl border border-gray-200 mx-4 shadow-sm">
                     ※深い調整のための準備期間として、<br class="md:hidden">
                     施術日は【お申し込みの1週間後以降】で承っております。
                 </p>
             </div>
 
-            <!-- 予約フォーム本体 -->
-            <form id="booking-form" class="bg-navy-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 fade-up space-y-8">
+            <!-- 予約フォーム本体 (白背景用デザイン) -->
+            <form id="booking-form" class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 fade-up space-y-8">
                 <!-- お名前 -->
                 <div>
-                    <label for="name" class="block font-serif text-light font-medium mb-2">お名前 <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="山田 太郎">
+                    <label for="name" class="block font-serif text-navy-900 font-bold mb-2">お名前 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="山田 太郎">
                 </div>
 
                 <!-- ふりがな -->
                 <div>
-                    <label for="kana" class="block font-serif text-light font-medium mb-2">ふりがな <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="やまだ たろう">
+                    <label for="kana" class="block font-serif text-navy-900 font-bold mb-2">ふりがな <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="やまだ たろう">
                 </div>
 
                 <!-- メールアドレス -->
                 <div>
-                    <label for="email" class="block font-serif text-light font-medium mb-2">メールアドレス <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="your@email.com">
+                    <label for="email" class="block font-serif text-navy-900 font-bold mb-2">メールアドレス <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="your@email.com">
                 </div>
 
                 <!-- 電話番号 -->
                 <div>
-                    <label for="tel" class="block font-serif text-light font-medium mb-2">電話番号 <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900" placeholder="090-1234-5678">
+                    <label for="tel" class="block font-serif text-navy-900 font-bold mb-2">電話番号 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
                 </div>
 
                 <!-- 希望メニュー -->
                 <div>
-                    <label for="menu" class="block font-serif text-light font-medium mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="menu" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
                     <div class="relative">
-                        <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                        <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                             <option value="" disabled selected>メニューを選択してください</option>
                             <option value="まずは相談だけしたい">まずは相談だけしたい</option>
-                            <option value="【初回限定】セッション(対面|都内限定)（60分：11,000円）">【初回限定】セッション(対面|都内限定)（60分：11,000円）</option>
-                            <option value="情報変換ヒーリングセッション(対面|都内限定)（60分：22,000円）">情報変換ヒーリングセッション(対面|都内限定)（60分：22,000円）</option>
-                            <option value="遠隔ヒーリング（1回：11,000円）">遠隔ヒーリング（1回：11,000円）</option>
-                            <option value="不動産 位相調律セッション（初回60~90分：33,000円）">不動産 位相調律セッション（初回60~90分：33,000円）</option>
+                            <option value="【初回限定】情報変換ヒーリングセッション（60分：11,000円）">【初回限定】情報変換ヒーリングセッション（60分：11,000円）</option>
+                            <option value="情報変換ヒーリングセッション 遠隔/対面(都内)（60分：22,000円）">情報変換ヒーリングセッション 遠隔/対面(都内)（60分：22,000円）</option>
+                            <option value="遠隔ヒーリング（1回：11,000円〜）">遠隔ヒーリング（1回：11,000円〜）</option>
+                            <option value="不動産 位相調律セッション 初回（60~90分：33,000円）">不動産 位相調律セッション 初回（60~90分：33,000円）</option>
+                            <option value="不動産 位相調律セッション 2回目以降（60分：22,000円）">不動産 位相調律セッション 2回目以降（60分：22,000円）</option>
+                            <option value="不動産 位相調律セッション 240分パック（77,000円）">不動産 位相調律セッション 240分パック（77,000円）</option>
                             <option value="不動産・空間に対する調律ヒーリング（22,000円〜）">不動産・空間に対する調律ヒーリング（22,000円〜）</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                     </div>
@@ -190,15 +196,15 @@
 
                 <!-- 第一希望日時 -->
                 <div>
-                    <label class="block font-serif text-light font-medium mb-2">第一希望日時 <span class="text-xs text-navy-900 font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
-                            <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                            <select id="time-1" name="time-1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
@@ -207,15 +213,15 @@
 
                 <!-- 第二希望日時 -->
                 <div>
-                    <label class="block font-serif text-light font-medium mb-2">第二希望日時 <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
-                            <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                            <select id="time-2" name="time-2" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
@@ -224,31 +230,31 @@
 
                 <!-- 第三希望日時 -->
                 <div>
-                    <label class="block font-serif text-light font-medium mb-2">第三希望日時 <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
                     <div class="flex flex-col md:flex-row gap-4">
-                        <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 cursor-pointer">
+                        <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
-                            <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 appearance-none cursor-pointer">
+                            <select id="time-3" name="time-3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-light/80">
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
-                    <p class="text-sm text-light/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
+                    <p class="text-sm text-navy-900/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
                 </div>
 
                 <!-- 現状のお悩み -->
                 <div>
-                    <label for="message" class="block font-serif text-light font-medium mb-2">現状のお悩みやご相談内容 <span class="text-xs text-light/80 bg-white/10 border border-white/20 px-2 py-1 rounded ml-2">任意</span></label>
-                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-light bg-navy-800 focus:bg-navy-900 resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
+                    <label for="message" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
                 </div>
 
                 <!-- 送信ボタン -->
                 <div class="text-center pt-4">
-                    <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg py-4 px-10 md:px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full md:w-auto">
+                    <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-bold text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg w-full md:w-auto">
                         <span class="tracking-widest">送信する</span>
                     </button>
                 </div>
@@ -256,16 +262,16 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (フッターはダークで統一) -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none">利用規約・プライバシーポリシー</button>
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">利用規約・プライバシーポリシー</button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- 特定商取引法に基づく表記 モーダル -->
+    <!-- 特定商取引法に基づく表記 モーダル (ダークテーマ) -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
@@ -291,7 +297,7 @@
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">メールアドレス</dt>
-                        <dd>streamllc16@gmail.com</dd>
+                        <dd>tuning0369@gmail.com</dd>
                     </div>
                     <div class="border-b border-white/5 pb-2">
                         <dt class="text-gold-light font-bold">販売URL</dt>
@@ -367,7 +373,7 @@
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー モーダル -->
+    <!-- 利用規約・プライバシーポリシー モーダル (ダークテーマ) -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
@@ -380,18 +386,54 @@
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">利用規約</h3>
                     <div class="space-y-6">
                         <p>本規約は、ストリーム株式会社(以下「当方」といいます)が提供する各種サービス(以下「本サービス」)の利用条件を定めるものです。ご利用にあたっては、本規約に同意したものとみなします。</p>
-                        <div><p class="font-bold text-light mb-1">第1条(適用)</p><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
-                        <div><p class="font-bold text-light mb-1">第2条(サービス内容)</p><p>本サービスは以下を含みます：<br>・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり、特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。<br>3 当方は、これに起因する損害について責任を負いません。</p></div>
-                        <div><p class="font-bold text-light mb-1">第5条(禁止事項)</p><p>利用者は以下の行為を行ってはなりません：<br>・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・その他、当方が不適切と判断する行為</p></div>
-                        <div><p class="font-bold text-light mb-1">第6条(料金および支払い)</p><p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは、当方が指定する方法により行うものとします。</p></div>
-                        <div><p class="font-bold text-light mb-1">第7条(キャンセルおよび返金)</p><p>1 サービス提供後の返金は原則として行いません。<br>2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第8条(サービスの提供停止)</p><p>以下の場合、当方はサービス提供を中断または停止できるものとします：<br>・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運営上やむを得ない場合</p></div>
-                        <div><p class="font-bold text-light mb-1">第9条(免責事項)</p><p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。<br>2 通信環境等に起因するトラブルについても責任を負いません。</p></div>
-                        <div><p class="font-bold text-light mb-1">第10条(著作権)</p><p>本サービスに関する資料・コンテンツの著作権は当方に帰属します。 無断転載・転用を禁止します。</p></div>
-                        <div><p class="font-bold text-light mb-1">第11条(規約の変更)</p><p>当方は、必要に応じて本規約を変更できるものとします。</p></div>
-                        <div><p class="font-bold text-light mb-1">第12条(準拠法および管轄)</p><p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p></div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第1条(適用)</p>
+                            <p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第2条(サービス内容)</p>
+                            <p>本サービスは以下を含みます：<br>・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第3条(本サービスの性質)</p>
+                            <p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり、特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p>
+                            <p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。<br>3 当方は、これに起因する損害について責任を負いません。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第5条(禁止事項)</p>
+                            <p>利用者は以下の行為を行ってはなりません：<br>・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・その他、当方が不適切と判断する行為</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第6条(料金および支払い)</p>
+                            <p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは、当方が指定する方法により行うものとします。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第7条(キャンセルおよび返金)</p>
+                            <p>1 サービス提供後の返金は原則として行いません。<br>2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第8条(サービスの提供停止)</p>
+                            <p>以下の場合、当方はサービス提供を中断または停止できるものとします：<br>・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運営上やむを得ない場合</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第9条(免責事項)</p>
+                            <p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。<br>2 通信環境等に起因するトラブルについても責任を負いません。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第10条(著作権)</p>
+                            <p>本サービスに関する資料・コンテンツの著作権は当方に帰属します。 無断転載・転用を禁止します。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第11条(規約の変更)</p>
+                            <p>当方は、必要に応じて本規約を変更できるものとします。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第12条(準拠法および管轄)</p>
+                            <p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p>
+                        </div>
                     </div>
                 </section>
 
@@ -400,16 +442,48 @@
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">プライバシーポリシー</h3>
                     <div class="space-y-6">
                         <p>世界線調律所(以下「当方」)は、個人情報の重要性を認識し、適切な取り扱いを行います。</p>
-                        <div><p class="font-bold text-light mb-1">第1条(個人情報の取得)</p><p>当方は、以下の方法により個人情報を取得します：<br>・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p></div>
-                        <div><p class="font-bold text-light mb-1">第2条(取得する情報)</p><p>取得する情報は以下を含みます：<br>・氏名 ・メールアドレス ・電話番号(任意) ・その他サービス提供に必要な情報</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(利用目的)</p><p>取得した個人情報は以下の目的で利用します：<br>・サービス提供および連絡 ・日程調整 ・お問い合わせ対応 ・サービス向上のための分析</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(第三者提供)</p><p>当方は、以下の場合を除き、個人情報を第三者に提供しません：<br>・本人の同意がある場合 ・法令に基づく場合</p></div>
-                        <div><p class="font-bold text-light mb-1">第5条(管理)</p><p>当方は、個人情報の漏洩・紛失・改ざんを防ぐため、適切な管理を行います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第6条(外部サービスの利用)</p><p>当方は、以下の外部サービスを利用する場合があります：<br>・決済サービス(Stripe、PayPal等) ・オンライン会議ツール(Zoom等)<br>これらのサービスにおける個人情報の取り扱いについては、各サービスのポリシーに従います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第7条(開示・訂正・削除)</p><p>利用者は、自己の個人情報について、開示・訂正・削除を請求することができます。</p></div>
-                        <div><p class="font-bold text-light mb-1">第8条(Cookie等の利用)</p><p>当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。</p></div>
-                        <div><p class="font-bold text-light mb-1">第9条(ポリシーの変更)</p><p>本ポリシーは、必要に応じて変更される場合があります。</p></div>
-                        <div><p class="font-bold text-light mb-1">第10条(お問い合わせ窓口)</p><p>個人情報に関するお問い合わせは、以下までお願いいたします。<br>streamllc16@gmail.com</p></div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第1条(個人情報の取得)</p>
+                            <p>当方は、以下の方法により個人情報を取得します：<br>・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第2条(取得する情報)</p>
+                            <p>取得する情報は以下を含みます：<br>・氏名 ・メールアドレス ・電話番号(任意) ・その他サービス提供に必要な情報</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第3条(利用目的)</p>
+                            <p>取得した個人情報は以下の目的で利用します：<br>・サービス提供および連絡 ・日程調整 ・お問い合わせ対応 ・サービス向上のための分析</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第4条(第三者提供)</p>
+                            <p>当方は、以下の場合を除き、個人情報を第三者に提供しません：<br>・本人の同意がある場合 ・法令に基づく場合</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第5条(管理)</p>
+                            <p>当方は、個人情報の漏洩・紛失・改ざんを防ぐため、適切な管理を行います。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第6条(外部サービスの利用)</p>
+                            <p>当方は、以下の外部サービスを利用する場合があります：<br>・決済サービス(Stripe、PayPal等) ・オンライン会議ツール(Zoom等)<br>これらのサービスにおける個人情報の取り扱いについては、各サービスのポリシーに従います。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第7条(開示・訂正・削除)</p>
+                            <p>利用者は、自己の個人情報について、開示・訂正・削除を請求することができます。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第8条(Cookie等の利用)</p>
+                            <p>当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第9条(ポリシーの変更)</p>
+                            <p>本ポリシーは、必要に応じて変更される場合があります。</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-light mb-1">第10条(お問い合わせ窓口)</p>
+                            <p>個人情報に関するお問い合わせは、以下までお願いいたします。<br>
+                            有料サービスに関するお問い合わせ：tuning0369@gmail.com<br>
+                            その他のお問い合わせ：streamllc16@gmail.com</p>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -419,10 +493,10 @@
         </div>
     </div>
 
-    <!-- 送信完了メッセージボックス (alertの代わり) -->
+    <!-- 送信完了メッセージボックス -->
     <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
-        <div class="bg-gold text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-white/20 animate-bounce">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
+        <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
+            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
             <span>お申し込みを受け付けました</span>
         </div>
     </div>
@@ -433,30 +507,53 @@
     <script>
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
             document.body.classList.add('overflow-hidden');
         }
+
         function closePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-            document.body.classList.remove('overflow-hidden');
-        }
-        function openTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            document.body.classList.add('overflow-hidden');
-        }
-        function closeTokushoModal() {
-            const modal = document.getElementById('tokusho-modal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
             document.body.classList.remove('overflow-hidden');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        function openTokushoModal() {
+            const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeTokushoModal() {
+            const modal = document.getElementById('tokusho-modal');
+            const content = document.getElementById('tokusho-modal-content');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
 
             gsap.set('.fade-up', { y: 40, autoAlpha: 0 });
@@ -472,7 +569,11 @@
             // 施術希望日の「最短日」を本日の1週間後に設定
             const today = new Date();
             today.setDate(today.getDate() + 7);
-            const minDate = today.toISOString().split('T')[0];
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+            
             ['date-1', 'date-2', 'date-3'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.min = minDate;
@@ -488,7 +589,7 @@
                     const successMsg = document.getElementById('success-message');
                     
                     const originalBtnText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = '<span>送信中...</span>';
+                    submitBtn.innerHTML = '<span class="text-unit tracking-widest">送信中...</span>';
                     submitBtn.disabled = true;
                     submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
@@ -512,6 +613,7 @@
                         })
                         .catch(error => {
                             console.error('Error!', error.message);
+                            alert('送信に失敗しました。通信環境をご確認の上、もう一度お試しください。');
                         })
                         .finally(() => {
                             submitBtn.innerHTML = originalBtnText;
