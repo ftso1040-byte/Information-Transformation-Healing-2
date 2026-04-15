@@ -124,14 +124,14 @@
             </div>
         </div>
         
+        <!-- Hamburger Menu (法務リンク削除) -->
         <div id="mobile-menu" class="hidden bg-navy-900 border-b border-white/10 shadow-lg absolute w-full top-20 left-0">
             <nav class="flex flex-col px-6 py-4 font-serif text-base md:text-lg tracking-wider space-y-2 max-w-6xl mx-auto">
                 <a href="index.html#about" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="text-unit">世界線調律所とは</span></a>
                 <a href="profile.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">この世界線に至るまで</span></a>
                 <a href="menu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">ご提供メニュー</span></a>
                 <a href="specialmenu.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5"><span class="text-unit">不動産 位相調律セッション</span></a>
-                <button onclick="openTokushoModal(); document.getElementById('mobile-menu').classList.add('hidden')" class="text-left text-light/80 hover:text-gold transition-colors block py-3 border-b border-white/5 w-full"><span class="text-unit">特定商取引法に基づく表記</span></button>
-                <button onclick="openPrivacyModal(); document.getElementById('mobile-menu').classList.add('hidden')" class="text-left text-light/80 hover:text-gold transition-colors block py-3 border-white/5 w-full"><span class="text-unit">利用規約・プライバシーポリシー</span></button>
+                <a href="free_consult.html" class="text-light/80 hover:text-gold transition-colors block py-3 border-white/5"><span class="text-unit text-xs md:text-base leading-tight">情報変換ヒーリングを学びたい方の相談窓口（無料）</span></a>
             </nav>
         </div>
     </header>
@@ -203,7 +203,7 @@
         </div>
     </section>
 
-    <!-- 3. Concept (世界線調律所について - 深掘りセクション) -->
+    <!-- 3. Concept (世界線調律所について) -->
     <section id="about" class="py-24 px-6 bg-gray-50 relative overflow-hidden border-t border-gray-100">
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-20 fade-up">
@@ -216,7 +216,7 @@
                     <p class="mb-8">
                         私たち世界線調律所は、 「人の意識を整えること」に特化したセッションを提供しています。
                     </p>
-                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm mb-8">
+                    <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm mb-8 text-center md:text-left">
                         <p class="mb-4">
                             ここでいう「世界線」とは特別な概念ではなく、 <span class="font-bold text-gold">私たちが日々の認識や選択の積み重ねによって辿っている“現実の流れ”</span>を指しています。
                         </p>
@@ -263,47 +263,47 @@
                         デヴィッド・R・ホーキンズ博士の提唱するモデルでも示されているように、 人の意識には段階があり、
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div class="bg-white p-6 rounded-xl border border-gray-200 text-center">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 text-center text-navy-900">
                             <p class="text-navy-900/40 text-sm mb-4">低い意識レベルの例</p>
                             <p class="text-xl font-bold">・恐れ ・怒り ・無気力</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl border-2 border-gold/40 text-center relative overflow-hidden">
+                        <div class="bg-white p-6 rounded-xl border-2 border-gold/40 text-center relative overflow-hidden text-navy-900">
                             <div class="absolute top-0 right-0 bg-gold text-white text-[10px] px-2 py-0.5">ALIGNED</div>
                             <p class="text-gold font-bold text-sm mb-4">整った意識レベルの例</p>
                             <p class="text-xl font-bold">・安心 ・受容 ・愛 ・平和</p>
                         </div>
                     </div>
-                    <p class="mb-8">
+                    <p class="mb-8 text-center md:text-left">
                         同じ状況であっても、 捉え方や選択、行動の質が大きく変わります。
                     </p>
-                    <p>
+                    <p class="text-center md:text-left">
                         これは単なる精神論ではなく、 <span class="font-bold">・意思決定の精度 ・行動の一貫性 ・機会の捉え方</span> といった形で、現実の結果に影響します。
                     </p>
                 </div>
 
-                <div class="fade-up pt-16 border-t border-gray-200">
-                    <h3 class="fluid-h3 font-bold mb-8 text-center md:text-left">引き寄せや願望実現がうまくいかない理由</h3>
+                <div class="fade-up pt-16 border-t border-gray-200 text-center md:text-left">
+                    <h3 class="fluid-h3 font-bold mb-8">引き寄せや願望実現がうまくいかない理由</h3>
                     <p class="mb-6">
                         多くの場合、 「何をするか」に意識が向きすぎています。
                     </p>
                     <p class="mb-10 text-xl md:text-2xl font-bold text-center italic">
                         しかし本質は逆で、 「どんな意識の状態で在るか」 が先にあります。
                     </p>
-                    <p class="text-center md:text-left">
-                        意識の状態が整っていないまま行動しても、 <br class="hidden md:block">
+                    <p>
+                        意識の状態が整っていないまま行動しても、 <br class="hidden md:block text-center md:text-left">
                         <span class="text-unit">・ズレた選択　</span><span class="text-unit">・無理な努力　</span><span class="text-unit">・空回り</span> が起きやすくなります。
                     </p>
                 </div>
 
-                <div class="fade-up pt-16 border-t border-gray-200">
-                    <h3 class="fluid-h3 font-bold mb-8 text-center md:text-left text-gold">私たちが行っていること</h3>
+                <div class="fade-up pt-16 border-t border-gray-200 text-center md:text-left">
+                    <h3 class="fluid-h3 font-bold mb-8 text-gold">私たちが行っていること</h3>
                     <p class="mb-8 leading-relaxed">
                         世界線調律所では、 何かを加えたり操作するのではなく、
                     </p>
-                    <p class="text-xl md:text-3xl font-bold text-center md:text-left mb-10 leading-tight">
+                    <p class="text-xl md:text-3xl font-bold mb-10 leading-tight">
                         その人が本来持っている、<br class="md:hidden">より安定した意識の状態へ戻ること
                     </p>
-                    <p class="mb-10">をサポート(調律)しています。</p>
+                    <p class="mb-10 text-navy-900">をサポート(調律)しています。</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-white p-6 rounded-xl border border-gray-100 text-center shadow-sm">
                             <p class="font-bold">思考が整理される</p>
@@ -315,7 +315,7 @@
                             <p class="font-bold">判断や行動が自然と変わる</p>
                         </div>
                     </div>
-                    <p class="mt-8 text-center md:text-left">
+                    <p class="mt-8">
                         といった変化が起こり、 結果として現実の流れも変わっていきます。
                     </p>
                 </div>
@@ -326,21 +326,21 @@
                     <p class="text-2xl md:text-4xl font-bold text-gold-light leading-tight">
                         意識の状態が整うことで、<br class="hidden md:block">選択と行動が変わり、結果として現実が変わる
                     </p>
-                    <p class="mt-8 text-lg">というアプローチです。</p>
+                    <p class="mt-8 text-lg opacity-80">というアプローチです。</p>
                 </div>
 
                 <div class="fade-up pt-20">
                     <h3 class="fluid-h3 font-bold mb-8 text-center">最後に</h3>
-                    <p class="text-center mb-10">
+                    <p class="text-center mb-10 text-balance px-4">
                         もし今、 <span class="text-unit">・頑張っているのに結果が出ない　</span><span class="text-unit">・引き寄せや願望実現がうまくいかない　</span><span class="text-unit">・どこかズレている感覚がある</span> <br>そう感じているなら、
                     </p>
                     <p class="text-xl md:text-2xl font-bold text-center mb-16 leading-relaxed">
                         一度「やり方」ではなく、 <br class="md:hidden"><span class="text-gold">「意識の状態」</span>に目を向けてみてください。
                     </p>
-                    <p class="text-center mb-16">
+                    <p class="text-center mb-16 opacity-80">
                         それが、最も本質で、 最も自然な変化の入り口です。
                     </p>
-                    <div class="bg-gray-100 p-8 md:p-12 rounded-2xl border border-gray-200 leading-relaxed text-center md:text-left">
+                    <div class="bg-gray-100 p-8 md:p-12 rounded-2xl border border-gray-200 leading-relaxed text-center md:text-left text-navy-900">
                         <p class="mb-6">
                             そして私たちが「世界線調律所」と名乗っているのは、 特別な現実を作り出すためではなく、 無数に存在しうる可能性の中で、 その人にとって最善最良の選択が自然にできる意識状態へと 整うことで、 結果として最適な現実の流れ(世界線)を生きることになる と考えているからです。
                         </p>
@@ -352,11 +352,11 @@
     </section>
 
     <!-- 4. Menu Link -->
-    <section id="menu" class="py-24 px-6 bg-white relative border-t border-gray-100">
-        <div class="max-w-4xl mx-auto text-center">
+    <section id="menu" class="py-24 px-6 bg-white relative border-t border-gray-100 text-center">
+        <div class="max-w-4xl mx-auto">
             <div class="mb-12 fade-up">
                 <p class="text-gold font-medium tracking-widest mb-4">MENU</p>
-                <h2 class="font-serif fluid-h2 text-navy-900">ご提供メニュー</h2>
+                <h2 class="font-serif fluid-h2 text-navy-900 text-unit">ご提供メニュー</h2>
             </div>
             <div class="fade-up px-4">
                 <p class="fluid-p text-navy-900 leading-loose mb-12 opacity-80">
@@ -370,11 +370,11 @@
     </section>
 
     <!-- 5. Profile Link -->
-    <section id="profile" class="py-24 px-6 bg-gray-50 relative border-t border-gray-100">
-        <div class="max-w-4xl mx-auto text-center">
+    <section id="profile" class="py-24 px-6 bg-gray-50 relative border-t border-gray-100 text-center">
+        <div class="max-w-4xl mx-auto">
             <div class="mb-12 fade-up">
                 <p class="text-gold font-medium tracking-widest mb-4">PROFILE</p>
-                <h2 class="font-serif fluid-h2 text-navy-900">この世界線に至るまで</h2>
+                <h2 class="font-serif fluid-h2 text-navy-900 text-unit">この世界線に至るまで</h2>
             </div>
             <div class="fade-up px-4">
                 <p class="fluid-p text-navy-900 leading-loose mb-12 max-w-2xl mx-auto opacity-80">
@@ -390,19 +390,42 @@
     <!-- 6. Final CTA -->
     <section class="py-24 px-6 bg-white text-navy-900 relative overflow-hidden border-t border-gray-100 text-center">
         <div class="max-w-3xl mx-auto relative z-10 px-4">
-            <div class="fade-up">
-                <p class="font-serif fluid-h3 leading-loose mb-10">
+            <div class="fade-up px-4">
+                <h2 class="font-serif fluid-h3 leading-loose mb-10">
                     あなたが本来選ぶべき現実に、自然と整っていく。<br class="md:hidden">その変化を、ぜひ一度ご体感ください。
+                </h2>
+            </div>
+
+            <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200 mb-16">
+                <p class="text-gold font-bold tracking-widest mb-4">RESERVATION</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-navy-900 mb-6 leading-tight text-balance">
+                    <span class="text-unit">初回限定セッションの</span><br class="md:hidden"><span class="text-unit">ご案内</span>
+                </h3>
+                <p class="text-navy-900/80 mb-8 text-balance">はじめての方限定で、まずは変化を体感していただくための特別な枠です。</p>
+                <div class="flex flex-col items-center justify-center gap-2 mb-10">
+                    <p class="text-navy-900/40 line-through text-sm md:text-lg">通常: 60分22,000円(税込)</p><p class="text-gold/50 text-xl">↓</p>
+                    <p class="text-gold font-bold text-2xl md:text-4xl">初回限定: <span class="text-lg md:text-2xl font-normal">60分</span>11,000<span class="text-lg md:text-xl font-normal">円(税込)</span></p>
+                    <p class="text-navy-900/60 text-sm md:text-base font-medium mt-4 text-balance px-6">※オンライン限定となります。対面をご希望の場合は通常セッション料金となります。</p>
+                </div>
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-16 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl w-full md:w-auto">
+                    <span class="text-unit tracking-widest">【初回限定セッションを予約する】</span>
+                </a>
+            </div>
+
+            <div class="fade-up bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-sm max-w-2xl mx-auto mb-20">
+                <p class="text-navy-900/90 mb-6 leading-relaxed text-balance">
+                    情報変換ヒーリングの学びについても<br class="md:hidden">
+                    <span class="font-bold text-gold">無料のオンライン相談窓口による</span>ご案内が可能です。
                 </p>
-                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-navy-900 hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
-                    <span class="text-unit tracking-widest">【初回施術のお申し込み】</span>
+                <a href="free_consult.html" class="inline-block bg-transparent border border-gold/50 hover:bg-gold/10 text-gold font-serif font-medium py-3 px-8 rounded-full transition-all duration-300">
+                    <span class="text-unit tracking-widest">【相談窓口（無料）はこちら】</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
+    <footer class="bg-navy-900 py-12 text-center border-t border-white/10 px-6">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
             <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none">特定商取引法に基づく表記</button>
             <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none">利用規約・プライバシーポリシー</button>
@@ -416,7 +439,7 @@
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
             <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center">特定商取引法に基づく表記</h2>
-            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
+            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
                 <dl class="space-y-4 text-light/90">
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">販売事業者名</dt><dd>ストリーム株式会社</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">運営責任者</dt><dd>小川恵美</dd></div>
@@ -428,8 +451,8 @@
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品代金以外の必要料金</dt><dd>・銀行振込の場合の振込手数料 ・インターネット接続にかかる通信費等</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">お支払い方法</dt><dd>・銀行振込</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">お支払い時期</dt><dd>・銀行振込:お申し込み後3日以内にお支払いください</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品(サービス)の提供時期</dt><dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">返品・返金について</dt><dd>本サービスは役務提供の特性上、 サービス提供後の返金には応じかねます。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品(サービス)の提供時期</dt><dd>・ご入金確認後, 3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">返品・返金について</dt><dd>本サービスは役務提供の特性上, サービス提供後の返金には応じかねます。</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">キャンセルポリシー</dt><dd>・ご予約日の2日前までのキャンセル:無料 ・前日キャンセル:料金の50% ・当日キャンセルまたは無断キャンセル:料金の100%</dd></div>
                 </dl>
                 <div class="mt-8 pt-6 border-t border-white/10 space-y-6">
@@ -478,7 +501,7 @@
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
-            <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
+            <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
                 
                 <!-- 利用規約 -->
                 <section>
@@ -487,10 +510,10 @@
                         <p>本規約は、ストリーム株式会社(以下「当方」といいます)が提供する各種サービス(以下「本サービス」)の利用条件を定めるものです。ご利用にあたっては、本規約に同意したものとみなします。</p>
                         <div><p class="font-bold text-light mb-1">第1条(適用)</p><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
                         <div><p class="font-bold text-light mb-1">第2条(サービス内容)</p><p>本サービスは以下を含みます：<br>・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり、特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。<br>3 当方は、これに起因する損害について責任を負いません。</p></div>
+                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく, 診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり, 特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は, 医師等の専門家にご相談ください。</p></div>
+                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は, 一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は, 利用者ご自身の責任で行うものとします。<br>3 当方は, これに起因する損害について責任を負いません。</p></div>
                         <div><p class="font-bold text-light mb-1">第5条(禁止事項)</p><p>利用者は以下の行為を行ってはなりません：<br>・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・その他、当方が不適切と判断する行為</p></div>
-                        <div><p class="font-bold text-light mb-1">第6条(料金および支払い)</p><p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは、当方が指定する方法により行うものとします。</p></div>
+                        <div><p class="font-bold text-light mb-1">第6条(料金および支払い)</p><p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは, 当方が指定する方法により行うものとします。</p></div>
                         <div><p class="font-bold text-light mb-1">第7条(キャンセルおよび返金)</p><p>1 サービス提供後の返金は原則として行いません。<br>2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
                         <div><p class="font-bold text-light mb-1">第8条(サービスの提供停止)</p><p>以下の場合、当方はサービス提供を中断または停止できるものとします：<br>・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運営上やむを得ない場合</p></div>
                         <div><p class="font-bold text-light mb-1">第9条(免責事項)</p><p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。<br>2 通信環境等に起因するトラブルについても責任を負いません。</p></div>
