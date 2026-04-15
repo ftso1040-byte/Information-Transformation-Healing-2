@@ -249,6 +249,13 @@
         </div>
     </main>
 
+    <!-- メッセージボックス (Alertの代わり) -->
+    <div id="ui-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
+        <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
+            <span id="ui-message-text"></span>
+        </div>
+    </div>
+
     <!-- 送信完了メッセージボックス -->
     <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
         <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
@@ -304,6 +311,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
+        function showMessage(text) {
+            const msgBox = document.getElementById('ui-message');
+            const msgText = document.getElementById('ui-message-text');
+            msgText.innerText = text;
+            msgBox.classList.remove('hidden');
+            setTimeout(() => { msgBox.classList.add('hidden'); }, 3000);
+        }
+
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
@@ -343,16 +358,36 @@
                 });
             });
 
-            const today = new Date();
-            today.setDate(today.getDate() + 7);
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const minDate = `${yyyy}-${mm}-${dd}`;
-            ['date-1', 'date-2', 'date-3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.min = minDate;
-            });
+            // 施術希望日の「最短日」を設定・監視する処理
+            const setupDateRestriction = () => {
+                const today = new Date();
+                // 1週間後の日付を計算
+                const minDateObj = new Date(today.getTime() + (7 * 24 * 60 * 60 * 1000));
+                const yyyy = minDateObj.getFullYear();
+                const mm = String(minDateObj.getMonth() + 1).padStart(2, '0');
+                const dd = String(minDateObj.getDate()).padStart(2, '0');
+                const minDateString = `${yyyy}-${mm}-${dd}`; // HTML5 input min 用のフォーマット
+
+                ['date-1', 'date-2', 'date-3'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+
+                    // 1. min属性を設定（カレンダー上で過去を選べなくする：PC用）
+                    el.min = minDateString;
+
+                    // 2. 入力変更イベントを監視（Safari/モバイルブラウザ対策）
+                    el.addEventListener('change', (e) => {
+                        const selectedDate = e.target.value;
+                        if (selectedDate && selectedDate < minDateString) {
+                            // 選択された日が1週間後より前の場合はリセット
+                            e.target.value = "";
+                            showMessage("1週間後以降の日付をご選択ください");
+                        }
+                    });
+                });
+            };
+
+            setupDateRestriction();
 
             const form = document.getElementById('booking-form');
             if (form) {
@@ -362,6 +397,7 @@
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const successMsg = document.getElementById('success-message');
                     const originalBtnText = submitBtn.innerHTML;
+                    
                     submitBtn.innerHTML = '<span class="text-unit tracking-widest">送信中...</span>';
                     submitBtn.disabled = true;
                     submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
@@ -386,7 +422,7 @@
                         })
                         .catch(error => {
                             console.error('Error!', error.message);
-                            alert('送信に失敗しました。通信環境をご確認の上、もう一度お試しください。');
+                            showMessage('送信に失敗しました。通信環境をご確認ください。');
                         })
                         .finally(() => {
                             submitBtn.innerHTML = originalBtnText;
