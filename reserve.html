@@ -87,7 +87,7 @@
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (ヘッダーはダークで統一) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
@@ -163,17 +163,17 @@
                     <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
                 </div>
 
-                <!-- 希望メニュー -->
+                <!-- 希望メニュー (ご依頼通りの最新選択肢・並び順) -->
                 <div>
                     <label for="menu" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
                     <div class="relative">
                         <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                             <option value="" disabled selected>メニューを選択してください</option>
-                            <option value="【初回限定】情報変換ヒーリングセッション 遠隔：60分 11,000円">【初回限定】情報変換ヒーリングセッション 遠隔：60分 11,000円</option>
-                            <option value="情報変換ヒーリングセッション 対面（都内限定）/遠隔：60分 22,000円">情報変換ヒーリングセッション 対面（都内限定）/遠隔：60分 22,000円</option>
-                            <option value="不動産 位相調律セッション 初回 対面（都内限定）/遠隔：60〜90分 33,000円">不動産 位相調律セッション 初回 対面（都内限定）/遠隔：60〜90分 33,000円</option>
-                            <option value="不動産 位相調律セッション 240分パック 対面（都内限定）/遠隔：77,000円">不動産 位相調律セッション 240分パック 対面（都内限定）/遠隔：77,000円</option>
-                            <option value="リピーターの方はこちら">リピーターの方はこちら</option>
+                            <option value="【初回限定セッション】 60分 オンラインのみ：11,000円">【初回限定セッション】 60分 オンラインのみ：11,000円</option>
+                            <option value="通常セッション(情報変換ヒーリング) 60分 対面（都内限定）/オンライン：22,000円">通常セッション(情報変換ヒーリング) 60分 対面（都内限定）/オンライン：22,000円</option>
+                            <option value="不動産 位相調律セッション 60〜90分 オンラインのみ：33,000円">不動産 位相調律セッション 60〜90分 オンラインのみ：33,000円</option>
+                            <option value="不動産 位相調律セッション 240分パック オンラインのみ：77,000円">不動産 位相調律セッション 240分パック オンラインのみ：77,000円</option>
+                            <option value="リピーターの方のご相談はこちら(遠隔ヒーリング等)">リピーターの方のご相談はこちら(遠隔ヒーリング等)</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -191,9 +191,6 @@
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,9 +205,6 @@
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,9 +219,6 @@
                                 <option value="" disabled selected>希望時間を選択</option>
                                 <option value="09:00">09:00 〜</option><option value="09:30">09:30 〜</option><option value="10:00">10:00 〜</option><option value="10:30">10:30 〜</option><option value="11:00">11:00 〜</option><option value="11:30">11:30 〜</option><option value="12:00">12:00 〜</option><option value="12:30">12:30 〜</option><option value="13:00">13:00 〜</option><option value="13:30">13:30 〜</option><option value="14:00">14:00 〜</option><option value="14:30">14:30 〜</option><option value="15:00">15:00 〜</option><option value="15:30">15:30 〜</option><option value="16:00">16:00 〜</option><option value="16:30">16:30 〜</option><option value="17:00">17:00 〜</option><option value="17:30">17:30 〜</option><option value="18:00">18:00 〜</option><option value="18:30">18:30 〜</option><option value="19:00">19:00 〜</option><option value="19:30">19:30 〜</option><option value="20:00">20:00 〜</option><option value="20:30">20:30 〜</option><option value="21:00">21:00 〜</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-900/50">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
                         </div>
                     </div>
                     <p class="text-sm text-navy-900/60 mt-2 px-1">※カレンダーより1週間後以降の日付をご選択ください。</p>
@@ -236,7 +227,7 @@
                 <!-- 現状のお悩み -->
                 <div>
                     <label for="message" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
-                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-white/10 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
                 </div>
 
                 <!-- 送信ボタン -->
@@ -249,7 +240,7 @@
         </div>
     </main>
 
-    <!-- メッセージボックス (Alertの代わり) -->
+    <!-- メッセージボックス (警告用) -->
     <div id="ui-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
         <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
             <span id="ui-message-text"></span>
@@ -286,13 +277,11 @@
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold-light font-bold">メールアドレス</dt><dd>tuning0369@gmail.com</dd></div>
                 </dl>
             </div>
-            <div class="text-center mt-10">
-                <button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
+            <div class="text-center mt-10"><button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー モーダル -->
+    <!-- 利用規約 モーダル -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
         <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
@@ -301,9 +290,7 @@
             <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
                 <p>当社は、お客様の個人情報を適切に管理し、セッション提供の目的以外での利用は行いません。</p>
             </div>
-            <div class="text-center mt-10">
-                <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
+            <div class="text-center mt-10"><button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
@@ -358,41 +345,35 @@
                 });
             });
 
-            // 施術希望日の「最短日」を設定・監視する処理
+            // 最短日(1週間後)の設定とバリデーション (Safari/LINE対策)
             const setupDateRestriction = () => {
                 const today = new Date();
-                // 1週間後の日付を計算
                 const minDateObj = new Date(today.getTime() + (7 * 24 * 60 * 60 * 1000));
                 const yyyy = minDateObj.getFullYear();
                 const mm = String(minDateObj.getMonth() + 1).padStart(2, '0');
                 const dd = String(minDateObj.getDate()).padStart(2, '0');
-                const minDateString = `${yyyy}-${mm}-${dd}`; // HTML5 input min 用のフォーマット
+                const minDateString = `${yyyy}-${mm}-${dd}`;
 
                 ['date-1', 'date-2', 'date-3'].forEach(id => {
                     const el = document.getElementById(id);
                     if (!el) return;
-
-                    // 1. min属性を設定（カレンダー上で過去を選べなくする：PC用）
                     el.min = minDateString;
-
-                    // 2. 入力変更イベントを監視（Safari/モバイルブラウザ対策）
                     el.addEventListener('change', (e) => {
                         const selectedDate = e.target.value;
                         if (selectedDate && selectedDate < minDateString) {
-                            // 選択された日が1週間後より前の場合はリセット
                             e.target.value = "";
                             showMessage("1週間後以降の日付をご選択ください");
                         }
                     });
                 });
             };
-
             setupDateRestriction();
 
             const form = document.getElementById('booking-form');
             if (form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault();
+                    // GAS URL
                     const scriptURL = 'https://script.google.com/macros/s/AKfycbw-TtdCSB8pmeXd-HZkcw7CuWgM8Uzk08ch-Cq-PVP7YNnn0XwU9GsBre6yQx1LpOQ/exec';
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const successMsg = document.getElementById('success-message');
@@ -421,7 +402,6 @@
                             setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
                         })
                         .catch(error => {
-                            console.error('Error!', error.message);
                             showMessage('送信に失敗しました。通信環境をご確認ください。');
                         })
                         .finally(() => {
