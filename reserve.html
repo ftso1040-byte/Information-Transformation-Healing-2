@@ -83,11 +83,6 @@
         
         /* カレンダーアイコンの色（白背景用） */
         ::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; }
-
-        /* モーダル用スクロールバー */
-        .modal-scroll::-webkit-scrollbar { width: 6px; }
-        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
-        .modal-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
@@ -136,7 +131,6 @@
                     <span class="text-unit">あなたが本来選ぶべき現実に、</span><span class="text-unit">自然と整っていく。</span><br>
                     <span class="text-unit">その変化を、</span><span class="text-unit">ぜひ一度ご体感ください。</span>
                 </p>
-                <!-- 準備期間の文言を相談窓口と同じ丁寧な表現へ変更 -->
                 <p class="mt-8 text-sm md:text-base text-navy-900/80 font-medium bg-gray-50 inline-block px-6 py-3 rounded-full border border-gray-200 leading-relaxed">
                     <span class="text-unit">※お一人ずつ丁寧にお話を伺うため、</span><br class="md:hidden">
                     <span class="text-unit">直近の日程はご希望に添えない場合がございます。</span><br class="md:hidden">
@@ -237,8 +231,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 1週間後制限の文言を緩和した表現へ変更 -->
-                    <p class="text-sm text-navy-900/60 mt-2 px-1 text-balance">※直近の日程はご希望に添えない場合がございます。なるべく早めのご連絡をお願いします。</p>
                 </div>
 
                 <!-- 現状のお悩み -->
@@ -272,19 +264,19 @@
         </div>
     </div>
 
-    <!-- Footer (リンクを2つに統合) -->
-    <footer class="bg-navy-900 py-16 text-center border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 mb-8 text-sm text-light/70 font-serif tracking-wider px-6">
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 text-center border-t border-white/10 px-6">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
             <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">特定商取引法に基づく表記</button>
             <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">利用規約・プライバシーポリシー</button>
         </div>
-        <p class="text-light/40 text-xs tracking-widest px-4">© 2026 Trinity Healing. All Rights Reserved.</p>
+        <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
     <!-- 特定商取引法に基づく表記 モーダル -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
             <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center">特定商取引法に基づく表記</h2>
             <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
@@ -299,9 +291,9 @@
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品代金以外の必要料金</dt><dd>・銀行振込の場合の振込手数料 ・インターネット接続にかかる通信費等</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">お支払い方法</dt><dd>・銀行振込</dd></div>
                     <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">お支払い時期</dt><dd>・銀行振込:お申し込み後3日以内にお支払いください</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品(サービス)の提供時期</dt><dd>・ご入金確認後, 3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">返品・返金について</dt><dd>本サービスは役務提供の特性上, サービス提供後の返金には応じかねます。</dd></div>
-                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">キャンセルポリシー</dt><dd>・ご予約日の2日前までのキャンセル:無料 ・前日キャンセル:料金の50% ・当日キャンセルまたは無断キャンセル:料金の100%</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">商品(サービス)の提供時期</dt><dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします<br>・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">返品・返金について</dt><dd>本サービスは役務提供の特性上、 サービス提供後の返金には応じかねます。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold">キャンセルポリシー</dt><dd>・ご予約日の2日前までのキャンセル:無料<br>・前日キャンセル:料金の50%<br>・当日キャンセルまたは無断キャンセル:料金の100%</dd></div>
                 </dl>
                 <div class="mt-8 pt-6 border-t border-white/10 space-y-6">
                     <div>
@@ -325,7 +317,7 @@
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">提供形式について</p>
-                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等) ・遠隔セッション(非対面)</p>
+                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等)<br>・遠隔セッション(非対面)</p>
                     </div>
                     <div>
                         <p class="text-gold-light font-bold mb-2">宗教・勧誘について</p>
@@ -337,14 +329,16 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-6"><button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
+            <div class="text-center mt-10 pt-6 border-t border-white/10">
+                <button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
+            </div>
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー 統合モーダル -->
+    <!-- 利用規約・プライバシーポリシー モーダル -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
             <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
@@ -356,8 +350,8 @@
                         <p>本規約は、ストリーム株式会社(以下「当方」といいます)が提供する各種サービス(以下「本サービス」)の利用条件を定めるものです。ご利用にあたっては、本規約に同意したものとみなします。</p>
                         <div><p class="font-bold text-light mb-1">第1条(適用)</p><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
                         <div><p class="font-bold text-light mb-1">第2条(サービス内容)</p><p>本サービスは以下を含みます：<br>・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく, 診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり, 特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は, 医師等の専門家にご相談ください。</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は, 一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は, 利用者ご自身の責任で行うものとします。<br>3 当方は, これに起因する損害について責任を負いません。</p></div>
+                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり、特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
+                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。<br>3 当方は、これに起因する損害について責任を負いません。</p></div>
                         <div><p class="font-bold text-light mb-1">第5条(禁止事項)</p><p>利用者は以下の行為を行ってはなりません：<br>・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・その他、当方が不適切と判断する行為</p></div>
                         <div><p class="font-bold text-light mb-1">第6条(料金および支払い)</p><p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは、当方が指定する方法により行うものとします。</p></div>
                         <div><p class="font-bold text-light mb-1">第7条(キャンセルおよび返金)</p><p>1 サービス提供後の返金は原則として行いません。<br>2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
@@ -387,7 +381,9 @@
                     </div>
                 </section>
             </div>
-            <div class="text-center mt-6"><button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
+            <div class="text-center mt-10 pt-6 border-t border-white/10">
+                <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
+            </div>
         </div>
     </div>
 
@@ -395,6 +391,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
+        function showMessage(text) {
+            const msgBox = document.getElementById('ui-message');
+            const msgText = document.getElementById('ui-message-text');
+            msgText.innerText = text;
+            msgBox.classList.remove('hidden');
+            setTimeout(() => { msgBox.classList.add('hidden'); }, 3000);
+        }
+
         function openPrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             const content = document.getElementById('privacy-modal-content');
@@ -461,7 +465,7 @@
                 });
             });
 
-            // 日付制限を緩和（当日以降を選択可能に）
+            // 過去の日付のみ制限（当日以降は選択可能）
             const setupDateRestriction = () => {
                 const today = new Date();
                 const yyyy = today.getFullYear();
