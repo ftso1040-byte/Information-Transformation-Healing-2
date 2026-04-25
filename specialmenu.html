@@ -51,22 +51,18 @@
             -moz-osx-font-smoothing: grayscale; 
             line-break: strict;
             overflow-wrap: break-word;
-            
-            /* 文節での改行をブラウザに委ね、1文字残りを防ぐ最新の設定 */
             word-break: auto-phrase;
             text-wrap: pretty;
         }
 
         h1, h2, h3 { text-wrap: balance; }
 
-        /* PC版：意味の塊を維持 */
         .text-unit { 
             display: inline-block; 
             white-space: nowrap; 
             vertical-align: top; 
         }
 
-        /* スマホ版：不自然な空白を作らないよう、通常の折り返しを優先 */
         @media (max-width: 767px) {
             .text-unit { 
                 display: inline; 
@@ -93,14 +89,17 @@
         }
         
         .overflow-hidden { overflow: hidden; }
+
+        .modal-scroll::-webkit-scrollbar { width: 6px; }
+        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans leading-loose pt-20">
 
-    <!-- Header (ヘッダーはダークで統一) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- 2段表示のロゴ -->
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
                 <span class="font-serif text-[10px] md:text-xs text-gold-light tracking-widest mb-0.5 leading-none">三位一体（トリニティ）ヒーリング</span>
                 <span class="font-serif text-lg md:text-xl text-light font-medium tracking-widest leading-none mt-1">Trinity Healing</span>
@@ -142,7 +141,7 @@
             <h1 class="font-serif fluid-h1 text-navy-900 leading-relaxed mb-10">
                 <span class="text-unit">決める前に、整える。</span><br>
                 <span class="text-unit">不動産の選択は、</span><br class="md:hidden">
-                <span class="text-unit">情報ではなく「状態」で変わる。</span>
+                <span class="text-unit"><span class="inline-block">情報ではなく</span><span class="inline-block">「状態」で変わる。</span></span>
             </h1>
             <div class="h-px w-12 bg-gold mx-auto"></div>
         </div>
@@ -152,7 +151,6 @@
     <section class="py-20 px-6 bg-white">
         <div class="max-w-3xl mx-auto space-y-24 font-serif text-navy-900/80 leading-loose fluid-p">
             
-            <!-- メイン画像：一人で悩む方に寄り添う、1対1の丁寧な対話風景 (縦幅を広く調整) -->
             <div class="mb-16 fade-up">
                 <img src="Gemini_Generated_Image_cvmbz6cvmbz6cvmb.png" alt="" class="w-full h-80 md:h-[600px] object-cover rounded-2xl shadow-md" style="object-position: center 30%;">
             </div>
@@ -164,12 +162,15 @@
                     <span class="inline-block">それでも最後に、</span><span class="font-bold text-navy-900 inline-block">「これでいいのか」という迷いが</span><span class="font-bold text-navy-900 inline-block">残ることがあります。</span>
                 </p>
                 
-                <ul class="space-y-3 mt-8 mb-6 pl-4 border-l border-gray-200 text-navy-900 font-medium">
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">情報は揃っているのに</span><span class="inline-block">決めきれない</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">なんとなく</span><span class="inline-block">違和感がある</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">焦りや不安の中で</span><span class="inline-block">判断している気がする</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの意見に</span><span class="inline-block">引っ張られている</span></span></li>
-                </ul>
+                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mt-4 mb-6">
+                    <div class="space-y-3 text-navy-900 font-medium">
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">情報は揃っているのに</span><span class="inline-block">決めきれない</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">なんとなく</span><span class="inline-block">違和感がある</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">焦りや不安の中で</span><span class="inline-block">判断している気がする</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの意見に</span><span class="inline-block">引っ張られている</span></span></div>
+                    </div>
+                </div>
+
                 <p>
                     <span class="inline-block">その状態のまま</span><span class="inline-block">選んだ結果が、</span><span class="inline-block">後悔につながることも</span><span class="inline-block">少なくありません。</span>
                 </p>
@@ -201,7 +202,6 @@
             </div>
 
             <div class="fade-up">
-                <!-- サブ画像：背伸びをしてスッキリとした状態のイメージ (縦幅を広く調整) -->
                 <div class="mb-12">
                     <img src="Gemini_Generated_Image_wisu3ywisu3ywisu.png" alt="" class="w-full h-64 md:h-[400px] object-cover rounded-2xl shadow-sm">
                 </div>
@@ -223,40 +223,44 @@
                 </ol>
 
                 <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">セッション後の</span><span class="inline-block">変化</span></h2>
-                <ul class="space-y-3 text-navy-900 font-medium">
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いが自然に消える</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">判断の違和感がなくなる</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">選択に対する確信が生まれる</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">決断のスピードが上がる</span></span></li>
-                </ul>
+                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-6">
+                    <div class="space-y-3 text-navy-900 font-medium">
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いが自然に消える</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">判断の違和感がなくなる</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">選択に対する確信が生まれる</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">決断のスピードが上がる</span></span></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="fade-up flex flex-col md:flex-row gap-12">
-                <div class="flex-1">
+            <div class="fade-up flex flex-col md:flex-row gap-8 md:gap-12">
+                <div class="flex-1 bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm">
                     <h3 class="font-bold text-navy-900 mb-4 border-b border-gray-200 pb-2"><span class="inline-block">このセッションが</span><span class="inline-block">合う方</span></h3>
-                    <ul class="space-y-3 text-sm md:text-base">
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いを解消したいのではなく、</span><span class="inline-block">整えたい方</span></span></li>
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの答えではなく、</span><span class="inline-block">自分の納得を大切にしたい方</span></span></li>
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">落ち着いた状態で</span><span class="inline-block">判断したい方</span></span></li>
-                    </ul>
+                    <div class="space-y-3 text-sm md:text-base text-navy-900">
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いを解消したいのではなく、</span><span class="inline-block">整えたい方</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの答えではなく、</span><span class="inline-block">自分の納得を大切にしたい方</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">落ち着いた状態で</span><span class="inline-block">判断したい方</span></span></div>
+                    </div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="font-bold text-navy-900/50 mb-4 border-b border-gray-100 pb-2"><span class="inline-block">このセッションとは</span><span class="inline-block">少し違う方</span></h3>
-                    <ul class="space-y-3 text-sm md:text-base text-navy-900/60">
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">具体的な物件提案を</span><span class="inline-block">求めている方</span></span></li>
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">結論を代わりに</span><span class="inline-block">決めてほしい方</span></span></li>
-                    </ul>
+                <div class="flex-1 bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900/50 mb-4 border-b border-gray-200 pb-2"><span class="inline-block">このセッションとは</span><span class="inline-block">少し違う方</span></h3>
+                    <div class="space-y-3 text-sm md:text-base text-navy-900/60">
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">具体的な物件提案を</span><span class="inline-block">求めている方</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">結論を代わりに</span><span class="inline-block">決めてほしい方</span></span></div>
+                    </div>
                 </div>
             </div>
 
             <div class="fade-up">
                 <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">提供者の強み・信頼</span></h2>
                 <p class="mb-6"><span class="inline-block">私はこれまで、</span></p>
-                <ul class="space-y-2 mb-6 pl-4 border-l border-gray-200 text-navy-900">
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">大手不動産仲介会社での実務</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">相続コンサルティング</span></span></li>
-                    <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地家屋調査士・司法書士の</span><span class="inline-block">合同事務所(登記事務所)での業務</span></span></li>
-                </ul>
+                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-6">
+                    <div class="space-y-3 text-navy-900">
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">大手不動産仲介会社での実務</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">相続コンサルティング</span></span></div>
+                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地家屋調査士・司法書士の</span><span class="inline-block">合同事務所(登記事務所)での業務</span></span></div>
+                    </div>
+                </div>
                 <p class="mb-6">
                     <span class="inline-block">など、不動産に関わる複数の現場を</span><span class="inline-block">横断的に経験してきました。</span>
                     <span class="inline-block">さらに現在は、路線価の半値以下で</span><span class="inline-block">土地を取得する投資家としても</span><span class="inline-block">活動しています。</span>
@@ -281,13 +285,15 @@
 
             <div class="fade-up">
                 <div class="mb-16">
-                    <h3 class="font-bold text-navy-900 mb-4"><span class="inline-block">オプション</span></h3>
+                    <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">オプション</span></h2>
                     <p class="mb-4"><span class="inline-block">ご希望に応じて、</span><span class="inline-block">情報変換ヒーリングの観点から</span></p>
-                    <ul class="space-y-2 pl-4 text-navy-900 mb-4">
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地や建物の</span><span class="inline-block">状態調整</span></span></li>
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">環境全体の調律</span></span></li>
-                        <li class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">空間や土地に対する</span><span class="inline-block">浄化的アプローチ</span></span></li>
-                    </ul>
+                    <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-4">
+                        <div class="space-y-3 text-navy-900">
+                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地や建物の</span><span class="inline-block">状態調整</span></span></div>
+                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">環境全体の調律</span></span></div>
+                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">空間や土地に対する</span><span class="inline-block">浄化的アプローチ</span></span></div>
+                        </div>
+                    </div>
                     <p class="text-navy-900"><span class="inline-block">も行っています。</span></p>
                 </div>
 
