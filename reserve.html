@@ -277,14 +277,12 @@
         </div>
     </main>
 
-    <!-- メッセージボックス (警告用) -->
+    <!-- メッセージボックス -->
     <div id="ui-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
         <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
             <span id="ui-message-text"></span>
         </div>
     </div>
-
-    <!-- 送信完了メッセージボックス -->
     <div id="success-message" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] hidden">
         <div class="bg-white text-navy-900 px-8 py-4 rounded-full shadow-2xl font-bold flex items-center gap-3 border-2 border-gold animate-bounce">
             <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
@@ -301,7 +299,7 @@
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
 
-    <!-- モーダル用スクリプト (内容は変更なし) -->
+    <!-- GSAP / Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
@@ -319,55 +317,80 @@
                 gsap.to(el, { y: 0, autoAlpha: 1, duration: 1, scrollTrigger: { trigger: el, start: "top 90%" }});
             });
 
+            // 過去の日付を選択できないように制限（当日以降のみ選択可能）
+            const setupDateRestriction = () => {
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                const minDateString = `${yyyy}-${mm}-${dd}`;
+
+                ['date-1', 'date-2', 'date-3'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.min = minDateString;
+                });
+            };
+            setupDateRestriction();
+
             const form = document.getElementById('booking-form');
             form.addEventListener('submit', e => {
                 e.preventDefault();
                 
-                // 最新のデプロイURL
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbyJxBKKqWTpQdX_GDrOReLXfC5G5SDGFrpVarHd525wGFu-pdORRwDK1mhWdNBBZBw/exec';
+                // ご提供いただいた最新のデプロイURL
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbyB89ma6lYI2wiPYQwPqAXESQqcATaKb7z9rCSVw_rOwRDiwOkjGnNNvuEhCzwxUkQ/exec';
                 const submitBtn = document.getElementById('submit-btn');
                 const successMsg = document.getElementById('success-message');
                 
                 submitBtn.disabled = true;
-                submitBtn.innerText = "送信中...";
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="tracking-widest inline-block">送信中...</span>';
 
                 const fd = new FormData(form);
                 const params = new URLSearchParams();
                 
-                // GAS側の引数名に合わせる
+                // GAS側の引数名に厳密に合わせる
                 params.append('name', fd.get('name'));
                 params.append('kana', fd.get('kana'));
                 params.append('email', fd.get('email'));
-                params.append('phone', fd.get('tel')); // HTMLの name="tel" を phone に変換
+                params.append('phone', fd.get('tel')); 
                 params.append('menu', fd.get('menu'));
                 params.append('date1', (fd.get('date-1') + " " + (fd.get('time-1') || "")).trim());
                 params.append('date2', (fd.get('date-2') + " " + (fd.get('time-2') || "")).trim());
                 params.append('date3', (fd.get('date-3') + " " + (fd.get('time-3') || "")).trim());
                 params.append('message', fd.get('message'));
 
-                // mode: 'no-cors' で送信 (GASへの簡易POSTの定石)
+                // mode: 'no-cors' はレスポンスを読めないため、.then() は通信終了を意味します。
+                // スプレッドシートに空の行が入るのを防ぐため、URLSearchParams形式で送ります。
                 fetch(scriptURL, { 
                     method: 'POST', 
                     body: params, 
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    mode: 'no-cors'
                 })
                 .then(() => {
                     // no-cors の場合 response が空になるため、通信完了＝成功として扱う
                     successMsg.classList.remove('hidden');
                     form.reset();
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "送信する";
+                    submitBtn.innerHTML = originalText;
                     setTimeout(() => successMsg.classList.add('hidden'), 5000);
                 })
                 .catch((err) => {
                     console.error(err);
                     showMessage("送信エラーが発生しました。");
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "送信する";
+                    submitBtn.innerHTML = originalText;
                 });
             });
         });
+
+        // モーダル制御（共通）
+        function openPrivacyModal() {
+            // モーダル表示ロジック（index.html等と共通であればそちらを参照、ここでは簡易的な表示切替が可能）
+            window.location.href = "index.html?modal=privacy";
+        }
+        function openTokushoModal() {
+            window.location.href = "index.html?modal=tokusho";
+        }
     </script>
 </body>
 </html>
