@@ -125,16 +125,16 @@
             <div class="text-center mb-12 fade-up">
                 <p class="text-gold font-bold tracking-widest mb-4">RESERVATION</p>
                 <h1 class="font-serif fluid-h2 text-navy-900">
-                    <span class="text-unit">ご予約</span>
+                    <span class="inline-block">ご予約</span>
                 </h1>
                 <p class="fluid-p text-navy-900/80 leading-loose mt-6 px-4">
-                    <span class="text-unit">あなたが本来選ぶべき現実に、</span><span class="text-unit">自然と整っていく。</span><br>
-                    <span class="text-unit">その変化を、</span><span class="text-unit">ぜひ一度ご体感ください。</span>
+                    <span class="inline-block">あなたが本来選ぶべき現実に、</span><span class="inline-block">自然と整っていく。</span><br>
+                    <span class="inline-block">その変化を、</span><span class="inline-block">ぜひ一度ご体感ください。</span>
                 </p>
-                <p class="mt-8 text-sm md:text-base text-navy-900/80 font-medium bg-gray-50 inline-block px-6 py-3 rounded-full border border-gray-200 leading-relaxed">
-                    <span class="text-unit">※お一人ずつ丁寧にお話を伺うため、</span><br class="md:hidden">
-                    <span class="text-unit">直近の日程はご希望に添えない場合がございます。</span><br class="md:hidden">
-                    <span class="text-unit">ゆとりを持ったお申し込みをいただけますと幸いです。</span>
+                <p class="mt-8 text-sm md:text-base text-navy-900/80 font-medium bg-gray-50 inline-block px-6 py-3 rounded-full border border-gray-200 leading-relaxed text-left md:text-center text-balance w-full md:w-auto">
+                    <span class="inline-block">※お一人ずつ丁寧にお話を</span><span class="inline-block">伺うため、</span><br class="md:hidden">
+                    <span class="inline-block">直近の日程はご希望に添えない</span><span class="inline-block">場合がございます。</span><br class="md:hidden">
+                    <span class="inline-block">ゆとりを持ったお申し込みを</span><span class="inline-block">いただけますと幸いです。</span>
                 </p>
             </div>
             
@@ -142,31 +142,41 @@
             <form id="booking-form" class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 fade-up space-y-8">
                 <!-- お名前 -->
                 <div>
-                    <label for="name" class="block font-serif text-navy-900 font-bold mb-2">お名前 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="name" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">お名前</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="山田 太郎">
                 </div>
 
                 <!-- ふりがな -->
                 <div>
-                    <label for="kana" class="block font-serif text-navy-900 font-bold mb-2">ふりがな <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="kana" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">ふりがな</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <input type="text" id="kana" name="kana" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="やまだ たろう">
                 </div>
 
                 <!-- メールアドレス -->
                 <div>
-                    <label for="email" class="block font-serif text-navy-900 font-bold mb-2">メールアドレス <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="email" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">メールアドレス</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="your@email.com">
                 </div>
 
                 <!-- 電話番号 -->
                 <div>
-                    <label for="tel" class="block font-serif text-navy-900 font-bold mb-2">電話番号 <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="tel" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">電話番号</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <input type="tel" id="tel" name="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white" placeholder="090-1234-5678">
                 </div>
 
                 <!-- 希望メニュー -->
                 <div>
-                    <label for="menu" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">希望メニュー</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label for="menu" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">希望メニュー</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <div class="relative">
                         <select id="menu" name="menu" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white appearance-none cursor-pointer">
                             <option value="" disabled selected>メニューを選択してください</option>
@@ -184,7 +194,9 @@
 
                 <!-- 第一希望日時 -->
                 <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第一希望日時</span> <span class="text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">第一希望日時</span> <span class="inline-block text-xs text-white font-bold bg-gold px-2 py-1 rounded ml-2">必須</span>
+                    </label>
                     <div class="flex flex-col md:flex-row gap-4">
                         <input type="date" id="date-1" name="date-1" required class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
@@ -201,7 +213,9 @@
 
                 <!-- 第二希望日時 -->
                 <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第二希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">第二希望日時</span> <span class="inline-block text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span>
+                    </label>
                     <div class="flex flex-col md:flex-row gap-4">
                         <input type="date" id="date-2" name="date-2" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
@@ -218,7 +232,9 @@
 
                 <!-- 第三希望日時 -->
                 <div>
-                    <label class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">第三希望日時</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                    <label class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">第三希望日時</span> <span class="inline-block text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span>
+                    </label>
                     <div class="flex flex-col md:flex-row gap-4">
                         <input type="date" id="date-3" name="date-3" class="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white cursor-pointer">
                         <div class="relative w-full md:w-1/2">
@@ -235,14 +251,26 @@
 
                 <!-- 現状のお悩み -->
                 <div>
-                    <label for="message" class="block font-serif text-navy-900 font-bold mb-2"><span class="text-unit">現状のお悩みや</span><span class="text-unit">ご相談内容</span> <span class="text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span></label>
+                    <label for="message" class="block font-serif text-navy-900 font-bold mb-2">
+                        <span class="inline-block">現状のお悩みや</span><span class="inline-block">ご相談内容</span> <span class="inline-block text-xs text-navy-900/60 bg-gray-200 border border-gray-300 px-2 py-1 rounded ml-2">任意</span>
+                    </label>
                     <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-colors text-navy-900 bg-white resize-none" placeholder="現在抱えているお悩みや、変えたい現実についてご自由にお書きください。"></textarea>
+                </div>
+
+                <!-- 同意チェックボックス -->
+                <div class="flex items-start bg-white p-4 rounded border border-gray-100">
+                    <div class="flex items-center h-5 mt-1">
+                        <input id="consent" name="consent" type="checkbox" required class="w-4 h-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-gold">
+                    </div>
+                    <label for="consent" class="ml-3 text-sm font-medium text-navy-900/80 leading-relaxed cursor-pointer select-none">
+                        <span class="inline-block">当サイトの</span><a href="index.html?modal=tokusho" class="text-gold hover:underline inline-block mx-1">特定商取引法に基づく表記</a><span class="inline-block">および</span><br class="md:hidden"><a href="index.html?modal=privacy" class="text-gold hover:underline inline-block mx-1">利用規約・プライバシーポリシー</a><span class="inline-block">に同意します。</span>
+                    </label>
                 </div>
 
                 <!-- 送信ボタン -->
                 <div class="text-center pt-4">
                     <button type="submit" class="inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-bold text-lg py-4 px-16 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg w-full md:w-auto">
-                        <span class="tracking-widest">送信する</span>
+                        <span class="tracking-widest inline-block">送信する</span>
                     </button>
                 </div>
             </form>
@@ -267,8 +295,8 @@
     <!-- Footer -->
     <footer class="bg-navy-900 py-12 text-center border-t border-white/10 px-6">
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">利用規約・プライバシーポリシー</button>
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none border-b border-transparent hover:border-gold"><span class="inline-block">特定商取引法に</span><span class="inline-block">基づく表記</span></button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none border-b border-transparent hover:border-gold"><span class="inline-block">利用規約・</span><span class="inline-block">プライバシーポリシー</span></button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
@@ -335,31 +363,31 @@
         </div>
     </div>
 
-    <!-- 利用規約・プライバシーポリシー モーダル -->
+    <!-- 利用規約・プライバシーポリシー 統合モーダル -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-4xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
-            <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
+            <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
                 
                 <!-- 利用規約 -->
                 <section>
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">利用規約</h3>
                     <div class="space-y-6">
                         <p>本規約は、ストリーム株式会社(以下「当方」といいます)が提供する各種サービス(以下「本サービス」)の利用条件を定めるものです。ご利用にあたっては、本規約に同意したものとみなします。</p>
-                        <div><p class="font-bold text-light mb-1">第1条(適用)</p><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
-                        <div><p class="font-bold text-light mb-1">第2条(サービス内容)</p><p>本サービスは以下を含みます：<br>・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(本サービスの性質)</p><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。<br>2 効果や体感には個人差があり、特定の結果を保証するものではありません。<br>3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(不動産に関する免責)</p><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。<br>2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。<br>3 当方は、これに起因する損害について責任を負いません。</p></div>
-                        <div><p class="font-bold text-light mb-1">第5条(禁止事項)</p><p>利用者は以下の行為を行ってはなりません：<br>・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・その他、当方が不適切と判断する行為</p></div>
-                        <div><p class="font-bold text-light mb-1">第6条(料金および支払い)</p><p>1 料金は各サービスページに記載の通りとします。<br>2 支払いは、当方が指定する方法により行うものとします。</p></div>
-                        <div><p class="font-bold text-light mb-1">第7条(キャンセルおよび返金)</p><p>1 サービス提供後の返金は原則として行いません。<br>2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第8条(サービスの提供停止)</p><p>以下の場合、当方はサービス提供を中断または停止できるものとします：<br>・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運営上やむを得ない場合</p></div>
-                        <div><p class="font-bold text-light mb-1">第9条(免責事項)</p><p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。<br>2 通信環境等に起因するトラブルについても責任を負いません。</p></div>
-                        <div><p class="font-bold text-light mb-1">第10条(著作権)</p><p>本サービスに関する資料・コンテンツの著作権は当方に帰属します。 無断転載・転用を禁止します。</p></div>
-                        <div><p class="font-bold text-light mb-1">第11条(規約の変更)</p><p>当方は、必要に応じて本規約を変更できるものとします。</p></div>
-                        <div><p class="font-bold text-light mb-1">第12条(準拠法および管轄)</p><p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第1条(適用)</h3><p>本規約は、本サービスの利用に関する一切の関係に適用されます。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第2条(サービス内容)</h3><p>本サービスは以下を含みます： ・情報変換ヒーリングセッション(対面/オンライン) ・遠隔ヒーリング ・不動産 位相調律セッション ・不動産および空間に対する調律サポート ・その他関連するカウンセリングおよびセッション</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第3条(本サービスの性質)</h3><p>1 本サービスは医療行為ではなく、診断・治療を目的とするものではありません。 2 効果や体感には個人差があり、特定の結果を保証するものではありません。 3 心身の状態に不安がある場合は、医師等の専門家にご相談ください。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第4条(不動産に関する免責)</h3><p>1 本サービスに含まれる不動産に関する助言は、一般的な情報提供およびセカンドオピニオンです。 2 売買・契約・投資等の最終判断は、利用者ご自身の責任で行うものとします。 3 当方は、これに起因する損害について責任を負いません。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第5条(禁止事項)</h3><p>利用者は以下の行為を行ってはなりません： ・虚偽の情報を提供する行為 ・本サービスの運営を妨害する行為 ・公序良俗に反する行為 ・ その他、当方が不適切と判断する行為</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第6条(料金および支払い)</h3><p>1 料金は各サービスページに記載の通りとします。 2 支払いは、当方が指定する方法により行うものとします。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第7条(キャンセルおよび返金)</h3><p>1 サービス提供後の返金は原則として行いません。 2 キャンセルについては、別途定めるキャンセルポリシーに従います。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第8条(サービスの提供停止)</h3><p>以下の場合、当方はサービス提供を中断または停止できるものとします： ・体調や状況により提供が困難と判断した場合 ・利用者が本規約に違反した場合 ・その他、運 営上やむを得ない場合</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第9条(免責事項)</h3><p>1 本サービスの利用により生じた損害について、当方は一切の責任を負いません。 2 通信環境等に起因するトラブルについても責任を負いません。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第10条(著作権)</h3><p>本サービスに関する資料・コンテンツの著作権は当方に帰属します。 無断転載・転用を禁止します。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第11条(規約の変更)</h3><p>当方は、必要に応じて本規約を変更できるものとします。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第12条(準拠法および管轄)</h3><p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p></div>
                     </div>
                 </section>
 
@@ -368,22 +396,20 @@
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">プライバシーポリシー</h3>
                     <div class="space-y-6">
                         <p>世界線調律所(以下「当方」)は、個人情報の重要性を認識し、適切な取り扱いを行います。</p>
-                        <div><p class="font-bold text-light mb-1">第1条(個人情報の取得)</p><p>当方は、以下の方法により個人情報を取得します：<br>・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p></div>
-                        <div><p class="font-bold text-light mb-1">第2条(取得する情報)</p><p>取得する情報は以下を含みます：<br>・氏名 ・メールアドレス ・電話番号(任意) ・その他サービス提供に必要な情報</p></div>
-                        <div><p class="font-bold text-light mb-1">第3条(利用目的)</p><p>取得した個人情報は以下の目的で利用します：<br>・サービス提供および連絡 ・日程調整 ・お問い合わせ対応 ・サービス向上のための分析</p></div>
-                        <div><p class="font-bold text-light mb-1">第4条(第三者提供)</p><p>当方は、以下の場合を除き、個人情報を第三者に提供しません：<br>・本人の同意がある場合 ・法令に基づく場合</p></div>
-                        <div><p class="font-bold text-light mb-1">第5条(管理)</p><p>当方は、個人情報の漏洩・紛失・改ざんを防ぐため、適切な管理を行います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第6条(外部サービスの利用)</p><p>当方は、以下の外部サービスを利用する場合があります：<br>・決済サービス(Stripe、PayPal等) ・オンライン会議ツール(Zoom等)<br>これらのサービスにおける個人情報の取り扱いについては、各サービスのポリシーに従います。</p></div>
-                        <div><p class="font-bold text-light mb-1">第7条(開示・訂正・削除)</p><p>利用者は、自己の個人情報について、開示・訂正・削除を請求することができます。</p></div>
-                        <div><p class="font-bold text-light underline mb-1">第8条(Cookie等の利用)</p><p>当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。</p></div>
-                        <div><p class="font-bold text-light mb-1">第9条(ポリシーの変更)</p><p>本ポリシーは、必要に応じて変更される場合があります。</p></div>
-                        <div><p class="font-bold text-light mb-1">第10条(お問い合わせ窓口)</p><p>個人情報に関するお問い合わせは、以下までお願いいたします。<br>streamllc16@gmail.com</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第1条(個人情報の取得)</h3><p>当方は、以下の方法により個人情報を取得します： ・お問い合わせフォーム ・お申し込みフォーム ・メール等の連絡手段</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第2条(取得する情報)</h3><p>取得する情報は以下を含みます： ・氏名 ・メールアドレス ・電話番号(任意) ・その他サービス提供に必要な情報</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第3条(利用目的)</h3><p>取得した個人情報は以下の目的で利用します： ・サービス提供および連絡 ・日程調整 ・お問い合わせ対応 ・サービス向上のための分析</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第4条(第三者提供)</h3><p>当方は、以下の場合を除き、個人情報を第三者に提供しません： ・本人の同意がある場合 ・法令に基づく場合</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第5条(管理)</h3><p>当方は、個人情報の漏洩・紛失・改ざんを防ぐため、適切な管理を行います。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第6条(外部サービスの利用)</h3><p>当方は、以下の外部サービスを利用する場合があります： ・決済サービス(Stripe、PayPal等) ・オンライン会議ツール(Zoom等) これらのサービスにおける個人情報の取り扱いについては、各サービスのポリシーに従ります。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第7条(開示・訂正・削除)</h3><p>利用者は、自己の個人情報について、開示・訂正・削除を請求することができます。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第8条(Cookie等の利用)</h3><p>当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第9条(ポリシーの変更)</h3><p>本ポリシーは、必要に応じて変更される場合があります。</p></div>
+                        <div><h3 class="font-bold text-light underline mb-2">第10条(お問い合わせ窓口)</h3><p>個人情報に関するお問い合わせは、以下までお願いいたします。 streamllc16@gmail.com</p></div>
                     </div>
                 </section>
             </div>
-            <div class="text-center mt-10 pt-6 border-t border-white/10">
-                <button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
+            <div class="text-center mt-6"><button onclick="closePrivacyModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
@@ -498,10 +524,11 @@
                     const successMsg = document.getElementById('success-message');
                     const originalBtnText = submitBtn.innerHTML;
                     
-                    submitBtn.innerHTML = '<span class="text-unit tracking-widest">送信中...</span>';
+                    submitBtn.innerHTML = '<span class="inline-block tracking-widest">送信中...</span>';
                     submitBtn.disabled = true;
                     submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
+                    // データを確実に送信するための処理
                     const formData = new FormData(form);
                     const data = new URLSearchParams();
                     data.append('name', formData.get('name') || '');
@@ -514,7 +541,15 @@
                     data.append('date3', `${formData.get('date-3') || ''} ${formData.get('time-3') || ''}`.trim());
                     data.append('message', formData.get('message') || '');
 
-                    fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors' })
+                    // CORSエラーを回避しつつ確実にデータを送る設定
+                    fetch(scriptURL, { 
+                        method: 'POST', 
+                        body: data, 
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    })
                         .then(() => {
                             successMsg.classList.remove('hidden');
                             form.reset();
