@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
-    <title>整体やカウンセリングに通っても「また元に戻る」理由と、全体を整える新アプローチ | 三位一体ヒーリング</title>
+    <title>整体やカウンセリングに通っても「また元に戻る」理由と、全体を整える新アプローチ | 三位一体調律(トリニティヒーリング)</title>
     <meta name="keywords" content="整体, カウンセリング, 変わらない, 元に戻る, 原因, トリニティヒーリング, 情報変換ヒーリング, 世界線調律所">
     <meta name="description" content="整体やカウンセリングに通っているのに、また元に戻ってしまう方へ。心と身体を分けて対処することの限界と、全体の状態を整える根本的なアプローチについて解説します。">
     
@@ -122,7 +122,7 @@
     <header class="fixed top-0 left-0 w-full z-50 bg-navy-900/95 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex flex-col justify-center hover:opacity-70 transition-opacity">
-                <span class="font-serif text-[10px] md:text-xs text-gold-light tracking-widest mb-0.5 leading-none">三位一体（トリニティ）ヒーリング</span>
+                <span class="font-serif text-[10px] md:text-xs text-gold-light tracking-widest mb-0.5 leading-none">三位一体調律（トリニティヒーリング）</span>
                 <span class="font-serif text-lg md:text-xl text-light font-medium tracking-widest leading-none mt-1">Trinity Healing</span>
             </a>
             <div class="flex items-center gap-2 md:gap-6">
@@ -377,6 +377,8 @@
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
             <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">利用規約・プライバシーポリシー</h2>
             <div class="text-light/80 text-sm space-y-12 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll text-balance px-2">
+                
+                <!-- 利用規約 -->
                 <section>
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">利用規約</h3>
                     <div class="space-y-6">
@@ -395,6 +397,8 @@
                         <div><p class="font-bold text-light mb-1">第12条(準拠法および管轄)</p><p>本規約は日本法に準拠し、紛争が生じた場合は当方所在地を管轄する裁判所を専属的合意管轄とします。</p></div>
                     </div>
                 </section>
+
+                <!-- プライバシーポリシー -->
                 <section class="pt-10 border-t border-white/10">
                     <h3 class="text-gold-light font-bold text-lg mb-6 border-l-4 border-gold pl-3">プライバシーポリシー</h3>
                     <div class="space-y-6">
@@ -418,6 +422,7 @@
         </div>
     </div>
 
+    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
@@ -487,7 +492,7 @@
                 });
             });
 
-            // ハッシュパラメータ制御
+            // ハッシュパラメータからモーダルを自動的に開く (reserve.htmlからの遷移用)
             const urlParams = new URLSearchParams(window.location.search);
             const modalParam = urlParams.get('modal');
             if (modalParam === 'tokusho') {
