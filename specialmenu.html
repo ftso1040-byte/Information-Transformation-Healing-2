@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>不動産 位相調律セッション (所長特別メニュー) - 三位一体調律(トリニティヒーリング)</title>
+    <title>代表者プロフィール - 三位一体調律(トリニティヒーリング)</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,7 +71,7 @@
         }
 
         .fluid-h1 { font-size: clamp(1.75rem, 4vw, 3rem); }
-        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+        .fluid-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
         .fluid-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
         
         .fade-up { 
@@ -79,17 +79,26 @@
             will-change: transform, opacity; 
         }
 
-        .btn-outline-gold {
-            position: relative;
-            transition: all 0.3s ease;
+        /* ボタンの波紋アニメーション */
+        .btn-pulse { position: relative; }
+        .btn-pulse::before { 
+            content: ''; 
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            border-radius: 9999px; 
+            border: 2px solid #D4AF37; 
+            animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+            z-index: -1; 
+            will-change: transform, opacity;
         }
-        .btn-outline-gold:hover {
-            background-color: #D4AF37;
-            color: #FFFFFF;
-        }
-        
-        .overflow-hidden { overflow: hidden; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
 
+        .overflow-hidden { overflow: hidden; }
+        
+        /* ルビの調整 */
+        ruby { ruby-align: center; }
+        rt { font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.05em; transform: translateY(2px); }
+
+        /* モーダル用スクロールバー */
         .modal-scroll::-webkit-scrollbar { width: 6px; }
         .modal-scroll::-webkit-scrollbar-track { background: transparent; }
         .modal-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
@@ -133,205 +142,195 @@
         </div>
     </header>
 
-    <!-- ファーストビュー (FV) -->
-    <section class="py-24 px-6 flex flex-col items-center justify-center text-center min-h-[50vh]">
-        <div class="fade-up">
-            <p class="font-serif text-gold font-bold tracking-widest text-base md:text-xl mb-2">
-                <span class="text-unit">不動産 位相調律セッション</span>
-            </p>
-            <p class="font-serif text-navy-900/60 text-xs md:text-base tracking-widest mb-10 text-unit">
-                <span class="inline-block">(所長特別メニュー)</span>
-            </p>
-            
-            <h1 class="font-serif fluid-h1 text-navy-900 leading-relaxed mb-10">
-                <span class="text-unit">決める前に、整える。</span><br>
-                <span class="text-unit">不動産の選択は、</span><br class="md:hidden">
-                <span class="text-unit"><span class="inline-block">情報ではなく</span><span class="inline-block">「状態」で変わる。</span></span>
-            </h1>
-            <div class="h-px w-12 bg-gold mx-auto"></div>
-        </div>
-    </section>
+    <main class="py-24 px-6 bg-white relative overflow-hidden min-h-screen">
+        <!-- 背景装飾 -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-light-purple rounded-full blur-3xl opacity-[0.05] -translate-y-1/2 translate-x-1/3 pointer-events-none transform-gpu"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-light-blue rounded-full blur-3xl opacity-[0.05] translate-y-1/3 -translate-x-1/3 pointer-events-none transform-gpu"></div>
 
-    <!-- 本編 -->
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-3xl mx-auto space-y-24 font-serif text-navy-900/80 leading-loose fluid-p">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16 fade-up">
+                <p class="text-gold font-bold tracking-widest mb-4">PROFILE</p>
+                <h1 class="font-serif fluid-h2 text-navy-900 text-center">
+                    この世界線に至るまで
+                </h1>
+            </div>
             
             <div class="mb-16 fade-up">
-                <img src="Gemini_Generated_Image_cvmbz6cvmbz6cvmb.png" alt="" class="w-full h-80 md:h-[600px] object-cover rounded-2xl shadow-md" style="object-position: center 30%;">
+                <img src="Gemini_Generated_Image_nbtzaonbtzaonbtz.png" alt="プロフィールイメージ" class="w-full h-64 md:h-[450px] object-cover rounded-2xl shadow-md">
             </div>
-
-            <div class="fade-up">
-                <p class="mb-6">
-                    <span class="inline-block">不動産の購入や売却は、</span><span class="inline-block">人生の中でも大きな</span><span class="inline-block">意思決定のひとつです。</span>
-                    <span class="inline-block">多くの方が、情報を集め、</span><span class="inline-block">比較し、慎重に検討します。</span>
-                    <span class="inline-block">それでも最後に、</span><span class="font-bold text-navy-900 inline-block">「これでいいのか」という迷いが</span><span class="font-bold text-navy-900 inline-block">残ることがあります。</span>
-                </p>
+            
+            <div class="space-y-8 md:space-y-12 font-serif text-navy-900/80 leading-loose fluid-p">
                 
-                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mt-4 mb-6">
-                    <div class="space-y-3 text-navy-900 font-medium">
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">情報は揃っているのに</span><span class="inline-block">決めきれない</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">なんとなく</span><span class="inline-block">違和感がある</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">焦りや不安の中で</span><span class="inline-block">判断している気がする</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの意見に</span><span class="inline-block">引っ張られている</span></span></div>
-                    </div>
-                </div>
-
-                <p>
-                    <span class="inline-block">その状態のまま</span><span class="inline-block">選んだ結果が、</span><span class="inline-block">後悔につながることも</span><span class="inline-block">少なくありません。</span>
-                </p>
-            </div>
-
-            <div class="fade-up">
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">構造の</span><span class="inline-block">再定義</span></h2>
-                <p class="mb-6">
-                    <span class="inline-block">不動産の判断は、</span><span class="inline-block">物件や条件だけで</span><span class="inline-block">決まるものではありません。</span>
-                    <span class="font-bold text-navy-900 inline-block">実際には、</span><span class="font-bold text-navy-900 inline-block">「どの状態で判断しているか」によって、</span><span class="font-bold text-navy-900 inline-block">選択も結果も変わります。</span>
-                </p>
-                <p>
-                    <span class="inline-block">同じ物件でも、</span><span class="inline-block">整った状態で見るのか、</span><span class="inline-block">不安や焦りの中で見るのかで、</span><br class="md:hidden">
-                    <span class="font-bold text-gold-light inline-block">まったく違う判断に</span><span class="font-bold text-gold-light inline-block">なります。</span>
-                </p>
-            </div>
-
-            <div class="fade-up">
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8 text-unit"><span class="inline-block">このセッションの</span><span class="inline-block">立ち位置</span></h2>
-                <p class="mb-6">
-                    <span class="inline-block">一般的な不動産相談では、</span><span class="inline-block">立場の違いこそあれ、</span><span class="inline-block">最終的には</span><span class="inline-block">「どの物件を選ぶか」</span><span class="inline-block">「どう進めるか」といった</span><span class="inline-block">具体的な結論が</span><span class="inline-block">提示されます。</span>
-                    <span class="inline-block">それは有益である一方で、</span><span class="inline-block">どこかに</span><span class="inline-block">“提案する側の前提”が</span><span class="inline-block">含まれるのも事実です。</span>
-                </p>
-                <p class="text-lg">
-                    <span class="inline-block">このセッションでは、</span><span class="inline-block">そうした立場や前提から</span><span class="inline-block">一度離れ、</span>
-                    <span class="font-bold text-gold inline-block">完全に中立の視点で、</span><span class="font-bold text-gold inline-block">あなたの判断の位相(状態)を</span><span class="font-bold text-gold inline-block">整えます。</span><br>
-                    <span class="font-bold text-navy-900 mt-2 block"><span class="inline-block">物件を勧めることも、</span><span class="inline-block">売買を誘導することもありません。</span></span>
-                </p>
-            </div>
-
-            <div class="fade-up">
-                <div class="mb-12">
-                    <img src="Gemini_Generated_Image_wisu3ywisu3ywisu.png" alt="" class="w-full h-64 md:h-[400px] object-cover rounded-2xl shadow-sm">
-                </div>
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">不動産 位相調律セッション</span><span class="inline-block">とは</span></h2>
-                <p class="text-lg font-bold text-navy-900 leading-relaxed text-balance">
-                    <span class="inline-block">物件や条件を</span><span class="inline-block">評価するのではなく、</span>
-                    <span class="text-gold inline-block">“あなたの判断の状態”を</span><span class="text-gold inline-block">整えることで、</span>
-                    <span class="inline-block">最適な選択が</span><span class="inline-block">自然に定まる状態を</span><span class="inline-block">つくるセッションです。</span>
-                </p>
-            </div>
-
-            <div class="fade-up">
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">セッションの</span><span class="inline-block">流れ</span></h2>
-                <ol class="space-y-4 font-bold text-navy-900 mb-16 pl-4 border-l-2 border-gold text-lg">
-                    <li class="flex items-start"><span class="text-gold mr-2 shrink-0">1.</span><span><span class="inline-block">現在の状況の共有</span></span></li>
-                    <li class="flex items-start"><span class="text-gold mr-2 shrink-0">2.</span><span><span class="inline-block">判断状態の観測</span></span></li>
-                    <li class="flex items-start"><span class="text-gold mr-2 shrink-0">3.</span><span><span class="inline-block">位相(状態)の調律</span></span></li>
-                    <li class="flex items-start"><span class="text-gold mr-2 shrink-0">4.</span><span><span class="inline-block">再観測と確認</span></span></li>
-                </ol>
-
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">セッション後の</span><span class="inline-block">変化</span></h2>
-                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-6">
-                    <div class="space-y-3 text-navy-900 font-medium">
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いが自然に消える</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">判断の違和感がなくなる</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">選択に対する確信が生まれる</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">決断のスピードが上がる</span></span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fade-up flex flex-col md:flex-row gap-8 md:gap-12">
-                <div class="flex-1 bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-navy-900 mb-4 border-b border-gray-200 pb-2"><span class="inline-block">このセッションが</span><span class="inline-block">合う方</span></h3>
-                    <div class="space-y-3 text-sm md:text-base text-navy-900">
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">迷いを解消したいのではなく、</span><span class="inline-block">整えたい方</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">誰かの答えではなく、</span><span class="inline-block">自分の納得を大切にしたい方</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">落ち着いた状態で</span><span class="inline-block">判断したい方</span></span></div>
-                    </div>
-                </div>
-                <div class="flex-1 bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-navy-900/50 mb-4 border-b border-gray-200 pb-2"><span class="inline-block">このセッションとは</span><span class="inline-block">少し違う方</span></h3>
-                    <div class="space-y-3 text-sm md:text-base text-navy-900/60">
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">具体的な物件提案を</span><span class="inline-block">求めている方</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">結論を代わりに</span><span class="inline-block">決めてほしい方</span></span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fade-up">
-                <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">提供者の強み・信頼</span></h2>
-                <p class="mb-6"><span class="inline-block">私はこれまで、</span></p>
-                <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-6">
-                    <div class="space-y-3 text-navy-900">
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">大手不動産仲介会社での実務</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">相続コンサルティング</span></span></div>
-                        <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地家屋調査士・司法書士の</span><span class="inline-block">合同事務所(登記事務所)での業務</span></span></div>
-                    </div>
-                </div>
-                <p class="mb-6">
-                    <span class="inline-block">など、不動産に関わる複数の現場を</span><span class="inline-block">横断的に経験してきました。</span>
-                    <span class="inline-block">さらに現在は、路線価の半値以下で</span><span class="inline-block">土地を取得する投資家としても</span><span class="inline-block">活動しています。</span>
-                </p>
-                <p class="mb-6">
-                    <span class="inline-block">こうした経験を通じて、</span><span class="inline-block">不動産業界の仕組みや判断の歪みを、</span><span class="inline-block">構造として理解しています。</span>
-                    <span class="inline-block">だからこそ、何かを勧めるのではなく、</span><span class="font-bold text-gold inline-block">判断の前提そのものを整えるという立場を</span><span class="font-bold text-gold inline-block">取っています。</span>
-                </p>
-            </div>
-
-            <div class="fade-up py-12 border-y border-gray-100 text-center">
-                <p class="mb-4 leading-relaxed">
-                    <span class="inline-block">また、成功哲学や意思決定の原理、</span><span class="inline-block">スピリチュアルや宇宙の真理の探究、</span><span class="inline-block">情報変換ヒーリングの実践を通じて、</span>
-                </p>
-                <p class="text-lg md:text-xl font-bold text-navy-900 mb-4 text-balance">
-                    「<span class="inline-block">外側の選択は、</span><span class="inline-block">内側の状態に依存する</span>」
-                </p>
-                <p>
-                        <span class="inline-block">という構造も</span><span class="inline-block">体感してきました。</span>
-                </p>
-            </div>
-
-            <div class="fade-up">
-                <div class="mb-16">
-                    <h2 class="fluid-h2 font-bold text-navy-900 mb-8"><span class="inline-block">オプション</span></h2>
-                    <p class="mb-4"><span class="inline-block">ご希望に応じて、</span><span class="inline-block">情報変換ヒーリングの観点から</span></p>
-                    <div class="inline-block text-left w-full md:w-auto bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm mb-4">
-                        <div class="space-y-3 text-navy-900">
-                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">土地や建物の</span><span class="inline-block">状態調整</span></span></div>
-                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">環境全体の調律</span></span></div>
-                            <div class="flex items-start"><span class="mr-1 shrink-0">・</span><span><span class="inline-block">空間や土地に対する</span><span class="inline-block">浄化的アプローチ</span></span></div>
-                        </div>
-                    </div>
-                    <p class="text-navy-900"><span class="inline-block">も行っています。</span></p>
-                </div>
-
-                <div class="text-center py-12 border-t border-b border-gray-100">
-                    <p class="font-bold text-navy-900 text-lg mb-2"><span class="inline-block">初回セッション</span><span class="inline-block">(60~90分)</span></p>
-                    <p class="font-serif text-3xl md:text-4xl text-gold font-bold mb-8">33,000<span class="text-xl">円(税込)</span></p>
-                    
-                    <p class="text-left max-w-lg mx-auto text-balance">
-                        <span class="inline-block">不動産は</span><span class="inline-block">大きな意思決定です。</span>
-                        <span class="font-bold text-navy-900 inline-block">その結果を左右するのは、</span><span class="font-bold text-navy-900 inline-block">情報以上に「判断の状態」です。</span>
-                        <span class="inline-block">このセッションは、</span><span class="inline-block">意思決定の質そのものを</span><span class="inline-block">整えるための時間です。</span>
+                <!-- ストーリー 1 -->
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left border-y border-r border-gray-200">
+                    <p class="mb-6">
+                        <span class="inline-block">私はもともと、</span><span class="inline-block">スピリチュアルとは</span><span class="inline-block">縁もゆかりもない</span><span class="inline-block">人間でした。</span><br class="md:hidden">
+                        <span class="inline-block">むしろ徹底した現実主義者です。</span><br>
+                        <span class="font-bold text-navy-900 mt-2 block"><span class="inline-block">お金・仕事・結果。</span></span>
+                        <span class="inline-block">「目に見えるもの」だけが</span><span class="inline-block">人生を変える――</span><span class="inline-block">そう固く信じていました。</span>
+                    </p>
+                    <p class="mb-6">
+                        <span class="inline-block">就職氷河期に</span><span class="inline-block">滑り込んだ会社で、</span><span class="inline-block">すぐ結婚し、</span><span class="inline-block">子どもが生まれました。</span><span class="inline-block">配属先は</span><span class="inline-block">リストラ担当の総務課。</span><span class="inline-block">毎日、誰かの退職を</span><span class="inline-block">処理しながら、</span><br class="md:hidden">
+                        <span class="inline-block"><span class="font-medium text-navy-900">「明日は自分かもしれない」</span>と</span><span class="inline-block">思い続けていました。</span>
+                    </p>
+                    <p class="mb-6 text-balance">
+                        <span class="inline-block">そのとき手に取ったのが</span><span class="inline-block">当時流行していた</span><span class="inline-block">『金持ち父さん</span> <span class="inline-block">貧乏父さん』でした。</span><span class="inline-block">家族を守るために、</span><span class="inline-block">会社に依存しない</span><span class="inline-block">生き方をしよう。</span><span class="inline-block">そう決意した私は、</span><span class="inline-block">不動産業界を</span><span class="inline-block">武者修行のように</span><span class="inline-block">渡り歩きました。</span>
+                    </p>
+                    <p class="font-medium text-navy-900 text-lg">
+                        <span class="inline-block">そして十年かけて、</span><span class="text-gold"><span class="inline-block">ようやく</span><span class="inline-block">不動産投資家という</span><span class="inline-block">現実を手にしました。</span></span>
                     </p>
                 </div>
+
+                <!-- ストーリー 2 -->
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border-l-4 border-gold text-left border-y border-r border-gray-200">
+                    <p class="mb-6 text-lg">
+                        <span class="inline-block">でも、そこで</span><span class="inline-block">気づいた</span><span class="inline-block">ことが</span><span class="inline-block">あります。</span><br class="md:hidden">
+                        <span class="text-gold font-bold"><span class="inline-block">不動産は、二つとして</span><span class="inline-block">同じものがない。</span></span>
+                    </p>
+                    <p class="mb-6 text-balance">
+                        <span class="inline-block">どれだけ条件を絞り込んでも、</span><span class="inline-block">「これだ」と思える物件との出会いは、</span><span class="inline-block">狙って起きるものではない。</span><span class="inline-block">タイミングや縁が重なって、</span><span class="inline-block">初めて訪れる――</span><span class="inline-block">それはもはや、</span><span class="font-medium text-navy-900"><span class="inline-block">奇跡に近いと</span><span class="inline-block">思えるようになっていきました。</span></span>
+                    </p>
+                    <p class="mb-6">
+                        <span class="inline-block">その感覚が、</span><span class="inline-block">私を成功哲学の探求へと</span><span class="inline-block">向かわせました。</span>
+                    </p>
+                    <div class="pl-4 border-l-2 border-gold/50 mb-6 text-navy-900/70 text-sm md:text-base space-y-2">
+                        <p><span class="inline-block">納税日本一の</span><span class="inline-block">斎藤一人さん。</span></p>
+                        <p><span class="inline-block">幸せを法則として教えてくれた</span><span class="inline-block">小林正観さん。</span></p>
+                        <p><span class="inline-block">大谷翔平選手も愛読する</span><span class="inline-block">中村天風さん。</span></p>
+                    </div>
+                    <p class="mb-6">
+                        <span class="inline-block">三人の言葉は、</span><span class="inline-block">驚くほど同じことを</span><span class="inline-block">指していた。</span><br class="md:hidden">
+                        <span class="font-bold text-navy-900"><span class="inline-block">それは「科学だ」と</span><span class="inline-block">思いました。</span></span>
+                    </p>
+                    <p>
+                        <span class="inline-block">そしてその探求は、</span><span class="inline-block">スピリチュアルへ、</span><span class="inline-block">宇宙の真理へと向かっていき、</span><span class="inline-block">気づけば、</span><span class="inline-block">全国の神社参拝が</span><span class="inline-block">日常になっていました。</span><br>
+                        <span class="inline-block">神社参拝で</span><span class="inline-block">波動が整った頃、</span><span class="inline-block">ご縁から会社役員のお声がかかり、</span><span class="font-bold text-gold"><span class="inline-block">収入も倍に</span><span class="inline-block">なりました。</span></span>
+                    </p>
+                </div>
+
+                <!-- ストーリー 3 -->
+                <div class="fade-up bg-white p-8 md:p-12 rounded-2xl shadow-md border-l-4 border-gold relative overflow-hidden text-left border-y border-r border-gray-200">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold opacity-5 rounded-bl-full"></div>
+                    
+                    <p class="mb-6 relative z-10 text-xl md:text-2xl font-bold text-navy-900 text-center py-6 border-b border-gray-200">
+                        <span class="inline-block">そんな流れの中で</span><span class="inline-block">出会ったのが――</span><br>
+                        <span class="text-gold tracking-widest mt-2 block font-bold"><span class="inline-block">情報変換</span><span class="inline-block">ヒーリングです。</span></span>
+                    </p>
+                    
+                    <p class="mb-6 relative z-10">
+                        <span class="inline-block">正直、最初は半信半疑でした。</span><span class="inline-block">エネルギーを送るわけでも、</span><span class="inline-block">何かを操作するわけでもない。</span><span class="font-bold text-navy-900 inline-block">「情報と意識を整える」というだけ。</span>
+                    </p>
+                    <p class="mb-6 relative z-10 text-balance">
+                        <span class="inline-block">「現実は、外で</span><span class="inline-block">作られているのではない」</span><span class="inline-block">「意識が現実を選んでいる」</span><span class="inline-block">そう言われても、</span><span class="inline-block">最初はまったく</span><span class="inline-block">ピンときませんでした。</span>
+                    </p>
+                    <p class="mb-6 relative z-10 font-medium text-navy-900">
+                        <span class="inline-block">ところが――</span><br class="md:hidden">
+                        <span class="inline-block">瞑想を通じて</span><span class="inline-block">自分の意識を整え始めたとき、</span><span class="inline-block">明確な変化が</span><span class="inline-block">起き始めました。</span><span class="inline-block">無理に頑張らなくても、</span><span class="inline-block">現実をコントロールしようとしなくても。</span>
+                    </p>
+                    
+                    <ul class="text-navy-900 space-y-4 mb-8 pl-2 relative z-10 font-medium">
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">人間関係が、</span><span class="inline-block">自然と整っていく</span></span></li>
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">流れが、</span><span class="inline-block">勝手に良くなっていく</span></span></li>
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">問題だと思っていたことが、</span><span class="inline-block">気づいたら消えている</span></span></li>
+                    </ul>
+
+                    <p class="mb-8 relative z-10 text-lg md:text-xl text-gold font-bold text-center">
+                        <span class="inline-block">まるで、</span><span class="inline-block">世界のほうが勝手に</span><span class="inline-block">整っていくような感覚。</span><span class="inline-block">それを、体感として理解したとき――</span><span class="font-bold text-navy-900"><span class="inline-block">初めて、</span><span class="inline-block">確信しました。</span></span>
+                    </p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 relative z-10 mb-8 shadow-inner text-center">
+                        <p class="font-bold text-navy-900 text-lg md:text-xl">
+                            <span class="inline-block">現実は、</span><span class="inline-block">変えにいくものではない。</span><br>
+                            <span class="inline-block">整うことで、</span><span class="inline-block">自然に変わるものだ。</span>
+                        </p>
+                    </div>
+
+                    <p class="mb-6 relative z-10 text-balance">
+                        <span class="inline-block">かつての私は、</span><span class="inline-block">外側を強引に変えることで</span><span class="inline-block">人生を切り拓いてきました。</span><span class="inline-block">でも、それでは</span><span class="inline-block">望む以上の結果はなく、</span><span class="inline-block">振り子の反動もある。</span>
+                    </p>
+                    <p class="relative z-10 font-bold text-navy-900 text-lg text-center">
+                        <span class="text-gold"><span class="inline-block">内側が整うと、</span><span class="inline-block">望んだ以上の現実が、</span><span class="inline-block">自然と引き寄せられてくる。</span></span>
+                    </p>
+                </div>
+
+                <!-- ストーリー 4 -->
+                <div class="fade-up bg-gray-50 p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 text-left">
+                    <p class="mb-10 text-lg text-navy-900 font-bold pb-6 border-b border-gray-200 text-center">
+                        <span class="inline-block">情報変換ヒーリングを通して、</span><span class="inline-block">それまでの物理的な</span><span class="inline-block">現実創造ではない、</span><br class="hidden md:block">
+                        <span class="text-gold"><span class="inline-block">意識からの現実創造を</span><span class="inline-block">実体験として学びました。</span></span>
+                    </p>
+                    
+                    <p class="mb-6"><span class="font-bold text-navy-900 inline-block">今、私は3つの軸で活動しています。</span></p>
+                    <ul class="text-navy-900/80 space-y-3 mb-12 pl-2 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">不動産投資家として、</span><span class="inline-block">現実を形づくる</span><span class="inline-block">“場”を扱う</span></span></li>
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">不動産カウンセラーとして、</span><span class="inline-block">不動産から人生の選択に</span><span class="inline-block">寄り添う</span></span></li>
+                        <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">神社巡拝ヒーラーとして、</span><span class="inline-block">神社と人の意識を整える</span><span class="inline-block">サポートをする</span></span></li>
+                    </ul>
+
+                    <p class="mb-10 text-lg md:text-xl text-gold font-bold px-4 text-center">
+                        <span class="inline-block">あなたの現実は、</span><span class="inline-block">もっと自然に、</span><span class="inline-block">もっと穏やかに変わる。</span><br class="md:hidden">
+                        <span class="text-base text-navy-900/80 font-normal mt-3 block"><span class="inline-block">そのことを多くの方に</span><span class="inline-block">お伝えしたいと</span><span class="inline-block">思っています。</span></span>
+                    </p>
+
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 mb-8 shadow-sm">
+                        <p class="mb-4 text-navy-900 font-bold"><span class="inline-block">もしあなたが今――</span></p>
+                        <ul class="text-navy-900/80 space-y-4 mb-6 pl-2">
+                            <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">努力しているのに、</span><span class="inline-block">現実が変わらない</span></span></li>
+                            <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">成功しているはずが、</span><span class="inline-block">どこか満たされない</span></span></li>
+                            <li class="flex items-start"><span class="text-gold mr-3 shrink-0">・</span><span><span class="inline-block">原因のわからない</span><span class="inline-block">心身の不調や</span><span class="inline-block">違和感がある</span></span></li>
+                        </ul>
+                        <p class="text-navy-900 font-bold text-lg leading-relaxed mt-6 pt-6 border-t border-gray-100">
+                            <span class="inline-block">――そう感じているなら、</span><span class="inline-block">それは</span><span class="inline-block">「間違っている」</span><span class="inline-block">のでは</span><span class="inline-block">ありません。</span><br class="md:hidden">
+                            <span class="text-gold"><span class="inline-block">ただ、整っていない</span><span class="inline-block">だけです。</span></span>
+                        </p>
+                    </div>
+
+                    <p class="mb-6 text-balance">
+                        <span class="inline-block">整えることで、</span><span class="inline-block">現実は自然に動き始めます。</span><span class="inline-block">あなたが本来いるべき状態に、</span><span class="inline-block">ただ戻るだけでいい。</span>
+                    </p>
+                    <p class="mb-8 text-balance">
+                        <span class="font-bold text-navy-900"><span class="inline-block">その「違和感」は、</span><span class="inline-block">別のより良い世界線への</span><span class="inline-block">入口です。</span></span><br>
+                        <span class="inline-block">必要なときに、</span><span class="inline-block">必要なものは自然と</span><span class="inline-block">現れます。</span>
+                    </p>
+                    <p class="text-center text-lg text-gold font-serif pt-6 font-bold">
+                        <span class="inline-block">この出会いも、</span><span class="inline-block">そのひとつであれば</span><span class="inline-block">嬉しく思います。</span>
+                    </p>
+                </div>
+
+                <!-- 経歴詳細 -->
+                <div class="fade-up mt-16 pt-12 border-t border-gray-200 text-center md:text-left">
+                    <p class="text-gold tracking-widest text-sm mb-2 font-bold">世界線調律所 所長</p>
+                    <p class="text-2xl md:text-3xl text-navy-900 font-serif mb-8 tracking-wider font-bold">白川 愁士</p>
+                    
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 text-sm md:text-base text-navy-900/80 space-y-4 leading-relaxed text-left shadow-sm">
+                        <p class="font-bold text-navy-900 text-lg mb-6 border-b border-gray-200 pb-2">経歴</p>
+                        <p><span class="inline-block">1978年生まれ。</span><span class="inline-block">2男2女の父。</span></p>
+                        <p><span class="inline-block">不動産を軸に</span><span class="inline-block">独立すること志し、</span><span class="inline-block">某大手不動産仲介会社、</span><span class="inline-block">相続コンサル、</span><span class="inline-block">司法書士と土地家屋調査士の</span><span class="inline-block">合同事務所勤務を経て、</span><span class="inline-block">2014年に独立し、</span><span class="inline-block">2016年に会社設立。</span></p>
+                        <p><span class="inline-block">地方の不動産を</span><span class="inline-block">「路線価の半値以下で買う不動産投資家」</span><span class="inline-block">として活動。</span></p>
+                        <p><span class="inline-block">その中で、</span><span class="inline-block">幸せなお金持ちになるための</span><span class="inline-block">成功哲学として、</span><span class="inline-block">斎藤一人さん、</span><span class="inline-block">小林正観さん、</span><span class="inline-block">中村天風さんなどの</span><span class="inline-block">思想を学んだ末、</span><span class="inline-block">あまりに共通していることに驚き、</span><span class="inline-block">これは科学だと気づく。</span></p>
+                        <p><span class="inline-block">そこから、</span><span class="inline-block">スピリチュアルと</span><span class="inline-block">宇宙の真理探求に目覚め、</span><span class="inline-block">全国の神社参拝が日常になり、</span><span class="inline-block">今までに御朱印を頂いた</span><span class="inline-block">神社だけでも</span><span class="inline-block">300社を超える神社へ</span><span class="inline-block">参拝に上がる。</span></p>
+                        <p><span class="inline-block">神社参拝で</span><span class="inline-block">波動が上がった結果、</span><span class="inline-block">自分の意図しないご縁から</span><span class="inline-block">会社役員としての</span><span class="inline-block">お呼びがかかり、</span><span class="inline-block">収入が倍増。</span></p>
+                        <p><span class="inline-block">その後、</span><span class="inline-block">情報変換ヒーリングを学び、</span><span class="inline-block">神社巡拝ヒーラーになる。</span></p>
+                        <p class="pt-4 mt-4 border-t border-gray-200 text-navy-900/60 text-xs md:text-sm"><span class="inline-block">宅地建物取引士、</span><span class="inline-block">マンション管理士、</span><span class="inline-block">賃貸経営不動産管理士、</span><span class="inline-block">ファイナンシャルプランナーなどの</span><span class="inline-block">資格を保有。</span></p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- CTA -->
-            <div class="fade-up text-center pt-8">
-                <p class="font-bold text-navy-900 text-lg md:text-xl mb-10 px-4 text-balance">
-                    <span class="inline-block">整った状態で判断したいと</span><span class="inline-block">感じたタイミングで、</span><br class="md:hidden"><span class="inline-block">ご利用ください。</span>
-                </p>
-                <a href="reserve.html" class="btn-outline-gold inline-block border border-gold text-gold font-serif font-bold text-lg md:text-xl py-5 px-10 md:px-16 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-sm">
-                    <span class="inline-block">お申し込みは</span><span class="inline-block">こちら</span>
+            <div class="mt-24 text-center fade-up">
+                <a href="reserve.html" class="btn-pulse inline-block bg-gold border-2 border-gold hover:bg-transparent text-white hover:text-gold font-serif font-medium text-lg md:text-xl py-5 px-10 md:px-12 rounded-full transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="text-unit tracking-widest">【セッションのお申し込み】</span>
                 </a>
             </div>
-
         </div>
-    </section>
+    </main>
 
-    <!-- Footer (フッターもダークで統一) -->
-    <footer class="bg-navy-900 py-12 text-center border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 text-sm text-light/60 font-serif tracking-wider">
-            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">特定商取引法に基づく表記</button>
-            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit">利用規約・プライバシーポリシー</button>
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-16 text-center border-t border-white/10">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 mb-8 text-sm text-light/70 font-serif tracking-wider">
+            <button onclick="openTokushoModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">特定商取引法に基づく表記</button>
+            <button onclick="openPrivacyModal()" class="hover:text-gold transition-colors focus:outline-none text-unit border-b border-transparent hover:border-gold">利用規約・プライバシーポリシー</button>
         </div>
         <p class="text-light/40 text-xs tracking-widest">© 2026 Trinity Healing. All Rights Reserved.</p>
     </footer>
@@ -339,102 +338,35 @@
     <!-- 特定商取引法に基づく表記 モーダル -->
     <div id="tokusho-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeTokushoModal()"></div>
-        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
-            <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none">×</button>
-            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center leading-relaxed">特定商取引法に基づく表記</h2>
-            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left">
+        <div class="bg-navy-800 border border-white/10 rounded-2xl p-6 md:p-10 max-w-3xl w-[92%] max-h-[85vh] overflow-hidden relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="tokusho-modal-content">
+            <button onclick="closeTokushoModal()" class="absolute top-4 right-4 text-light/60 hover:text-gold text-2xl focus:outline-none z-20">×</button>
+            <h2 class="font-serif text-xl md:text-2xl text-gold-light mb-8 font-bold border-b border-white/10 pb-4 text-center">特定商取引法に基づく表記</h2>
+            <div class="text-light/80 text-sm space-y-6 leading-relaxed text-left overflow-y-auto max-h-[60vh] pr-4 modal-scroll">
                 <dl class="space-y-4">
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">販売事業者名</dt>
-                        <dd>ストリーム株式会社</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">運営責任者</dt>
-                        <dd>小川恵美</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">所在地</dt>
-                        <dd>所在地については、ご請求いただければ遅滞なく開示いたします。</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">電話番号</dt>
-                        <dd>お電話でのお問い合わせは受け付けておりません。 お問い合わせはメールにてお願いいたします。</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">メールアドレス</dt>
-                        <dd>tuning0369@gmail.com</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">販売URL</dt>
-                        <dd class="break-all"><a href="http://stream.noor.jp/TrinityHealing/" target="_blank" class="hover:text-gold transition-colors underline underline-offset-2">http://stream.noor.jp/TrinityHealing/</a></dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">販売価格</dt>
-                        <dd>各サービスページに記載の通り(すべて税込表示)</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">商品代金以外の必要料金</dt>
-                        <dd>・銀行振込の場合の振込手数料 ・インターネット接続にかかる通信費等</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">お支払い方法</dt>
-                        <dd>・銀行振込</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">お支払い時期</dt>
-                        <dd>・銀行振込:お申し込み後3日以内にお支払いください</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">商品(サービス)の提供時期</dt>
-                        <dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします<br>・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">返品・返金について</dt>
-                        <dd>本サービスは役務提供の特性上、 サービス提供後の返金はいたしかねます。</dd>
-                    </div>
-                    <div class="border-b border-white/5 pb-2">
-                        <dt class="text-gold-light font-bold">キャンセルポリシー</dt>
-                        <dd>・ご予約日の2日前までのキャンセル:無料<br>・前日キャンセル:料金の50%<br>・当日キャンセルまたは無断キャンセル:料金の100%</dd>
-                    </div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売事業者名</dt><dd>ストリーム株式会社</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">運営責任者</dt><dd>小川恵美</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">所在地</dt><dd>所在地については、ご請求いただければ遅滞なく開示いたします。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">電話番号</dt><dd>お電話でのお問い合わせは受け付けておりません。 お問い合わせはメールにてお願いいたします。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">メールアドレス</dt><dd>streamllc16@gmail.com</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売URL</dt><dd>https://worldlinetuning.net/</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">販売価格</dt><dd>各サービスページに記載の通り(すべて税込表示)</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">商品代金以外の必要料金</dt><dd>・銀行振込の場合の振込手数料 ・インターネット接続にかかる通信費等</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">お支払い方法</dt><dd>・銀行振込</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">お支払い時期</dt><dd>・銀行振込:お申し込み後3日以内にお支払いください</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">商品(サービス)の提供時期</dt><dd>・ご入金確認後、3日以内に日程調整のご連絡をいたします ・セッションはご予約日時に、オンラインまたは遠隔にて提供いたします</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">返品・返金について</dt><dd>本サービスは役務提供の特性上、 サービス提供後の返金には応じかねます。</dd></div>
+                    <div class="border-b border-white/5 pb-2"><dt class="text-gold font-bold mb-1">キャンセルポリシー</dt><dd>・ご予約日の2日前までのキャンセル:無料 ・前日キャンセル:料金の50% ・当日キャンセルまたは無断キャンセル:料金の100%</dd></div>
                 </dl>
-                
-                <div class="mt-8 pt-6 border-t border-white/10 space-y-6">
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">表現および再現性について</p>
-                        <p>本サービスは、心身や環境に対するサポートを目的としたものであり、 効果や体感には個人差があり、特定の結果を保証するものではありません。</p>
-                    </div>
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">サービスの性質について</p>
-                        <ul class="space-y-1 list-none">
-                            <li>・本サービスは医療行為ではありません</li>
-                            <li>・診断・治療を目的としたものではありません</li>
-                            <li>・通院中・服薬中の方は医師にご相談のうえご利用ください</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">不動産コンサルティングに関する注意事項</p>
-                        <ul class="space-y-1 list-none">
-                            <li>・本サービスに含まれる不動産に関する助言は、 一般的な情報提供およびセカンドオピニオンとして提供するものです</li>
-                            <li>・売買・契約等の最終判断は、お客様ご自身の責任にてお願いいたします</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">提供形式について</p>
-                        <p>本サービスは以下の形式で提供されます：<br>・オンラインセッション(Zoom等)<br>・遠隔セッション(非対面)</p>
-                    </div>
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">宗教・勧誘について</p>
-                        <p>本サービスは、特定の宗教への勧誘や加入を目的としたものではありません。</p>
-                    </div>
-                    <div>
-                        <p class="text-gold-light font-bold mb-2">個人情報の取り扱い</p>
-                        <p>取得した個人情報は、サービス提供およびご連絡の目的にのみ使用し、 適切に管理いたします。</p>
-                    </div>
+                <div class="mt-8 pt-6 border-t border-white/10 space-y-4">
+                    <p><span class="text-gold-light font-bold">表現および再現性について</span><br>本サービスは、心身や環境に対するサポートを目的としたものであり、 効果や体感には個人差があり、特定の結果を保証するものではありません。</p>
+                    <p><span class="text-gold-light font-bold">サービスの性質について</span><br>・本サービスは医療行為ではありません ・診断・治療を目的としたものではありません ・通院中・服薬中の方は医師にご相談のうえご利用ください</p>
+                    <p><span class="text-gold-light font-bold">不動産コンサルティングに関する注意事項</span><br>・本サービスに含まれる不動産に関する助言は、 一般的な情報提供およびセカンドオピニオンとして提供するものです ・売買・契約等の最終判断は、お客様ご自身の責任にてお願いいたします</p>
+                    <p><span class="text-gold-light font-bold">提供形式について</span><br>本サービスは以下の形式で提供されます： ・オンラインセッション(Zoom等) ・遠隔セッション(非対面)</p>
+                    <p><span class="text-gold-light font-bold">宗教・勧誘について</span><br>本サービスは、特定の宗教への勧誘や加入を目的としたものではありません。</p>
+                    <p><span class="text-gold-light font-bold">個人情報の取り扱い</span><br>取得した個人情報は、サービス提供およびご連絡の目的にのみ使用し、 適切に管理いたします。</p>
                 </div>
             </div>
-            <div class="text-center mt-10 pt-6 border-t border-white/10">
-                <button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-8 rounded-full transition-colors text-sm">閉じる</button>
-            </div>
+            <div class="text-center mt-6"><button onclick="closeTokushoModal()" class="bg-navy-900 border border-white/20 hover:border-gold hover:text-gold text-light py-2 px-10 rounded-full transition-colors text-sm">閉じる</button></div>
         </div>
     </div>
 
